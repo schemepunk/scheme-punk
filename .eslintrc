@@ -1,0 +1,26 @@
+{
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "script"
+  },
+  "extends": "airbnb-base",
+  "rules": {
+    "brace-style": ["error", "stroustrup"],
+    "comma-dangle": ["error", "only-multiline"],
+    "global-require": 0,
+    "max-len": ["warn", {
+      "code": 100,
+      "comments": 80,
+      "ignoreUrls": true,
+      "ignorePattern": "(logger\\.|new Error\\()",
+      "ignoreTrailingComments": true,
+      "tabWidth": 2
+    }],
+    "no-param-reassign": ["warn", {"props": false}],
+    "no-underscore-dangle": "off",
+    "no-warning-comments": "warn",
+    "object-curly-spacing": ["error", "never"],
+    "quotes": ["error", "single", {"avoidEscape": true, "allowTemplateLiterals": true}],
+    "strict": ["error", "global"]
+  }
+}
