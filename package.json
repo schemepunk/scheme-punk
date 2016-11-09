@@ -1,0 +1,52 @@
+{
+  "name": "scheme-punk",
+  "description": "Schema transformation tool with pluggable sources, transformations, and destinations.",
+  "main": "lib/schemePunk.js",
+  "scripts": {
+    "test": "istanbul cover --print both nodeunit ./test",
+    "lint": "eslint .",
+    "coverage": "istanbul check-coverage --statements 0 --lines 0 --branches 0 --functions 0",
+    "coveralls": "cat ./coverage/lcov.info | coveralls",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thebruce/scheme-punk.git"
+  },
+  "keywords": [
+    "version",
+    "attribute",
+    "traversal"
+  ],
+  "author": "David Diers <david.diers@gmail.com> (http://daviddiers.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thebruce/scheme-punk/issues"
+  },
+  "homepage": "https://github.com/thebruce/scheme-punk#readme",
+  "devDependencies": {
+    "eslint": "^3.3.1",
+    "eslint-find-rules": "^1.13.0",
+    "eslint-plugin-import": "^2.0.1",
+    "eslint-config-airbnb-base": "^9.0.0",
+    "ghooks": "^1.0.1",
+    "istanbul": "^0.4.2",
+    "nodeunit": "^0.10.2",
+    "npm-run-all": "^3.1.1",
+    "semantic-release": "^4.3.5"
+  },
+  "config": {
+    "ghooks": {
+      "pre-commit": "npm run lint",
+      "pre-push": "npm test"
+    }
+  },
+  "dependencies": {
+    "config": "^1.24.0",
+    "lodash": "^4.16.4",
+    "require-directory": "^2.1.1"
+  },
+  "engines": {
+    "node": ">=6"
+  }
+}
