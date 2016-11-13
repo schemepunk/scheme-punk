@@ -21,7 +21,7 @@ const tester = class {
 
 // A second super class with an setOrigin Implemented.
 const tester2 = class {
-  constructor () {
+  constructor() {
     this.scheme = scheme;
   }
   setOrigin(originValue) {
