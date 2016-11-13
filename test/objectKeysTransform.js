@@ -1,4 +1,5 @@
 'use strict';
+
 // Require mixin.
 const ObjectKeysTransform = require('../lib/plugins/transform/objectKeysTransform');
 
@@ -10,29 +11,23 @@ const tester2 = class {
   transform(value) {
     this.value = value.toString();
   }
-}
+};
 
 // Create implementing class with mixin for first case.
-const one = class SchemePunkTransformTest extends ObjectKeysTransform(tester) {
-  constructor () {
-    super();
-  }
-}
+const One = class SchemePunkTransformTest extends ObjectKeysTransform(tester) {};
+
 // Test case value.
 const value = {
   test1: 'thing',
   test2: 'thing2',
   test3: 'thing3'
 };
-const objTest = new one();
+const objTest = new One();
 
 // Create implementing class with mixin for second case.
-const two = class SchemePunkTransformTest2 extends ObjectKeysTransform(tester2) {
-  constructor () {
-    super();
-  }
-  transform(value) {
-    super.transform(value);
+const Two = class SchemePunkTransformTest2 extends ObjectKeysTransform(tester2) {
+  transform(aValue) {
+    super.transform(aValue);
   }
 };
 
@@ -42,7 +37,7 @@ const value2 = {
   test2: 'thing2',
   test3: 'thing3'
 };
-const objTest2 = new two();
+const objTest2 = new Two();
 
 // console.log(schemePunkTransform.constructor.name);
 
