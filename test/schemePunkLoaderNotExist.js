@@ -3,8 +3,9 @@
 const path = require('path');
 
 // Need to get clean versions to test with env variables.
-delete require.cache[require.resolve('../lib/schemePunkPluginLoader')];
-delete require.cache[require.resolve('config')];
+Object.keys(require.cache).forEach((key) => {
+  delete require.cache[key];
+});
 
 process.env.NODE_CONFIG_DIR = path.join(__dirname, 'config', 'pluginConfigTwo');
 
