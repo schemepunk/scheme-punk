@@ -29,10 +29,8 @@ const tester2 = class {
   }
 };
 
-
 // Create implementing class with mixin for first case.
 const One = class SchemePunkSchemeSourceTest extends OriginalSchemeSource(tester) {};
-
 
 const objTest = new One();
 
