@@ -1,35 +1,17 @@
 'use strict';
 
-const _ = require('lodash');
-/**
- * Destination plugins control how and where we write our transformed property.
- * Default case is to write to an object property in the scheme in play
- * and then to
- * push the scheme in play to the newScheme place.
- *
- * Another behavior would be to write to a file. <- this could be useful in situations where we
- * are creating cached destination writing output.
- * Another behavior would be to use a destination token template to write
- * the transformed property into a tokenized template
- * essentially adding that shape if it doesn't exist to the scheme in play and if it does
- * exist adding the property to the nested location within.
- *
- * Lets get write to object property down
- * Then merge property
- * then aim for tokenized templates
- * then write to a file.
- *
- * We may need to bring in the schemePunk creation because maybe that's
- * actually some behavior of destination or that destination enhances that
- * in some way.
- */
-module.exports = class schemePunkDestination {
+module.exports = class schemePunkDestinationSuper {
   constructor(options, transformedValue, scheme) {
     // eslint-disable-next-line no-unused-vars
     this.scheme = scheme;
     this.setTarget(options.target);
     this.setDestination(options.destinationValue);
     this.setValue(transformedValue);
+  }
+
+  superMethod() {
+    this.testPower = true;
+    return this.testPower;
   }
 
   /**
@@ -103,14 +85,11 @@ module.exports = class schemePunkDestination {
   }
 
   /**
-   * Write the transformed value to the target.
-   * Basic process writes a property (target) to the destination object.
-   * Mixins will need to setValue to the destination.target value unless
-   * they want super to overwrite.
+   * Establish the destination target. Could create the property or utilize
+   * a template to create the property if it doesn't exist.
    */
-  writeDestinationTarget() {
-    // Check to see if destination does not yet exist.
-    this.scheme[this.getDestination()] = _.set(this.scheme[this.getDestination()], this.getTarget(), this.getValue());
+  createDestinationTarget() {
+    this.scheme[this.getDestination()][this.getTarget()] = null;
   }
 
   /**

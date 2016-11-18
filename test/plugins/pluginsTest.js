@@ -24,15 +24,7 @@
  * };
  **/
 // Define a new mixin
-const schemePunkTransformSuperDefault = require('./../../lib/transform/schemePunkTransform');
-const schemePunkSourceSuperDefault = require('./../../lib/source/schemePunkSource');
-const schemePunkDestinationSuperDefault = require('./../../lib/destination/schemePunkDestination');
-// Set our default super classes.
-const superConfig = {
-  transform: schemePunkTransformSuperDefault,
-  source: schemePunkSourceSuperDefault,
-  destination: schemePunkDestinationSuperDefault
-};
+const superConfig = require('./../../lib/schemePunkSupers');
 
 const newSourceMixin = superclass => class extends superclass {
   setOrigin() {

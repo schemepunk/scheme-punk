@@ -1,0 +1,14 @@
+{
+  "schemePunk": {
+    "plugins": [
+      "../test/plugins/pluginsTest.js",
+      "../test/plugins/plugins"
+    ],
+    "source": {
+      "superOverride": "../test/helpers/schemePunkSuperOver.js"
+    },
+    "destination": {
+      "superOverride": "../test/helpers/schemePunkDestinationSuperOver.js"
+    }
+  }
+}

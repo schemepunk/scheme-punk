@@ -12,6 +12,8 @@ process.env.NODE_CONFIG_DIR = path.join(__dirname, 'config', 'pluginConfigThree'
 const config = require('config'); // eslint-disable-line no-unused-vars
 const schemePunkConfig = require('../lib/schemePunkPluginLoader');
 const SchemePunkSourceBase = require('../lib/source/schemePunkSourceBase');
+const schemePunkDestinationBase = require('../lib/destination/schemePunkDestinationBase');
+
 const fs = require('fs-extra');
 
 const options = {
@@ -19,6 +21,11 @@ const options = {
     target: 'properties.data.properties.attributes.properties',
     plugin: 'sourceMixin'
   }
+};
+
+const destOptions = {
+  target: 'title.description',
+  plugin: 'destinationMixin'
 };
 
 module.exports = {
@@ -52,6 +59,17 @@ module.exports = {
     test.deepEqual(
       schemeSource.getOrigin(),
       {test: 'test2'}
+    );
+    test.done();
+  },
+  testDestinationTargetWriter: (test) => {
+    const schemePart = fs.readJSONSync('./test/helpers/sourceSchemaItem.json');
+    const SchemeDestination = schemePunkDestinationBase(destOptions);
+    const schemeDestination = new SchemeDestination(destOptions, 'testing dest', schemePart);
+    schemeDestination.writeDestinationTarget();
+    test.deepEqual(
+      schemeDestination.scheme.newScheme.title.description,
+      'testing dest'
     );
     test.done();
   }

@@ -24,35 +24,26 @@
  * };
  **/
 // Define a new mixin
-const superConfig = require('./../../lib/schemePunkSupers');
 
-const newSourceMixin = superclass => class extends superclass {
-  setOrigin() {
-    this.retrievedOrigin = {
-      test: 'test2'
-    };
-  }
-};
+// Set our default super classes.
 
-const otherTransformMixin = superclass => class extends superclass { /**
-   * Function to tranform an object to an array of keys.
-   *
-   * @param value
-   *  A value to perform a transformation upon.
-   */
-  transform() {
-    // Set this.value to the keys of the object passed.
-    this.value = 'another test value';
-    // Call super.transform and pass along the new value to honor composition.
-    if (super.transform) super.transform(this.value);
-  }
-};
+// Need to create a destination super.
+const destSuper = class schemePunkDestinationSuper {};
+// Need to create a source super.
+const sourceSuper = class schemePunkSourceSuper {};
+// Need to create a transform super.
+const transformSuper = class schemePunkTransformSuper {};
 
 module.exports = {
-  sourcePlugins: {
-    sourceMixin: newSourceMixin(superConfig.source)
-  },
-  transformPlugins: {
-    otherTransformMixin: otherTransformMixin(superConfig.transform)
+  schemePunk: {
+    destination: {
+      superOverride: destSuper
+    },
+    source: {
+      superOverride: sourceSuper
+    },
+    transformation: {
+      superOverride: transformSuper
+    }
   }
 };
