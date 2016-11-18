@@ -29,6 +29,7 @@
     "eslint-find-rules": "^1.13.0",
     "eslint-plugin-import": "^2.0.1",
     "eslint-config-airbnb-base": "^9.0.0",
+    "fs-extra": "^1.0.0",
     "ghooks": "^1.0.1",
     "istanbul": "^0.4.2",
     "nodeunit": "^0.10.2",
@@ -43,6 +44,7 @@
   },
   "dependencies": {
     "config": "^1.24.0",
+    "fs-extra": "^1.0.0",
     "lodash": "^4.16.4",
     "require-directory": "^2.1.1",
     "try-require": "^1.2.1"
