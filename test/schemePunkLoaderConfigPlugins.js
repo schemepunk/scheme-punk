@@ -37,16 +37,16 @@ module.exports = {
     // are merged together.
     test.deepEqual(
       Object.keys(schemePunkConfig.destinationPlugins).length,
-      1
+      3
     );
 
     test.deepEqual(
       Object.keys(schemePunkConfig.sourcePlugins).length,
-      2
+      3
     );
     test.deepEqual(
       Object.keys(schemePunkConfig.transformPlugins).length,
-      3
+      7
     );
     test.done();
   },

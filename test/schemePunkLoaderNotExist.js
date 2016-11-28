@@ -18,15 +18,15 @@ module.exports = {
     // Test for default plugins.
     test.deepEqual(
       Object.keys(schemePunkConfig.destinationPlugins).length,
-      1
+      3
     );
     test.deepEqual(
       Object.keys(schemePunkConfig.sourcePlugins).length,
-      2
+      3
     );
     test.deepEqual(
       Object.keys(schemePunkConfig.transformPlugins).length,
-      2
+      6
     );
     delete require.cache[require.resolve('../lib/schemePunkPluginLoader')];
     delete require.cache[require.resolve('config')];
