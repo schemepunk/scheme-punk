@@ -16,10 +16,9 @@ const testClass = new Implemented();
 
 // Set options source prepend.
 testClass.options = {
-  sourcePrepend: 'thething'
+  sourcePrepend: 'thething',
+  adapterPrevent: ['number']
 };
-
-testClass.adapterPrevent = [];
 
 // test string.
 const testString = 'testString';
@@ -61,10 +60,9 @@ module.exports = {
 
     // Set options source prepend.
     testClass1.options = {
-      sourcePrepend: 'thething'
+      sourcePrepend: 'thething',
+      adapterPrevent: []
     };
-
-    testClass1.adapterPrevent = [];
     testClass1.transform(testArray);
     test.deepEqual(
       testClass1.value,
@@ -92,20 +90,36 @@ module.exports = {
     );
     test.done();
   },
-  testNumber: (test) => {
-    test.expect(1);
-    testClass.transform(testNumber);
-    test.deepEqual(
-      testClass.value,
-      'thething1'
-    );
-    test.done();
-  },
   testBoolean: (test) => {
     test.expect(1);
     test.throws(() => {
       testClass.transform(true);
     }, 'Bool did not throw an error.');
+    test.done();
+  },
+  testNoAdapter: (test) => {
+    test.expect(1);
+    testClass.options = {
+      adapterPrevent: 'number'
+    };
+    testClass.transform(testNumber);
+    test.deepEqual(
+      testClass.value,
+      1
+    );
+    test.done();
+  },
+  testNumber: (test) => {
+    test.expect(1);
+    testClass.options = {
+      sourcePrepend: 'thething',
+      adapterPrevent: []
+    };
+    testClass.transform(testNumber);
+    test.deepEqual(
+      testClass.value,
+      'thething1'
+    );
     test.done();
   },
   testNull: (test) => {
