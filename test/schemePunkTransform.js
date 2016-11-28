@@ -10,7 +10,15 @@ module.exports = {
 
   schemePunkTransform: (test) => {
     const value = 'test';
-    schemePunkTransform.transform(value);
+    test.deepEqual(
+      schemePunkTransform.transform(value),
+      'test'
+    );
+    test.done();
+  },
+  schemePunkGetTransform: (test) => {
+    const value = 'test';
+    schemePunkTransform.value = schemePunkTransform.transform(value);
     test.deepEqual(
       schemePunkTransform.getTransformedValue(),
       'test'

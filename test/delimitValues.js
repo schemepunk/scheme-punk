@@ -3,11 +3,16 @@
 // Require mixin.
 const DelimitValues = require('../lib/plugins/transform/delimitValues');
 
-// A super class.
-const tester = class {};
+// Require a super class.
+const superClass = require('../lib/transform/schemePunkTransform');
 
-// Create implementing class with mixin for first case.
-const One = class SchemePunkTransformTest extends DelimitValues(tester) {};
+// Create an implementing class using mixin and super.
+const Implemented = class implementer extends DelimitValues(superClass) {
+  transform(value) {
+    this.value = super.transform(value);
+  }
+};
+
 
 // Test case value.
 const value = [
@@ -15,37 +20,24 @@ const value = [
   'test2',
   'test3'
 ];
-const objTest = new One();
+
+const testClass = new Implemented();
 
 // console.log(schemePunkTransform.constructor.name);
 
 module.exports = {
   delimitValues: (test) => {
-    objTest.transform(value);
+    testClass.transform(value);
     test.deepEqual(
-      objTest.value,
+      testClass.value,
       'test1,test2,test3'
     );
-    test.done();
-  },
-  delimitValuesWithSuper: (test) => {
-    const tester2 = class {
-      constructor() {
-        this.options = {
-          sourceDelimiter: '-'
-        };
-      }
-      transform(transvalue) {
-        this.value = transvalue;
-      }
+    testClass.options = {
+      sourceDelimiter: '-'
     };
-
-    const Two = class SchemePunkTransformTest extends DelimitValues(tester2) {};
-
-    const objTest2 = new Two();
-    objTest2.transform(value);
+    testClass.transform(value);
     test.deepEqual(
-      objTest2.value,
+      testClass.value,
       'test1-test2-test3'
     );
     test.done();

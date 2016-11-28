@@ -1,13 +1,17 @@
 'use strict';
 
 // Require mixin.
-const DelimitValues = require('../lib/plugins/transform/regexWordBoundariesValues');
+const RegExBoundary = require('../lib/plugins/transform/regexWordBoundariesValues');
 
-// A super class.
-const tester = class {};
+// Require a super class.
+const superClass = require('../lib/transform/schemePunkTransform');
 
-// Create implementing class with mixin for first case.
-const One = class SchemePunkTransformTest extends DelimitValues(tester) {};
+// Create an implementing class using mixin and super.
+const Implemented = class implementer extends RegExBoundary(superClass) {
+  transform(value) {
+    this.value = super.transform(value);
+  }
+};
 
 // Test case value.
 const value = [
@@ -15,32 +19,14 @@ const value = [
   'test2',
   'test3'
 ];
-const objTest = new One();
 
-// console.log(schemePunkTransform.constructor.name);
+const testClass = new Implemented();
 
 module.exports = {
-  delimitValues: (test) => {
-    objTest.transform(value);
+  regExTransform: (test) => {
+    testClass.transform(value);
     test.deepEqual(
-      objTest.value,
-      '(\btest1\b|\btest2\b|\btest3\b|,)*'
-    );
-    test.done();
-  },
-  delimitValuesWithSuper: (test) => {
-    const tester2 = class {
-      transform(transvalue) {
-        this.value = transvalue;
-      }
-    };
-
-    const Two = class SchemePunkTransformTest extends DelimitValues(tester2) {};
-
-    const objTest2 = new Two();
-    objTest2.transform(value);
-    test.deepEqual(
-      objTest2.value,
+      testClass.value,
       '(\btest1\b|\btest2\b|\btest3\b|,)*'
     );
     test.done();
