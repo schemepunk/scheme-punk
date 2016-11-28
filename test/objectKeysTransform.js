@@ -3,18 +3,15 @@
 // Require mixin.
 const ObjectKeysTransform = require('../lib/plugins/transform/objectKeysTransform');
 
-// A super class.
-const tester = class {};
+// Require a super class.
+const superClass = require('../lib/transform/schemePunkTransform');
 
-// A second super class.
-const tester2 = class {
+// Create an implementing class using mixin and super.
+const Implemented = class implementer extends ObjectKeysTransform(superClass) {
   transform(value) {
-    this.value = value.toString();
+    this.value = super.transform(value);
   }
 };
-
-// Create implementing class with mixin for first case.
-const One = class SchemePunkTransformTest extends ObjectKeysTransform(tester) {};
 
 // Test case value.
 const value = {
@@ -22,39 +19,15 @@ const value = {
   test2: 'thing2',
   test3: 'thing3'
 };
-const objTest = new One();
 
-// Create implementing class with mixin for second case.
-const Two = class SchemePunkTransformTest2 extends ObjectKeysTransform(tester2) {
-  transform(aValue) {
-    super.transform(aValue);
-  }
-};
-
-// Test case value 2.
-const value2 = {
-  test1: 'thing',
-  test2: 'thing2',
-  test3: 'thing3'
-};
-const objTest2 = new Two();
-
-// console.log(schemePunkTransform.constructor.name);
+const testClass = new Implemented();
 
 module.exports = {
   objectKeysTransformNoSuper: (test) => {
-    objTest.transform(value);
+    testClass.transform(value);
     test.deepEqual(
-      objTest.value,
+      testClass.value,
       ['test1', 'test2', 'test3']
-    );
-    test.done();
-  },
-  objectKeysTransformWithSuper: (test) => {
-    objTest2.transform(value2);
-    test.deepEqual(
-      objTest2.value,
-      'test1,test2,test3'
     );
     test.done();
   }
