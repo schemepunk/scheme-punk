@@ -25,16 +25,16 @@ interpret for even more JSON based utilities (postman collections).
 * Use a single object format and perform different transformations to different destinations to create any number of different objects from a single source.
 
 Even though its origin is in schema transformation, its highly configurable
-behaviors can be used in any object transformation.  
+behaviors can be used in any object transformation.
 
 ## How to use scheme Punk:
 
 You create a Scheme Punk object to run a `scheme`. A scheme is made up of 3
 components:
-1) a source: which can be an object, an object property, or a file (quite a lot is
-possible through custom plugins.)
-2) a transformation: prepending a value, appending a value, reducing an object to an array of keys, passing through, turning an array into a regex (again, quite a lot is possible through plugins)
-3) a destination: an object, a string, a property in an existing object. (yet again, much is possible through plugins.)
+
+1. A source: which can be an object, an object property, or a file (quite a lot is possible through custom plugins.)
+2. A transformation: prepending a value, appending a value, reducing an object to an array of keys, passing through, turning an array into a regex (again, quite a lot is possible through plugins)
+3. A destination: an object, a string, a property in an existing object. (yet again, much is possible through plugins.)
 
 ```js
 // require SchemePunk
