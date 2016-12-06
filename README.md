@@ -10,9 +10,9 @@ and use these behaviors on objects.
 ## Where did it come from?
 
 Scheme Punk originated from the need to reduce repetitive and error prone
-authoring tasks in JSON Schema as well as the need to rewrite that schema
-in other JSON formats (open API) and to use that same schema to inform and
-interpret for even more JSON based utilities (postman collections).
+authoring tasks in JSON Schema [http://json-schema.org/] as well as the need to rewrite that schema
+in other JSON formats (open API)[https://www.openapis.org/] and to use that same schema to inform and
+interpret for even more JSON based utilities (postman collections)[https://www.getpostman.com/docs/collections].
 
 ## Example uses:
 
@@ -40,7 +40,7 @@ possible through custom plugins.)
 // require SchemePunk
 const SchemePunk = require('scheme-punk');
 var obj = {
-  test: 'this'
+  test: 'this',
   nextTest: {
     item1: 'yarp',
     item2: ['that','melchoir']
@@ -75,11 +75,31 @@ var options = {
 };
 
 // We are going to perform the scheme indicated by our options against the
-// scheme we are passing in.
+// scheme we are passing in. We use the enhance function to take our source
+// apply the transformations we indicated and then write the result to the
+// destination.
 var schemePromise = new SchemePunk(options).enhance(schemePunkScheme)
 .then(
   console.log(schemePunkScheme.newScheme);
 )
+
+// Result uses the objectKeysTransform transformation on the source at
+// nextTest in the obj object and then writes the result to the destination.
+
+// The Destination would look like this:
+//  {
+//    test: 'this',
+//    nextTest: {
+//      item1: 'yarp',
+//      item2: ['that','melchoir']
+//    },
+//    existForTesting: {
+//      enum: [
+//        "item1",
+//        "item2"
+//     ]
+//   }
+// };
 ```
 
 ### Options
@@ -113,4 +133,4 @@ In the above example we specify that we want the plugin `objectKeysTransform` be
 *Example: options.destination*
 In the above example we specify the default behavior for our destination which is to set the transformed value to the target we provided `'links[1].schema.properties.fields.enum'`.
 
-You can use any of the provided behaviors for sources, transforms, or destinations or use the config module to specify the use of other collections of behaviors in modules created by you or others.
+You can use any of the provided behaviors for sources, transforms, or destinations or use the config module [https://github.com/lorenwest/node-config] to specify the use of other collections of behaviors in modules created by you or others.
