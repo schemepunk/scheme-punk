@@ -13,7 +13,6 @@ const Implemented = class implementer extends DelimitValues(superClass) {
   }
 };
 
-
 // Test case value.
 const value = [
   'test1',
@@ -22,8 +21,6 @@ const value = [
 ];
 
 const testClass = new Implemented();
-
-// console.log(schemePunkTransform.constructor.name);
 
 module.exports = {
   delimitValues: (test) => {
