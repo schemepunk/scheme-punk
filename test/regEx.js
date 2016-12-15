@@ -16,7 +16,7 @@ const Implemented = class implementer extends RegExBoundary(superClass) {
 // Test case value.
 const value = [
   'test1',
-  'test2',
+  '-test',
   'test3'
 ];
 
@@ -27,7 +27,7 @@ module.exports = {
     testClass.transform(value);
     test.deepEqual(
       testClass.value,
-      '(\btest1\b|\btest2\b|\btest3\b|,)*'
+      '(\\btest1\\B|\\B-test\\b|\\btest3\\B|,)*'
     );
     test.done();
   }
