@@ -14,9 +14,9 @@
     "url": "https://github.com/thebruce/scheme-punk.git"
   },
   "keywords": [
-    "version",
-    "attribute",
-    "traversal"
+    "Schema",
+    "transformation",
+    "json"
   ],
   "author": "David Diers <david.diers@gmail.com> (http://daviddiers.com/)",
   "license": "MIT",
