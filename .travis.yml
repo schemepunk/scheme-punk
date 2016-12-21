@@ -20,3 +20,6 @@ after_success:
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
+addons:
+  code_climate:
+    repo_token: 29ce6bf53481ef6a27f450828e5fda19131dea1c930dea0a234791a53b646468
