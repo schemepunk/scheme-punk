@@ -50,6 +50,6 @@
     "try-require": "^1.2.1"
   },
   "engines": {
-    "node": ">=6"
+    "node": ">=4"
   }
 }
