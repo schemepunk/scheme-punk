@@ -5,8 +5,8 @@
   },
   "extends": "airbnb-base",
   "rules": {
-    "brace-style": ["error", "stroustrup"],
-    "comma-dangle": ["error", "only-multiline"],
+    "brace-style": [2, "stroustrup"],
+    "comma-dangle": [2, "only-multiline"],
     "global-require": 0,
     "max-len": ["warn", {
       "code": 100,
