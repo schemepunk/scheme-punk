@@ -73,12 +73,12 @@ const tester2 = class {
 };
 
 const options = {
-  origin: 'helpers/sourceSchema.json',
+  origin: '../../../test/helpers/sourceSchema.json',
   target: null
 };
 
 const options2 = {
-  origin: 'helpers/sourceSchema.json',
+  origin: '../../../test/helpers/sourceSchema.json',
   target: 'numberProperty'
 };
 
@@ -102,7 +102,7 @@ module.exports = {
 
   retrieveJsonOrigin: (test) => {
     test.expect(2);
-    objTest.setOrigin('helpers/sourceSchema.json');
+    objTest.setOrigin('../../../test/helpers/sourceSchema.json');
     test.deepEqual(
       objTest.retrievedOrigin,
       {
@@ -144,7 +144,7 @@ module.exports = {
     test.done();
   },
   retrieveJsonOriginCallSuper: (test) => {
-    objTest2.setOrigin('helpers/sourceSchema.json');
+    objTest2.setOrigin('test/helpers/sourceSchema.json');
     test.deepEqual(
       objTest2.getSource(),
       {
@@ -153,6 +153,14 @@ module.exports = {
         minimum: 0,
         exclusiveMinimum: true
       }
+    );
+    test.deepEqual(
+      objTest2.getTraceIndex(0),
+      0
+    );
+    test.deepEqual(
+      objTest2.getTraceIndex(2),
+      1
     );
     test.done();
   }
