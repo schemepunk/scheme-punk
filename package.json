@@ -30,7 +30,6 @@
     "eslint-config-airbnb-base": "^9.0.0",
     "eslint-find-rules": "^1.13.0",
     "eslint-plugin-import": "^2.0.1",
-    "fs-extra": "^1.0.0",
     "ghooks": "^1.0.1",
     "istanbul": "^0.4.2",
     "nodeunit": "^0.10.2",
