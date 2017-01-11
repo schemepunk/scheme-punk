@@ -43,6 +43,7 @@
     }
   },
   "dependencies": {
+    "callsite": "^1.0.0",
     "config": "^1.24.0",
     "fs-extra": "^1.0.0",
     "lodash": "^4.16.4",

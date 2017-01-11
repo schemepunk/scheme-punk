@@ -73,12 +73,12 @@ const tester2 = class {
 };
 
 const options = {
-  origin: '../../../test/helpers/sourceSchema.json',
+  origin: 'helpers/sourceSchema.json',
   target: null
 };
 
 const options2 = {
-  origin: '../../../test/helpers/sourceSchema.json',
+  origin: 'helpers/sourceSchema.json',
   target: 'numberProperty'
 };
 
@@ -102,7 +102,7 @@ module.exports = {
 
   retrieveJsonOrigin: (test) => {
     test.expect(2);
-    objTest.setOrigin('../../../test/helpers/sourceSchema.json');
+    objTest.setOrigin('helpers/sourceSchema.json');
     test.deepEqual(
       objTest.retrievedOrigin,
       {
@@ -144,7 +144,7 @@ module.exports = {
     test.done();
   },
   retrieveJsonOriginCallSuper: (test) => {
-    objTest2.setOrigin('../../../test/helpers/sourceSchema.json');
+    objTest2.setOrigin('helpers/sourceSchema.json');
     test.deepEqual(
       objTest2.getSource(),
       {
