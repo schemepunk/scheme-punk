@@ -4,6 +4,8 @@
 
 # Scheme Punk - Changing the world one schema at a time.
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/thebruce/scheme-punk.svg)](https://greenkeeper.io/)
+
 ## What is it?
 
 Scheme Punk is a promise based object transformation module that
