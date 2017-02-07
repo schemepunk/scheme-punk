@@ -2,7 +2,6 @@
 
 // Require mixin.
 const PushDestination = require('../lib/plugins/destination/pushDestination');
-const _ = require('lodash');
 
 const testScheme = {
   test1: 'item',
@@ -40,7 +39,8 @@ const One = class SchemePunkDestinationTest extends PushDestination(tester) {
    *  Returns the transformed value.
    */
   getValue() {
-    return 'apple';
+    this.value = 'apple';
+    return this.value;
   }
 
   /**
@@ -71,7 +71,8 @@ const Two = class SchemePunkDestinationTest extends PushDestination(tester) {
    *  Returns the transformed value.
    */
   getValue() {
-    return 'apple';
+    this.value = 'apple';
+    return this.value;
   }
 
   /**
