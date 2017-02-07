@@ -26,11 +26,11 @@
   "homepage": "https://github.com/thebruce/scheme-punk#readme",
   "devDependencies": {
     "coveralls": "^2.11.15",
-    "eslint": "^3.3.1",
+    "eslint": "^3.15.0",
     "eslint-config-airbnb-base": "^11.1.0",
     "eslint-find-rules": "^1.13.0",
     "eslint-plugin-import": "^2.0.1",
-    "ghooks": "^2.0.0",
+    "husky": "^0.13.1",
     "istanbul": "^0.4.2",
     "nodeunit": "^0.10.2",
     "npm-run-all": "^4.0.1",
