@@ -111,7 +111,6 @@ var schemePromise = new SchemePunk(options).enhance(schemePunkScheme)
 ### Options
 You specify the details of a scheme through an options object you pass to scheme punk when you instantiate the scheme punk class. Options provide information to the source, transform and destination plugins about their composition and targets.
 
-
 # Example Options
 ```
 var options = {
