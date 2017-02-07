@@ -23,7 +23,7 @@ const tester = class {
 };
 
 // Create implementing class with mixin for first case.
-const One = class SchemePunkDestinationTest extends PushDestination(tester) {
+const one = class SchemePunkDestinationTest extends PushDestination(tester) {
   /**
    * Retrieve the destination target, a key in the scheme.
    * @return this.destination string.
@@ -55,7 +55,7 @@ const One = class SchemePunkDestinationTest extends PushDestination(tester) {
 };
 
 // Create implementing class with mixin for first case.
-const Two = class SchemePunkDestinationTest extends PushDestination(tester) {
+const two = class SchemePunkDestinationTest extends PushDestination(tester) {
   /**
    * Retrieve the destination target, a key in the scheme.
    * @return this.destination string.
@@ -86,7 +86,7 @@ const Two = class SchemePunkDestinationTest extends PushDestination(tester) {
   }
 };
 
-const objTest = new One();
+const objTest = new one();
 
 // console.log(schemePunkTransform.constructor.name);
 
@@ -100,7 +100,7 @@ module.exports = {
     test.done();
   },
   pushDestinationNotArray: (test) => {
-    const objTest2 = new Two();
+    const objTest2 = new two();
     objTest2.writeDestinationTarget();
     test.deepEqual(
       objTest2.scheme.activeScheme.test1,
