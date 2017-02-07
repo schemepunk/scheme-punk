@@ -1,7 +1,7 @@
 'use strict';
 
 // Require mixin.
-const PushDestination = require('../lib/plugins/destination/pushDestination');
+const pushDestination = require('../lib/plugins/destination/pushDestination');
 
 const testScheme = {
   test1: 'item',
@@ -23,7 +23,7 @@ const tester = class {
 };
 
 // Create implementing class with mixin for first case.
-const One = class schemePunkDestinationTest extends PushDestination(tester) {
+const One = class schemePunkDestinationTest extends pushDestination(tester) {
   /**
    * Retrieve the destination target, a key in the scheme.
    * @return this.destination string.
@@ -55,7 +55,7 @@ const One = class schemePunkDestinationTest extends PushDestination(tester) {
 };
 
 // Create implementing class with mixin for first case.
-const Two = class schemePunkDestinationTest extends PushDestination(tester) {
+const Two = class schemePunkDestinationTest extends pushDestination(tester) {
   /**
    * Retrieve the destination target, a key in the scheme.
    * @return this.destination string.
