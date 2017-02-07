@@ -37,7 +37,7 @@ module.exports = {
     // are merged together.
     test.deepEqual(
       Object.keys(schemePunkConfig.destinationPlugins).length,
-      3
+      4
     );
 
     test.deepEqual(
