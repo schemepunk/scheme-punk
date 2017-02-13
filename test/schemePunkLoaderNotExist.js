@@ -26,7 +26,7 @@ module.exports = {
     );
     test.deepEqual(
       Object.keys(schemePunkConfig.transformPlugins).length,
-      6
+      8
     );
     delete require.cache[require.resolve('../lib/schemePunkPluginLoader')];
     delete require.cache[require.resolve('config')];
