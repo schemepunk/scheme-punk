@@ -99,5 +99,25 @@ module.exports = {
       }
     );
     test.done();
+  },
+  setHoldOvers: (test) => {
+    schemePunkDestination2.setHoldOvers({test: 'test'});
+    test.deepEqual(
+      schemePunkDestination2.holdOvers,
+      {
+        test: 'test'
+      }
+    );
+    test.done();
+  },
+  getHoldOvers: (test) => {
+    schemePunkDestination2.setHoldOvers({test: 'test'});
+    test.deepEqual(
+      schemePunkDestination2.getHoldOvers(),
+      {
+        test: 'test'
+      }
+    );
+    test.done();
   }
 };

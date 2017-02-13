@@ -24,5 +24,15 @@ module.exports = {
       'test'
     );
     test.done();
+  },
+  schemePunkTransformWithHoldovers: (test) => {
+    const schemePunkTransformer = new SchemePunkTransform({}, {example: 'test'});
+    test.deepEqual(
+      schemePunkTransformer.getHoldOvers(),
+      {
+        example: 'test'
+      }
+    );
+    test.done();
   }
 };
