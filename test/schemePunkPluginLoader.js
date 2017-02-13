@@ -23,7 +23,7 @@ module.exports = {
     );
     test.deepEqual(
       Object.keys(schemePunkConfig.transformPlugins).length,
-      5
+      7
     );
     // Alter Node defaults for testing.
     delete require.cache[require.resolve('../lib/schemePunkPluginLoader')];

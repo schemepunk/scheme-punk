@@ -46,7 +46,7 @@ module.exports = {
     );
     test.deepEqual(
       Object.keys(schemePunkConfig.transformPlugins).length,
-      7
+      9
     );
     test.done();
   },

@@ -139,3 +139,5 @@ In the above example we specify that we want the plugin `objectKeysTransform` be
 In the above example we specify the default behavior for our destination which is to set the transformed value to the target we provided `'links[1].schema.properties.fields.enum'`.
 
 You can use any of the provided behaviors for sources, transforms, or destinations or use the config module [https://github.com/lorenwest/node-config] to specify the use of other collections of behaviors in modules created by you or others.
+
+"Laugh your life, there ain't much to cry for." -- Joe Strummer
