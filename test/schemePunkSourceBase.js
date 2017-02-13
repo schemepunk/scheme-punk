@@ -15,7 +15,7 @@ const schemePart = fs.readJSONSync('./test/helpers/sourceSchema.json');
 const SchemeSource = SchemePunkSourceBase(options.source);
 const SchemeSourceNoPlugs = SchemePunkSourceBase();
 
-const schemeSource = new SchemeSource(options.source, scheme);
+const schemeSource = new SchemeSource(options.source, scheme, {});
 // Get the sourcen
 
 const optionsNoPlugs = {
@@ -27,7 +27,7 @@ const optionsNoPlugs = {
   }
 };
 
-const schemeSourceNoPlugs = new SchemeSourceNoPlugs(optionsNoPlugs.source, schemePunkScheme);
+const schemeSourceNoPlugs = new SchemeSourceNoPlugs(optionsNoPlugs.source, schemePunkScheme, {});
 
 module.exports = {
   classConstruction: (test) => {

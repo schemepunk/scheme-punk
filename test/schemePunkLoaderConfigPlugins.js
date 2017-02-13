@@ -55,7 +55,7 @@ module.exports = {
     const schemePart = fs.readJSONSync('./test/helpers/sourceSchema.json');
     // Create a new schemePunk factory.
     const SchemeSource = SchemePunkSourceBase(options.source);
-    const schemeSource = new SchemeSource(options.source, schemePart);
+    const schemeSource = new SchemeSource(options.source, schemePart, {});
     test.deepEqual(
       schemeSource.getOrigin(),
       {test: 'test2'}
@@ -65,7 +65,7 @@ module.exports = {
   testDestinationTargetWriter: (test) => {
     const schemePart = fs.readJSONSync('./test/helpers/sourceSchemaItem.json');
     const SchemeDestination = schemePunkDestinationBase(destOptions);
-    const schemeDestination = new SchemeDestination(destOptions, 'testing dest', schemePart);
+    const schemeDestination = new SchemeDestination(destOptions, 'testing dest', schemePart, {});
     schemeDestination.writeDestinationTarget();
     test.deepEqual(
       schemeDestination.scheme.newScheme.title.description,
