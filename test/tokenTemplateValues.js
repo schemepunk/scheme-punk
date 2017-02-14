@@ -73,6 +73,7 @@ const options5 = {
   }
 };
 
+const value2 = 'testBoogie';
 
 const testClass = new Implemented(options, {});
 
@@ -83,6 +84,8 @@ const testClass3 = new Implemented(options3, {monkey: 'toofer'});
 const testClass4 = new Implemented(options4, {monkey: 'toofer'});
 
 const testClass5 = new Implemented(options5, {monkey: 'toofer'});
+
+const testClass6 = new Implemented(options, {});
 
 module.exports = {
   tokenOnlyValues: (test) => {
@@ -148,6 +151,16 @@ module.exports = {
       'Dust template "one" name is: testName, test has the value of \"testKey2: item1.' // eslint-disable-line no-useless-escape
     );
     test.done();
-  }
+  },
+  tokenSimpleValue: (test) => {
+    test.expect(1);
+    testClass6.options.origin = 'test/helpers/templateFive.tpl';
+    testClass.transform(value2);
+    test.deepEqual(
+      testClass.value,
+      'this is a testBoogie'
+    );
+    test.done();
+  },
 
 };
