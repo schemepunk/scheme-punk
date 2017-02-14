@@ -16,13 +16,17 @@ const Implemented = class implementer extends tokenTemplateValues(superClass) {
 // Options for testing with template path and object with no tokens.
 const options = {
   origin: '../../../test/helpers/templateLiteralTestOne.tpl',
-  named: false
+  named: false,
+  json: false,
+  unescape: false
 };
 
 // Options for testing with tokens and value.
 const options2 = {
   origin: '../../../test/helpers/templateLiteralTestTwo.tpl',
   named: true,
+  json: false,
+  unescape: false,
   tokens: {
     name: 'name',
     test: 'testKey2'
@@ -40,16 +44,48 @@ const value = {
 const options3 = {
   origin: '../../../test/helpers/templateLiteralTestThree.tpl',
   named: true,
+  json: false,
+  unescape: false,
   tokens: {
     test: 'testKey2'
   }
 };
+
+// Options for testing with tokens and value.
+const options4 = {
+  origin: '../../../test/helpers/templateJson.tpl',
+  json: true,
+  unescape: true,
+  named: false,
+  tokens: {
+    test: 'testKey2'
+  }
+};
+
+// Options for testing with tokens and value.
+const options5 = {
+  origin: '../../../test/helpers/templateFour.tpl',
+  json: false,
+  unescape: true,
+  named: false,
+  tokens: {
+    test: 'testKey2'
+  }
+};
+
+const value2 = 'testBoogie';
 
 const testClass = new Implemented(options, {});
 
 const testClass2 = new Implemented(options2, {});
 
 const testClass3 = new Implemented(options3, {monkey: 'toofer'});
+
+const testClass4 = new Implemented(options4, {monkey: 'toofer'});
+
+const testClass5 = new Implemented(options5, {monkey: 'toofer'});
+
+const testClass6 = new Implemented(options, {});
 
 module.exports = {
   tokenOnlyValues: (test) => {
@@ -88,5 +124,43 @@ module.exports = {
       'Dust template one name is: toofer, test has the value of testKey2: item1.'
     );
     test.done();
-  }
+  },
+  holdOversWithTokensJson: (test) => {
+    test.expect(1);
+    testClass4.options.origin = 'test/helpers/templateJson.tpl';
+    testClass4.transform(value);
+    test.deepEqual(
+      testClass4.value,
+      {
+        test: 'testName',
+        item: 'item1',
+        thing: [
+          'one',
+          'two'
+        ]
+      }
+    );
+    test.done();
+  },
+  holdOversWithTokensUnescape: (test) => {
+    test.expect(1);
+    testClass5.options.origin = 'test/helpers/templateFour.tpl';
+    testClass5.transform(value);
+    test.deepEqual(
+      testClass5.value,
+      'Dust template "one" name is: testName, test has the value of \"testKey2: item1.' // eslint-disable-line no-useless-escape
+    );
+    test.done();
+  },
+  tokenSimpleValue: (test) => {
+    test.expect(1);
+    testClass6.options.origin = 'test/helpers/templateFive.tpl';
+    testClass.transform(value2);
+    test.deepEqual(
+      testClass.value,
+      'this is a testBoogie'
+    );
+    test.done();
+  },
+
 };
