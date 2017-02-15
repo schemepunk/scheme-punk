@@ -5,6 +5,7 @@ const options = require('./helpers/schemePunkTestOptions');
 const fs = require('fs-extra');
 
 const schemePunkScheme = fs.readJSONSync('./test/helpers/schemePunkMockScheme.json');
+
 const scheme = {
   originalScheme: schemePunkScheme
 };
@@ -24,10 +25,16 @@ const optionsNoPlugs = {
     origin: {
       properties: ['test1', 'test2', 'test3']
     }
+  },
+  holdOvers: {
+    test: 'test'
   }
 };
 
-const schemeSourceNoPlugs = new SchemeSourceNoPlugs(optionsNoPlugs.source, schemePunkScheme, {});
+const schemeSourceNoPlugs = new SchemeSourceNoPlugs(
+  optionsNoPlugs.source,
+  schemePunkScheme,
+  {test: 'test'});
 
 module.exports = {
   classConstruction: (test) => {
@@ -60,6 +67,31 @@ module.exports = {
     test.deepEqual(
       schemeSourceNoPlugs.getSource(),
       ['test1', 'test2', 'test3']
+    );
+    test.done();
+  },
+  getHoldOvers: (test) => {
+    test.expect(1);
+    test.deepEqual(
+      schemeSource.getHoldOvers(),
+      {}
+    );
+    test.done();
+  },
+  settHoldOvers: (test) => {
+    test.expect(1);
+    schemeSource.setHoldOvers({tough: 'test'});
+    test.deepEqual(
+      schemeSource.getHoldOvers(),
+      {tough: 'test'}
+    );
+    test.done();
+  },
+  testBaseGetHoldOversSuperCall: (test) => {
+    test.expect(1);
+    test.deepEqual(
+      schemeSourceNoPlugs.getHoldOvers(),
+      {test: 'test'}
     );
     test.done();
   }
