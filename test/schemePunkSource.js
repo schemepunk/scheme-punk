@@ -52,6 +52,7 @@ module.exports = {
     test.deepEqual(
       schemePunkSource2.holdOvers,
       {
+        src: {testive: 'test'},
         otherProp: 'otherValue',
         testive: 'this test'
       }
@@ -62,6 +63,7 @@ module.exports = {
     test.deepEqual(
       schemePunkSource2.getHoldOvers(),
       {
+        src: {testive: 'test'},
         otherProp: 'otherValue',
         testive: 'this test'
       }
