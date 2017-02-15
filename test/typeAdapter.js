@@ -32,12 +32,12 @@ const testArray = [
 
 // test obj.
 const testObject = {
-  test1: {
-    test: 'test'
-  },
-  test2: {
-    test2: 'test'
-  }
+  test1: [
+    'test'
+  ],
+  test2: [
+    'boo'
+  ]
 };
 
 const testNull = null;
@@ -80,13 +80,40 @@ module.exports = {
     test.deepEqual(
       testClass.value,
       {
-        thethingtest1: {
-          test: 'test'
-        },
-        thethingtest2: {
-          test2: 'test'
-        }
+        thethingtest1: [
+          'test'
+        ],
+        thethingtest2: [
+          'boo'
+        ]
       }
+    );
+    test.done();
+  },
+  testObjectValues: (test) => {
+    test.expect(1);
+    testClass.options.typeAdapterObjectValues = true;
+    testClass.transform(testObject);
+    test.deepEqual(
+      testClass.value,
+      {
+        test1: 'thethingtest',
+        test2: 'thethingboo'
+      }
+    );
+    test.done();
+  },
+  testObjectArray: (test) => {
+    test.expect(1);
+    testClass.options.typeAdapterObjectValues = false;
+    testClass.options.typeAdapterObjectValuesArray = true;
+    testClass.transform(testObject);
+    test.deepEqual(
+      testClass.value,
+      [
+        'thethingtest',
+        'thethingboo'
+      ]
     );
     test.done();
   },
