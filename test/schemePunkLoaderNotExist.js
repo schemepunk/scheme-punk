@@ -18,7 +18,7 @@ module.exports = {
     // Test for default plugins.
     test.deepEqual(
       Object.keys(schemePunkConfig.destinationPlugins).length,
-      4
+      5
     );
     test.deepEqual(
       Object.keys(schemePunkConfig.sourcePlugins).length,
