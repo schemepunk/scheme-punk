@@ -1,15 +1,12 @@
 'use strict';
 
 // Require mixin.
-const MergeIntoDestination = require('../lib/plugins/destination/mergeIntoDestination');
+const ConcatIntoDestination = require('../lib/plugins/destination/concatIntoDestination');
 
 const testScheme = {
   test1: 'item',
   test2: 'item',
-  test3: {
-    that: 'this',
-    even: 'dumb'
-  }
+  test3: ['this', 'that', 'even', 'dumb']
 };
 
 const scheme = {
@@ -26,7 +23,7 @@ const tester = class {
 };
 
 // Create implementing class with mixin for first case.
-const One = class SchemePunkDestinationTest extends MergeIntoDestination(tester) {
+const One = class SchemePunkDestinationTest extends ConcatIntoDestination(tester) {
   /**
    * Retrieve the destination target, a key in the scheme.
    * @return this.destination string.
@@ -47,10 +44,7 @@ const One = class SchemePunkDestinationTest extends MergeIntoDestination(tester)
   }
 
   getValue() {
-    this.value = {
-      knope: 'leslie',
-      perkins: 'ann'
-    };
+    this.value = ['knope', 'ron', 'ann'];
     return this.value;
   }
  };
@@ -60,16 +54,11 @@ const objTest = new One();
 // console.log(schemePunkTransform.constructor.name);
 
 module.exports = {
-  mergeIntoDestination: (test) => {
+  concatIntoDestination: (test) => {
     objTest.writeDestinationTarget();
     test.deepEqual(
       objTest.scheme.activeScheme.test3,
-      {
-        that: 'this',
-        even: 'dumb',
-        knope: 'leslie',
-        perkins: 'ann'
-      }
+      ['this', 'that', 'even', 'dumb', 'knope', 'ron', 'ann']
     );
     test.done();
   }
