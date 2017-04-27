@@ -45,7 +45,7 @@
   "dependencies": {
     "callsite": "^1.0.0",
     "config": "^1.24.0",
-    "fs-extra": "^2.0.0",
+    "fs-extra": "^3.0.0",
     "lodash": "^4.16.4",
     "mustache": "^2.3.0",
     "require-directory": "^2.1.1",
