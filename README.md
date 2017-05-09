@@ -10,7 +10,7 @@
 
 Scheme Punk on NPM (Scheme Punk)[https://www.npmjs.com/package/scheme-punk]
 
-Scheme Punk is a promise based object transformation module that
+Scheme Punk is a promise based information/object transformation module that
 uses a mixin approach that favors composition for its read, write and
 transform behaviors. It can use the config module to specify how it should connect
 and use these behaviors on objects.
