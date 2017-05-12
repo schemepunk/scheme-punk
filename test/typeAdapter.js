@@ -40,6 +40,11 @@ const testObject = {
   ]
 };
 
+const testObject2 = {
+  item1: 'thing',
+  item2: {}
+};
+
 const testNull = null;
 
 const testNumber = 1;

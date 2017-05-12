@@ -75,6 +75,8 @@ const options5 = {
 
 const value2 = 'testBoogie';
 
+const value3 = {};
+
 const testClass = new Implemented(options, {});
 
 const testClass2 = new Implemented(options2, {});
@@ -86,6 +88,8 @@ const testClass4 = new Implemented(options4, {monkey: 'toofer'});
 const testClass5 = new Implemented(options5, {monkey: 'toofer'});
 
 const testClass6 = new Implemented(options, {});
+
+const testClass7 = new Implemented(options5);
 
 module.exports = {
   tokenOnlyValues: (test) => {
@@ -139,6 +143,21 @@ module.exports = {
           'two'
         ]
       }
+    );
+    test.done();
+  },
+  noValuesTemplate: (test) => {
+    test.expect(1);
+    testClass7.options = {
+      origin: 'test/helpers/templateFour.tpl',
+      template: {
+        renderEmptyTokens: false
+      }
+    };
+    testClass7.transform(value3);
+    test.deepEqual(
+      testClass7.value,
+      {}
     );
     test.done();
   },
