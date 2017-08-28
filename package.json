@@ -47,6 +47,7 @@
     "config": "^1.24.0",
     "fs-extra": "^4.0.1",
     "lodash": "^4.16.4",
+    "molotov": "0.0.3",
     "mustache": "^2.3.0",
     "require-directory": "^2.1.1",
     "try-require": "^1.2.1"

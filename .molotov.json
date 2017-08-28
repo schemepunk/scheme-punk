@@ -1,0 +1,68 @@
+{
+  "molotovPath": "lib/molotov.js",
+  "schemePunk": {
+    "supersNameSpacePaths": {
+      "transform": "./lib/transform/schemePunkTransform'",
+      "source": "./lib/source/schemePunkSource",
+      "destination": "./lib/destination/schemePunkDestination"
+    },
+    "molotovPlugins": {
+      "destination": {
+        "destroyDestination": [
+          "destroyDestination"
+        ],
+        "pushDestination": [
+          "pushDestination"
+        ],
+        "mergeIntoDestination": [
+          "mergeIntoDestination"
+        ]
+        ,
+        "concatIntoDestination": [
+          "concatIntoDestination"
+        ]
+      },
+      "source": {
+        "originalSchemeSource": [
+          "originalSchemeSource"
+        ],
+        "activeSchemeSource": [
+          "activeSchemeSource"
+        ],
+        "jsonTemplateFileSource": [
+          "jsonTemplateFileSource"
+        ]
+      },
+      "transform": {
+        "appendValuesAdapter": [
+          "typeAdapter",
+          "appendValues"
+        ],
+        "delimitValues": [
+          "delimitValues"
+        ],
+        "filterAttribute": [
+          "typeAdapter",
+          "filterAttributes"
+        ],
+        "objectKeysTransform": [
+          "objectKeysTransform"
+        ],
+        "prependValuesAdapter": [
+          "typeAdapter",
+          "prependValues"
+        ],
+        "regexWordBoundariesValues": [
+          "regexWordBoundariesValues"
+        ],
+        "tokenTemplateValues": [
+          "tokenTemplateValues"
+        ],
+        "tokenTemplateValuesMulti": [
+          "typeAdapter",
+          "tokenTemplateValues"
+        ]
+      }
+    }
+  }
+}
