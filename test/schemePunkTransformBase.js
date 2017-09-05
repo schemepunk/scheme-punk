@@ -40,20 +40,24 @@ module.exports = {
   },
   testBaseTransform: (test) => {
     test.expect(1);
-    btransformer.transform(schemePunkScheme);
-    test.deepEqual(
-      btransformer.value,
-      schemePunkScheme
-    );
-    test.done();
+    btransformer.transform(schemePunkScheme)
+      .then(() => {
+        test.deepEqual(
+          btransformer.value,
+          schemePunkScheme
+        );
+        test.done();
+      });
   },
   testBaseTransformSuperCall: (test) => {
     test.expect(1);
-    atransformer.transform(schemePunkScheme.properties.data.properties.attributes.properties);
-    test.deepEqual(
-      atransformer.value,
-      ['title', 'description', 'numberProperty']
-    );
-    test.done();
+    atransformer.transform(schemePunkScheme.properties.data.properties.attributes.properties)
+      .then(() => {
+        test.deepEqual(
+          atransformer.value,
+          ['title', 'description', 'numberProperty']
+        );
+        test.done();
+      });
   }
 };
