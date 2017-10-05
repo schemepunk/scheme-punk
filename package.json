@@ -7,7 +7,8 @@
     "lint": "eslint .",
     "coverage": "istanbul check-coverage --statements 0 --lines 0 --branches 0 --functions 0",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+    "jtest": "jest --coverage"
   },
   "repository": {
     "type": "git",
@@ -32,6 +33,8 @@
     "eslint-plugin-import": "^2.7.0",
     "husky": "^0.14.3",
     "istanbul": "^0.4.2",
+    "jest": "^20.0.4",
+    "jest-environment-node-debug": "^2.0.0",
     "nodeunit": "^0.11.0",
     "npm-run-all": "^4.0.1",
     "semantic-release": "^7.0.1"
@@ -47,12 +50,39 @@
     "config": "^1.24.0",
     "fs-extra": "^4.0.1",
     "lodash": "^4.16.4",
-    "molotov": "0.0.3",
+    "molotov": "1.1.0",
     "mustache": "^2.3.0",
     "require-directory": "^2.1.1",
     "try-require": "^1.2.1"
   },
   "engines": {
     "node": ">=4"
+  },
+  "jest": {
+    "cacheDirectory": ".tmp/jest_cache",
+    "coverageDirectory": "__coverage__",
+    "coverageReporters": [
+      "json",
+      "json-summary",
+      "lcov",
+      "text",
+      "text-summary"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    },
+    "testEnvironment": "node",
+    "testMatch": [
+      "<rootDir>/__tests__/**/*.js"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>/__tests__/__helpers__/",
+      "<rootDir>/__tests__/.*/[__mocks__|files]/"
+    ]
   }
 }

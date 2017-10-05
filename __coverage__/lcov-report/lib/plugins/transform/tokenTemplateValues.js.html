@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for lib/plugins/transform/tokenTemplateValues.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../prettify.css" />
+    <link rel="stylesheet" href="../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../index.html">All files</a> / <a href="index.html">lib/plugins/transform</a> tokenTemplateValues.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">18.92% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>7/37</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/16</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">20% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>1/5</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">16.67% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>6/36</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict';
+&nbsp;
+const fs = require('fs-extra');
+const path = require('path');
+const stack = require('callsite');
+const mustache = require('mustache');
+const _ = require('lodash');
+&nbsp;
+/**
+ * This is a transformation mixin for SchemePunk.
+ * SchemePunk mixins follow the formula for mixins described at:
+ * http://justinfagnani.com/2015/12/21/real-mixins-with-javascript-classes/
+ * More info in the README.
+ *
+ * Options needed for use with this mixin.
+ * options array
+ *   options.origin string
+ *     A path to a template file, a template literal string.
+ *   options.named boolean
+ *     True if you are using options.tokens for values and false for this.value.
+ *     Named attributes allows us a further transformation of the value from
+ *     origin. So we have two paths forward then, either take the value as it
+ *     is, no matter its' shape, string, array, obj, whatever and use it with
+ *     the appropriate attributes or indexes (where applicable) or map it to a
+ *     name in the tokens object/array.
+ *   options.tokens object || array
+ *     A pass through value that can either be an array or an object to use with
+ *     template replacements.
+ *
+ */
+module.exports = superclass =&gt; class extends superclass {
+  /**
+   * Function to transform a value by prepending a string to a key, array member
+   * or string. This.options will need a prependValue in order to work with
+   * this transform.
+   *
+   * @param value
+   *  A value to perform a transformation upon.
+   */
+  /* eslint class-methods-use-this:
+  ["error", { "exceptMethods": ["getTraceIndex"] }]
+  */
+<span class="fstat-no" title="function not covered" >  tr</span>ansform(value) {
+    let tmpValue = <span class="cstat-no" title="statement not covered" >value;</span>
+<span class="cstat-no" title="statement not covered" >    if (typeof tmpValue !== 'object') {</span>
+<span class="cstat-no" title="statement not covered" >      tmpValue = {value: value};/</span>/ eslint-disable-line object-shorthand
+    }
+    // Set up variables.
+    // Are we using named values?
+    let tokens = <span class="cstat-no" title="statement not covered" >{};</span> // eslint-disable-line no-unused-vars
+<span class="cstat-no" title="statement not covered" >    if (Object.keys(this.getHoldOvers()).length) {</span>
+      // If we have any holdovers let's merge them into tokens;
+<span class="cstat-no" title="statement not covered" >      tokens = Object.assign({}, tokens, this.getHoldOvers());</span>
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    if (this.options.named) {</span>
+      const tmpTokens = <span class="cstat-no" title="statement not covered" >Object.assign({}, this.options.tokens);</span>
+      // We are using tokens, which are reassignments of values to new names.
+<span class="cstat-no" title="statement not covered" >      for (let i = 0; i &lt; Object.keys(tmpTokens).length; i += 1) {</span>
+        // We need to get the values and assign them to their new names.
+        // These can retrieve nested values as well.
+<span class="cstat-no" title="statement not covered" >        tmpTokens[Object.keys(tmpTokens)[i]] = _.get(</span>
+          tmpValue,
+          tmpTokens[Object.keys(tmpTokens)[i]]
+        );
+      }
+<span class="cstat-no" title="statement not covered" >      tokens = Object.assign({}, tokens, tmpTokens);</span>
+    }
+    else {
+      // we are not using tokens.
+<span class="cstat-no" title="statement not covered" >      tokens = Object.assign({}, tokens, tmpValue);</span>
+    }
+    const templatePath = <span class="cstat-no" title="statement not covered" >this.getTemplatePath(this.options.origin);</span>
+&nbsp;
+    const tmpFile = <span class="cstat-no" title="statement not covered" >fs.readFileSync(templatePath, 'utf-8').replace(/\\"/g, '"');</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    if (_.isEmpty(tokens) &amp;&amp; !_.get(this.options, 'template.renderEmptyTokens', true)) {</span>
+<span class="cstat-no" title="statement not covered" >      return super.transform({});</span>
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    if (this.options.json) {</span>
+<span class="cstat-no" title="statement not covered" >      return super.transform(JSON.parse(mustache.render(tmpFile, tokens)));</span>
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    if (this.options.unescape) {</span>
+<span class="cstat-no" title="statement not covered" >      return super.transform(mustache.render(tmpFile, tokens).replace(/\\"/g, '"'));</span>
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    return super.transform(mustache.render(tmpFile, tokens));</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  ge</span>tTemplatePath(value) {
+    // Use callsite to resolve path from calling script.
+    const base = <span class="cstat-no" title="statement not covered" >require.resolve('../../../');</span>
+    const stackTrace = <span class="cstat-no" title="statement not covered" >stack().reverse();</span>
+    let traceIndex = <span class="cstat-no" title="statement not covered" >stackTrace.findIndex(</span>
+<span class="fstat-no" title="function not covered" >      tr</span>ace =&gt; <span class="cstat-no" title="statement not covered" >trace.getFileName() === base</span>
+    );
+<span class="cstat-no" title="statement not covered" >    traceIndex = this.getTraceIndex(traceIndex);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    return path.resolve(</span>
+      path.dirname(stackTrace[traceIndex].getFileName()),
+      value
+    );
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  ge</span>tTraceIndex(index) {
+<span class="cstat-no" title="statement not covered" >    if (index &gt; 0) {</span>
+<span class="cstat-no" title="statement not covered" >      return index - 1;</span>
+    }
+<span class="cstat-no" title="statement not covered" >    return 0;</span>
+  }
+};
+&nbsp;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Oct 05 2017 11:27:37 GMT-0700 (PDT)
+</div>
+</div>
+<script src="../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../sorter.js"></script>
+</body>
+</html>

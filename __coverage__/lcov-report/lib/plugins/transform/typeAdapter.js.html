@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for lib/plugins/transform/typeAdapter.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../prettify.css" />
+    <link rel="stylesheet" href="../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../index.html">All files</a> / <a href="index.html">lib/plugins/transform</a> typeAdapter.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">6.82% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>3/44</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/23</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">8.33% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>1/12</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">4.65% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>2/43</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict';
+&nbsp;
+const _ = require('lodash');
+&nbsp;
+/**
+ * This is a transformation mixin for SchemePunk.
+ * SchemePunk mixins follow the formula for mixins described at:
+ * http://justinfagnani.com/2015/12/21/real-mixins-with-javascript-classes/
+ * More info in the README.
+ *
+ */
+module.exports = superclass =&gt; class extends superclass {
+  /**
+   * Function to adapt json values of different shapes to transformers. mixin
+   * schemes can use the this.options.adapterPrevent to override the adapter
+   * behavior for certain kinds of objects. This adapter can be overriden
+   * with other adapter behaviors substituted.
+   *
+   * @param value
+   *  A value to perform a transformation upon.
+   */
+<span class="fstat-no" title="function not covered" >  tr</span>ansform(value) {
+<span class="cstat-no" title="statement not covered" >    this.value = value;</span>
+    let tempValue = <span class="cstat-no" title="statement not covered" >value;</span>
+    // We want to figure out what we got.
+    // }.hasOwnProperty.call(foo, "bar");
+    const varType = <span class="cstat-no" title="statement not covered" >this.showMeWhatYouGot();</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    if (({}.hasOwnProperty.call(this.options, 'adapterPrevent')</span>
+      &amp;&amp; this.options.adapterPrevent.indexOf(varType) === -1) ||
+      !{}.hasOwnProperty.call(this.options, 'adapterPrevent')) {
+      // Attempt to call method based on object.
+<span class="cstat-no" title="statement not covered" >      tempValue = this[`${varType}Adapter`](value);</span>
+    }
+<span class="cstat-no" title="statement not covered" >    return tempValue;</span>
+  }
+&nbsp;
+ /**   ___
+ * . -^   `--,
+ * /# =========`-_
+ * /# (--====___====\
+ * /#   .- --.  . --.|
+ * /##   |  * ) (   * ),
+ * |##   \    /\ \   / |
+ * |###   ---   \ ---  |
+ * |####      ___)    #|
+ * |######           ##|
+ * \##### ---------- /
+ * \####           (
+ * `\###          |
+ * \###         |
+ * \##        |
+ * \###.    .)
+ * `======/
+ */
+<span class="fstat-no" title="function not covered" >  sh</span>owMeWhatYouGot() {
+<span class="cstat-no" title="statement not covered" >    if (_.isNull(this.value)) {</span>
+<span class="cstat-no" title="statement not covered" >      return 'null';</span>
+    }
+<span class="cstat-no" title="statement not covered" >    if (_.isObjectLike(this.value)) {</span>
+<span class="cstat-no" title="statement not covered" >      if (_.isArray(this.value)) {</span>
+<span class="cstat-no" title="statement not covered" >        return 'array';</span>
+      }
+<span class="cstat-no" title="statement not covered" >      if (this.options.typeAdapterObjectValues) {</span>
+<span class="cstat-no" title="statement not covered" >        return 'objectValues';</span>
+      }
+<span class="cstat-no" title="statement not covered" >      if (this.options.typeAdapterObjectValuesArray) {</span>
+<span class="cstat-no" title="statement not covered" >        return 'objectValuesArray';</span>
+      }
+<span class="cstat-no" title="statement not covered" >      return 'objectKeys';</span>
+    }
+<span class="cstat-no" title="statement not covered" >    if (_.isString(this.value)) {</span>
+<span class="cstat-no" title="statement not covered" >      return 'string';</span>
+    }
+<span class="cstat-no" title="statement not covered" >    if (_.isNumber(this.value)) {</span>
+<span class="cstat-no" title="statement not covered" >      return 'number';</span>
+    }
+<span class="cstat-no" title="statement not covered" >    throw new Error(`Could not find a type for value ${this.value} in Transform type adapter.`);</span>
+  }
+&nbsp;
+  // array
+<span class="fstat-no" title="function not covered" >  ar</span>rayAdapter(value) {
+    const newValue = <span class="cstat-no" title="statement not covered" >value.map(super.transform, this);</span>
+<span class="cstat-no" title="statement not covered" >    return newValue;</span>
+  }
+&nbsp;
+  // object
+<span class="fstat-no" title="function not covered" >  ob</span>jectKeysAdapter(value) {
+    const newValue = <span class="cstat-no" title="statement not covered" >{};</span>
+<span class="cstat-no" title="statement not covered" >    Object.keys(value).forEach(<span class="fstat-no" title="function not covered" >(k</span>ey) =&gt; {</span>
+      const newKey = <span class="cstat-no" title="statement not covered" >super.transform(`${key}`);</span>
+<span class="cstat-no" title="statement not covered" >      newValue[newKey] = value[key];</span>
+    });
+<span class="cstat-no" title="statement not covered" >    return newValue;</span>
+  }
+&nbsp;
+  // object
+<span class="fstat-no" title="function not covered" >  ob</span>jectValuesAdapter(value) {
+    const newValue = <span class="cstat-no" title="statement not covered" >{};</span>
+<span class="cstat-no" title="statement not covered" >    Object.keys(value).forEach(<span class="fstat-no" title="function not covered" >(k</span>ey) =&gt; {</span>
+      const tmpValue = <span class="cstat-no" title="statement not covered" >super.transform(value[key]);</span>
+<span class="cstat-no" title="statement not covered" >      newValue[key] = tmpValue;</span>
+<span class="cstat-no" title="statement not covered" >      if (_.isEmpty(tmpValue) &amp;&amp; !_.get(this.options, 'typeAdapter.includeEmpty', true)) {</span>
+<span class="cstat-no" title="statement not covered" >        delete newValue[key];</span>
+      }
+    });
+<span class="cstat-no" title="statement not covered" >    return newValue;</span>
+  }
+&nbsp;
+  // object
+<span class="fstat-no" title="function not covered" >  ob</span>jectValuesArrayAdapter(value) {
+    const newValue = <span class="cstat-no" title="statement not covered" >[];</span>
+<span class="cstat-no" title="statement not covered" >    Object.keys(value).forEach(<span class="fstat-no" title="function not covered" >(k</span>ey) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >      newValue.push(super.transform(value[key]));</span>
+    });
+<span class="cstat-no" title="statement not covered" >    return newValue;</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  st</span>ringAdapter(value) {
+<span class="cstat-no" title="statement not covered" >    return super.transform(value);</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  nu</span>mberAdapter(value) {
+<span class="cstat-no" title="statement not covered" >    return super.transform(value);</span>
+  }
+};
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Oct 05 2017 11:27:37 GMT-0700 (PDT)
+</div>
+</div>
+<script src="../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../sorter.js"></script>
+</body>
+</html>
