@@ -38,8 +38,6 @@ describe('Scheme Punk Source', () => {
     originalScheme: schemePunkScheme
   };
 
-  // Get the sourcen
-
   const optionsNoPlugs = {
     source: {
       target: 'properties',

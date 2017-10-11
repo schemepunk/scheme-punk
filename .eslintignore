@@ -1,1 +1,4 @@
 coverage
+__coverage__
+__tests__/__helpers__/*
+node_modules/*

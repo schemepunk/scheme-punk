@@ -1,0 +1,12 @@
+env:
+  jest: true
+globals:
+  jasmine: true
+rules:
+  func-names: off
+  global-require: off
+  require-jsdoc: off
+  max-len: off
+  no-plusplus: off
+  import/newline-after-import: off
+  import/no-extraneous-dependencies: off
