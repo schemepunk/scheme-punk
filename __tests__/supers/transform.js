@@ -3,7 +3,6 @@
 const SchemePunkTransform = require('../../lib/supers/transform');
 
 let tmpMocks = [];
-let converterEx;
 let schemePunkTransform;
 let schemePunkTransform2;
 let schemePunkTransform3;
@@ -14,7 +13,6 @@ describe('Scheme Punk Transform Super', () => {
     tmpMocks = [];
     jest.resetAllMocks();
     jest.spyOn(Date, 'now').mockReturnValue(2000);
-    const scheme = {};
     const options = {
       origin: {
         test: 'this test'
@@ -46,52 +44,42 @@ describe('Scheme Punk Transform Super', () => {
   test('getOptions', () => {
     expect.assertions(1);
     return expect(schemePunkTransform.options)
-    .toEqual(
-      {
+      .toEqual({
         origin: {
           test: 'this test'
         },
         target: 'test'
-      }
-    )
+      });
   });
 
   test('getHoldOvers Empty.', () => {
     expect.assertions(1);
     return schemePunkTransform.getHoldOvers()
-    .then(holdOver => expect(holdOver).toEqual(
-      {}
-    ));
+      .then(holdOver => expect(holdOver).toEqual({}));
   });
 
   test('getHoldovers Populated', () => {
     expect.assertions(1);
     return schemePunkTransform2.getHoldOvers()
-    .then(source => expect(source).toEqual(
-      {
+      .then(source => expect(source).toEqual({
         src: {
           testive: 'test'
         },
         otherProp: 'otherValue'
-      }
-    ))
+      }));
   });
 
   test('transform', () => {
     expect.assertions(1);
     return expect(schemePunkTransform.transform('transformTest'))
-    .toEqual(
-      'transformTest'
-    );
+      .toEqual('transformTest');
   });
 
   test('get transform', () => {
     expect.assertions(1);
     schemePunkTransform.value = 'transformTest';
     return schemePunkTransform.getTransformedValue()
-    .then(testItem => expect(testItem)
-    .toEqual(
-      'transformTest'
-    ));
+      .then(testItem => expect(testItem)
+        .toEqual('transformTest'));
   });
 });

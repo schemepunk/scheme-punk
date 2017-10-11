@@ -1,7 +1,7 @@
 'use strict';
 
-/**
- * Config indicated plugins point to js scripts that load in plugins.
+/*
+ *Config indicated plugins point to js scripts that load in plugins.
  * These can have varied implementations but must return an object that has
  * keys for destination, transform and source plugins. Each
  * like:
@@ -22,7 +22,7 @@
  *     transformPluginNameN: yourSourceMixinName2(superClass)
  *   }
  * };
- **/
+ */
 // Define a new mixin
 
 // Set our default super classes.

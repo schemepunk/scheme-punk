@@ -8,17 +8,16 @@ const schemePunkScheme = fs.readJSONSync('./__tests__/__mocks__/schemePunkMockSc
 const schemePart = fs.readJSONSync('./__tests__/__mocks__/sourceSchema.json');
 
 let tmpMocks = [];
-let converterEx;
 
 class sourceBase {
-  init(options, scheme, holdOvers) {
-    super.init(options,scheme, holdOvers);
+  init(options, scheme, holdOvers) { // eslint-disable-line no-shadow
+    super.init(options, scheme, holdOvers);
     this.setTarget();
   }
-  getSchemePunkSourceTarget() {}
-  setOrigin() {}
-  getOrigin() {}
-  getHoldOvers() {}
+  getSchemePunkSourceTarget() {} // eslint-disable-line class-methods-use-this
+  setOrigin() {} // eslint-disable-line class-methods-use-this
+  getOrigin() {} // eslint-disable-line class-methods-use-this
+  getHoldOvers() {} // eslint-disable-line class-methods-use-this
 }
 
 beforeEach(() => {
@@ -33,7 +32,6 @@ afterAll(() => {
 });
 
 describe('Scheme Punk Source', () => {
-
   const scheme = {
     originalScheme: schemePunkScheme
   };
@@ -54,120 +52,127 @@ describe('Scheme Punk Source', () => {
     let testClass;
     expect.assertions(1);
     return SchemePunkSourceBase(options.source.plugin)
-    .then((SchemeSource) => {
-      testClass = SchemeSource;
-      const schemeSource = new SchemeSource();
-      schemeSource.init(options.source, scheme, {});
-      return schemeSource;
-    })
-    .then(schemeSource => expect(schemeSource)
-    .toBeInstanceOf(testClass))
+      .then((SchemeSource) => {
+        testClass = SchemeSource;
+        const schemeSource = new SchemeSource();
+        schemeSource.init(options.source, scheme, {});
+        return schemeSource;
+      })
+      .then(schemeSource => expect(schemeSource)
+        .toBeInstanceOf(testClass));
   });
 
   test('Class Construction no super setTarget', () => {
     let testClass;
     expect.assertions(1);
     return SchemePunkSourceBase(options.source.plugin)
-    .then((SchemeSource) => {
-      testClass = SchemeSource;
-      const schemeSource = new SchemeSource(sourceBase);
-      schemeSource.init(options.source, scheme, {});
-      return schemeSource;
-    })
-    .then(schemeSource => expect(schemeSource)
-    .toBeInstanceOf(testClass))
-  })
+      .then((SchemeSource) => {
+        testClass = SchemeSource;
+        const schemeSource = new SchemeSource(sourceBase);
+        schemeSource.init(options.source, scheme, {});
+        return schemeSource;
+      })
+      .then(schemeSource => expect(schemeSource)
+        .toBeInstanceOf(testClass));
+  });
 
   test('Class Construction No Plugs', () => {
-    let testClass
+    let testClass;
     expect.assertions(1);
     return SchemePunkSourceBase()
-    .then((SchemeSource) => {
-      testClass = SchemeSource;
-      const schemeSource = new SchemeSource();
-      schemeSource.init(
-        optionsNoPlugs.source,
-        schemePunkScheme,
-        {test: 'test'}
-      );
-      return expect(schemeSource)
-      .toBeInstanceOf(testClass);
-    });
+      .then((SchemeSource) => {
+        testClass = SchemeSource;
+        const schemeSource = new SchemeSource();
+        schemeSource.init(
+          optionsNoPlugs.source,
+          schemePunkScheme, {
+            test: 'test'
+          }
+        );
+        return expect(schemeSource)
+          .toBeInstanceOf(testClass);
+      });
   });
 
   test('SchemeBase get Source', () => {
     expect.assertions(1);
     return SchemePunkSourceBase(options.source.plugin)
-    .then((SchemeSource) => {
-      const schemeSource = new SchemeSource();
-      schemeSource.init(options.source, scheme, {})
-      return schemeSource.getSource()
-    })
-    .then((source) => {
-      expect(source)
-    .toEqual(schemePart)
-    });
+      .then((SchemeSource) => {
+        const schemeSource = new SchemeSource();
+        schemeSource.init(options.source, scheme, {});
+        return schemeSource.getSource();
+      })
+      .then((source) => {
+        expect(source)
+          .toEqual(schemePart);
+      });
   });
 
   test('Base super call', () => {
     expect.assertions(1);
     return SchemePunkSourceBase()
-    .then((SchemeSource) => {
-      const schemeSource = new SchemeSource();
-      schemeSource.init(
-        optionsNoPlugs.source,
-        schemePunkScheme,
-        {test: 'test'}
-      );
-      return schemeSource.getSource()})
+      .then((SchemeSource) => {
+        const schemeSource = new SchemeSource();
+        schemeSource.init(
+          optionsNoPlugs.source,
+          schemePunkScheme, {
+            test: 'test'
+          }
+        );
+        return schemeSource.getSource();
+      })
       .then(source => expect(source)
-      .toEqual(
-        [
+        .toEqual([
           'test1',
           'test2',
           'test3'
-        ]
-      ))
+        ]));
   });
 
   test('Get Hold overs', () => {
     expect.assertions(1);
     return SchemePunkSourceBase(options.source.plugin)
-    .then((SchemeSource) => {
-      const schemeSource = new SchemeSource();
-      schemeSource.init(options.source, scheme, {});
-      return schemeSource.getHoldOvers()})
+      .then((SchemeSource) => {
+        const schemeSource = new SchemeSource();
+        schemeSource.init(options.source, scheme, {});
+        return schemeSource.getHoldOvers();
+      })
       .then(res => expect(res).toEqual({}));
   });
 
   test('Set Holdovers', () => {
     expect.assertions(1);
     return SchemePunkSourceBase(options.source.plugin)
-    .then((SchemeSource) => {
-      const schemeSource = new SchemeSource();
-      schemeSource.init(options.source, scheme, {});
-      schemeSource.setHoldOvers({tough: 'test'})
-      return schemeSource;
-    })
-    .then(schemeSource => schemeSource.getHoldOvers())
-    .then(holdOvers => expect(holdOvers)
-      .toEqual(
-        {tough: 'test'}
-      ))
+      .then((SchemeSource) => {
+        const schemeSource = new SchemeSource();
+        schemeSource.init(options.source, scheme, {});
+        schemeSource.setHoldOvers({
+          tough: 'test'
+        });
+        return schemeSource;
+      })
+      .then(schemeSource => schemeSource.getHoldOvers())
+      .then(holdOvers => expect(holdOvers)
+        .toEqual({
+          tough: 'test'
+        }));
   });
 
   test('Get Holdovers super call', () => {
     expect.assertions(1);
     return SchemePunkSourceBase()
-    .then((SchemeSource) => {
-      const schemeSource = new SchemeSource();
-      schemeSource.init(
-        optionsNoPlugs.source,
-        schemePunkScheme,
-        {test: 'test'}
-      );
-      return schemeSource.getHoldOvers()
-    })
-    .then(res => expect(res).toEqual({test: 'test'}));
+      .then((SchemeSource) => {
+        const schemeSource = new SchemeSource();
+        schemeSource.init(
+          optionsNoPlugs.source,
+          schemePunkScheme, {
+            test: 'test'
+          }
+        );
+        return schemeSource.getHoldOvers();
+      })
+      .then(res => expect(res).toEqual({
+        test: 'test'
+      }));
   });
 });
