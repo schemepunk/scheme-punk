@@ -6,6 +6,7 @@ let tmpMocks = [];
 let schemePunkDestination;
 let schemePunkDestination2;
 let schemePunkDestination3;
+let holdOvers;
 
 describe('Scheme Punk Destination Super', () => {
   beforeEach(() => {
@@ -22,7 +23,7 @@ describe('Scheme Punk Destination Super', () => {
     };
     schemePunkDestination = new SchemePunkDestination();
     // schemePunkDestination.init(options, scheme, {});
-    const holdOvers = {
+    holdOvers = {
       src: {
         testive: 'test'
       },
@@ -87,8 +88,8 @@ describe('Scheme Punk Destination Super', () => {
       .toBeTruthy();
   });
 
-  test('writeDestinationTarget', () => {
-    expect.assertions(2);
+  test('destinationTargetAndPromote', () => {
+    expect.assertions(3);
     schemePunkDestination.scheme = {
       activeScheme: {
         test: 'tester'
@@ -100,40 +101,30 @@ describe('Scheme Punk Destination Super', () => {
     return schemePunkDestination.writeDestinationTarget()
       .then((value) => {
         expect(value)
-          .toEqual({test: 'testValue'});
+          .toEqual({
+            test: 'testValue'
+          });
         expect(schemePunkDestination.getScheme()[schemePunkDestination.getDestination()][schemePunkDestination.getTarget()])
           .toEqual('testValue');
+        schemePunkDestination.promoteActiveToNewScheme();
+        expect(schemePunkDestination.getScheme().newScheme)
+          .toEqual({
+            test: 'testValue'
+          });
+      });
+  });
+
+  test('getHoldOversWithValues', () => {
+    expect.assertions(1);
+    schemePunkDestination.setHoldOvers(holdOvers);
+    return expect(schemePunkDestination.getHoldOvers())
+      .toEqual({
+        otherProp: 'otherValue',
+        src: {
+          testive: 'test'
+        }
       });
   });
 
 
-  // promote active test.
-
-  test('getHoldOversWithValues', () => {
-    expect.assertions(1);
-    return schemePunkSource2.getHoldOvers()
-      .then(thing => expect(thing)
-        .toEqual({
-          src: {
-            testive: 'test'
-          },
-          otherProp: 'otherValue',
-          testive: 'this test'
-        }));
-  });
-
-  test('setHoldOversWithoutValuesNoProp', () => {
-    expect.assertions(1);
-    return schemePunkSource.getHoldOvers()
-      .then(item => expect(item).toEqual({}));
-  });
-
-  test('getHoldOversWithoutValues', () => {
-    expect.assertions(1);
-    return schemePunkSource3.getHoldOvers()
-      .then(item => expect(item)
-        .toEqual({
-          otherProp: 'otherValue'
-        }));
-  });
 });
