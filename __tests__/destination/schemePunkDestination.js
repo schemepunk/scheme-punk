@@ -15,17 +15,19 @@ beforeEach(() => {
   jest.spyOn(Date, 'now').mockReturnValue(2000);
   transformedValue = 'testValue';
   scheme = {
-    links: [
-      {
-        scheme: {
-          properties: {
-            fields: {
-              enum: 'value'
+    activeScheme: {
+      links: [
+        {
+          scheme: {
+            properties: {
+              fields: {
+                enum: 'value'
+              }
             }
           }
         }
-      }
-    ]
+      ]
+    }
   };
 });
 
@@ -51,7 +53,7 @@ describe('Scheme Punk Destination', () => {
   test('Class Construction with Plugin', () => {
     let testClass;
     expect.assertions(1);
-    return SchemePunkDestinationBase({plugin: 'destroyDestination'})
+    return SchemePunkDestinationBase('destroyDestination')
       .then((SchemeDestination) => {
         testClass = SchemeDestination;
         const schemeDestination = new SchemeDestination();
@@ -70,7 +72,10 @@ describe('Scheme Punk Destination', () => {
         destinationSource.init(options.destination, transformedValue, scheme, holdOvers);
         return Promise.all([destinationSource, destinationSource.writeDestinationTarget()]);
       })
-      .then(([destination]) => destination.getScheme())
-      .then(schemes => expect(schemes.newScheme.links[0].schema.properties.fields.enum).toEqual(['testValue']));
+      .then(([destination]) => {
+        destination.promoteActiveToNewScheme();
+        return destination;
+      })
+      .then(destination => expect(destination.getScheme().newScheme.links[0].schema.properties.fields.enum).toEqual('testValue'));
   });
 });

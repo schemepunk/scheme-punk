@@ -16,8 +16,7 @@
         ],
         "mergeIntoDestination": [
           "mergeIntoDestination"
-        ]
-        ,
+        ],
         "concatIntoDestination": [
           "concatIntoDestination"
         ]
