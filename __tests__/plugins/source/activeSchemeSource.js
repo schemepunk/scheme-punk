@@ -22,43 +22,47 @@ class sourceBase2 {
   getHoldOvers() {} // eslint-disable-line class-methods-use-this
 }
 
-const originalSchemeSource = require('../../../lib/plugins/source/originalSchemeSource');
+const activeSchemeSource = require('../../../lib/plugins/source/activeSchemeSource');
 
 let mocks = [];
 const scheme = {
   originalScheme: {
     test1: 'testValue1',
-    test2: 'testValue2',
+    test2: 'testValue2'
   },
+  activeScheme: {
+    test1: 'activeTestValue1',
+    test2: 'activeTestValue2'
+  }
 };
 
 const holdOvers = {};
 
-describe('originalSource', () => {
+describe('activeSchemeSource', () => {
   afterEach(() => {
     mocks.forEach(mock => mock.mockRestore());
     mocks = [];
   });
 
-  test('Original Scheme Source calls super.', () => {
+  test('Active Scheme Source calls super.', () => {
     expect.assertions(1);
     mocks.push(jest.spyOn(sourceBase.prototype, 'setOrigin'));
-    const source = new (originalSchemeSource(sourceBase)); // eslint-disable-line new-parens
+    const source = new (activeSchemeSource(sourceBase)); // eslint-disable-line new-parens
     source.init({}, scheme, holdOvers);
     expect(sourceBase.prototype.setOrigin).toBeCalledWith({
-      test1: 'testValue1',
-      test2: 'testValue2'
+      test1: 'activeTestValue1',
+      test2: 'activeTestValue2'
     });
   });
 
-  test('Original Scheme source no super.', () => {
+  test('Active Scheme source no super.', () => {
     expect.assertions(1);
-    const source = new (originalSchemeSource(sourceBase2)); // eslint-disable-line new-parens
+    const source = new (activeSchemeSource(sourceBase2)); // eslint-disable-line new-parens
     source.init({}, scheme, holdOvers);
     source.setOrigin();
     expect(source.getOrigin()).toEqual({
-      test1: 'testValue1',
-      test2: 'testValue2'
+      test1: 'activeTestValue1',
+      test2: 'activeTestValue2'
     });
   });
 });

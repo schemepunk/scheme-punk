@@ -1,14 +1,13 @@
 {
   "name": "scheme-punk",
-  "description": "Schema transformation tool with pluggable sources, transformations, and destinations.",
+  "description": "Transformation tool with pluggable sources, transformations, and destinations.",
   "main": "lib/schemePunk.js",
   "scripts": {
-    "test": "istanbul cover --print both nodeunit ./test",
     "lint": "eslint .",
     "coverage": "istanbul check-coverage --statements 0 --lines 0 --branches 0 --functions 0",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
-    "jtest": "jest --coverage"
+    "semantic-release": "semantic-release pre && yarn publish && semantic-release post",
+    "test": "jest --coverage"
   },
   "repository": {
     "type": "git",
@@ -35,14 +34,13 @@
     "istanbul": "^0.4.2",
     "jest": "^20.0.4",
     "jest-environment-node-debug": "^2.0.0",
-    "nodeunit": "^0.11.0",
     "npm-run-all": "^4.0.1",
     "semantic-release": "^7.0.1"
   },
   "config": {
     "ghooks": {
-      "pre-commit": "npm run lint",
-      "pre-push": "npm test"
+      "pre-commit": "yarn run lint",
+      "pre-push": "yarn test"
     }
   },
   "dependencies": {
