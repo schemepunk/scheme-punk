@@ -23,7 +23,6 @@ describe('Object keys', () => {
     };
     // Test case value.
     value = 'test3';
-    prependValues.transform(value);
-    expect(value).toEqual('-test3');
+    expect(prependValues.transform(value)).toEqual('-test3');
   });
 });
