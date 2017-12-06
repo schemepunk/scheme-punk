@@ -29,7 +29,7 @@ describe('Token Template Values Tests', () => {
   test('Template only values', () => {
     // Set options for a template.
     tokenTemplateValues.options = {
-      origin: '../../__tests__/__helpers__/templates/templateLiteralTestOne.tpl',
+      origin: './../../__tests__/__helpers__/templates/templateLiteralTestOne.tpl',
       named: false,
       json: false,
       unescape: false
@@ -46,7 +46,7 @@ describe('Token Template Values Tests', () => {
   test('Use a template and replace with passed values using named replacement.', () => {
     // Set options for a template using tokens.
     tokenTemplateValues.options = {
-      origin: '../../__tests__/__helpers__/templates/templateLiteralTestTwo.tpl',
+      origin: './../../__tests__/__helpers__/templates/templateLiteralTestTwo.tpl',
       named: true,
       json: false,
       unescape: false,
