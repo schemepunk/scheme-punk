@@ -1,6 +1,5 @@
 'use strict';
 
-const _ = require('lodash');
 const MergeIntoDestination = require('../../../lib/plugins/destination/mergeIntoDestination');
 
 class BaseDestination {

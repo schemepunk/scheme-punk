@@ -156,7 +156,7 @@ describe('Token Template Values Tests', () => {
       testKey: 'item0',
       testKey2: 'item1'
     };
-    expect(tokenTemplateValues.transform(value)).toEqual('Dust template "one" name is: testName, test has the value of \"testKey2: item1.');
+    expect(tokenTemplateValues.transform(value)).toEqual('Dust template "one" name is: testName, test has the value of \"testKey2: item1.'); // eslint-disable-line no-useless-escape
   });
 
   test('Use a template with a simple string value instead of an object.', () => {
