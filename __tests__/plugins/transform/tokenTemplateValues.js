@@ -22,11 +22,8 @@ let tokenTemplateValues;
 let value;
 
 describe('Token Template Values Tests', () => {
-  beforeEach(() => {
-    tokenTemplateValues = new (TokenTemplateValues(BaseXform))();
-  });
-
   test('Template only values', () => {
+    tokenTemplateValues = new (TokenTemplateValues(BaseXform))();
     // Set options for a template.
     tokenTemplateValues.options = {
       origin: './../../__tests__/__helpers__/templates/templateLiteralTestOne.tpl',
@@ -44,6 +41,7 @@ describe('Token Template Values Tests', () => {
   });
 
   test('Use a template and replace with passed values using named replacement.', () => {
+    tokenTemplateValues = new (TokenTemplateValues(BaseXform))();
     // Set options for a template using tokens.
     tokenTemplateValues.options = {
       origin: './../../__tests__/__helpers__/templates/templateLiteralTestTwo.tpl',
@@ -65,11 +63,13 @@ describe('Token Template Values Tests', () => {
   });
 
   test('Trace index test', () => {
+    tokenTemplateValues = new (TokenTemplateValues(BaseXform))();
     // Set options for a template using tokens.
     expect(tokenTemplateValues.getTraceIndex(1)).toEqual(0);
   });
 
   test('Use a template with passed values, named variables, and holdOvers.', () => {
+    tokenTemplateValues = new (TokenTemplateValues(BaseXform))();
     // Set options for a template using tokens.
     tokenTemplateValues.options = {
       origin: '../../__tests__/__helpers__/templates/templateLiteralTestThree.tpl',
@@ -92,6 +92,7 @@ describe('Token Template Values Tests', () => {
   });
 
   test('Use a template in JSON format with holdovers', () => {
+    tokenTemplateValues = new (TokenTemplateValues(BaseXform))();
     // Set options for a template using tokens.
     tokenTemplateValues.options = {
       origin: '../../__tests__/__helpers__/templates/templateJson.tpl',
@@ -121,6 +122,7 @@ describe('Token Template Values Tests', () => {
   });
 
   test('Use a template but pass in an empty object for values and indicate that it should not render empty tokens.', () => {
+    tokenTemplateValues = new (TokenTemplateValues(BaseXform))();
     // Set options for a template.
     tokenTemplateValues.options = {
       origin: '../../__tests__/__helpers__/templates/templateFour.tpl',
@@ -135,6 +137,7 @@ describe('Token Template Values Tests', () => {
   });
 
   test('Use a template with text escapes but enforce unescaping.', () => {
+    tokenTemplateValues = new (TokenTemplateValues(BaseXform))();
     // Set options for a template.
     tokenTemplateValues.options = {
       origin: '../../__tests__/__helpers__/templates/templateFour.tpl',
@@ -157,6 +160,7 @@ describe('Token Template Values Tests', () => {
   });
 
   test('Use a template with a simple string value instead of an object.', () => {
+    tokenTemplateValues = new (TokenTemplateValues(BaseXform))();
     // Set options for a template.
     tokenTemplateValues.options = {
       origin: '../../__tests__/__helpers__/templates/templateFive.tpl',
