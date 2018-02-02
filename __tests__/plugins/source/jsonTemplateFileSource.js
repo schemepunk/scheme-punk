@@ -23,7 +23,7 @@ class sourceBase {
     this.scheme = scheme;
     this.setOrigin(options.origin);
   }
-  setOrigin() {}
+  setOrigin() {} // eslint-disable-line class-methods-use-this
   setTarget(targetValue) {
     this.schemePunkSourceTarget = targetValue;
   }
