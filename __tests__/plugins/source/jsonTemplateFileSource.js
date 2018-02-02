@@ -1,9 +1,45 @@
 'use strict';
 
+const schema = {
+  description: {
+    description: 'A description for this resource.',
+    type: 'string'
+  },
+  numberProperty: {
+    description: 'A number property on this entity.',
+    exclusiveMinimum: true,
+    minimum: 0,
+    type: 'integer'
+  },
+  title: {
+    description: 'A title.',
+    type: 'string'
+  }
+};
+
+
 class sourceBase {
-  constructor(options, scheme) {
+  init(options, scheme) {
     this.scheme = scheme;
     this.setOrigin(options.origin);
+  }
+  setOrigin() {}
+  setTarget(targetValue) {
+    this.schemePunkSourceTarget = targetValue;
+  }
+  getSchemePunkSourceTarget() {
+    return this.schemePunkSourceTarget;
+  }
+  getOrigin() {
+    return this.retrievedOrigin;
+  }
+}
+
+class sourceBase2 {
+  init(options, scheme) {
+    this.scheme = scheme;
+    this.setOrigin(options.origin);
+    this.setTarget(options.target);
   }
   setTarget(targetValue) {
     this.schemePunkSourceTarget = targetValue;
@@ -14,28 +50,12 @@ class sourceBase {
   getOrigin() {
     return this.retrievedOrigin;
   }
-  setOrigin(origin) {
-    super.setOrigin(origin);
-  }
-}
-
-class sourceBase2 {
-  constructor(options, schema) {
-    this.scheme = schema;
-    this.setOrigin(options.origin);
-    this.setTarget(options.target);
-  }
-  setOrigin(originValue) {
-    this.retrievedOrigin = originValue;
-  }
-  setTarget(targetValue) {
-    this.schemePunkSourceTarget = targetValue;
-  }
 }
 
 const JsonTemplateFileSource = require('../../../lib/plugins/source/jsonTemplateFileSource');
 
 let mocks = [];
+let options;
 const scheme = {
   originalScheme: {
     test1: 'thing',
@@ -46,37 +66,33 @@ const scheme = {
 
 const holdOvers = {};
 
-describe('activeSchemeSource', () => {
+describe('jsonTemplateFileSource', () => {
   afterEach(() => {
     mocks.forEach(mock => mock.mockRestore());
     mocks = [];
   });
 
-  test('Json Template file source.', () => {
-    expect.assertions(2);
+  test('Json Template file source set Origin.', () => {
+    expect.assertions(1);
     const source = new (JsonTemplateFileSource(sourceBase)); // eslint-disable-line new-parens
-    source.init({}, scheme, holdOvers);
-    source.options = {
+    mocks.push(jest.spyOn(sourceBase.prototype, 'setOrigin'));
+    options = {
       origin: '../../__tests__/__helpers__/schemes/sourceSchema.json',
       target: null
     };
-    source.setOrigin('../../__tests__/__helpers__/schemes/sourceSchema.json');
-    expect(source.retrievedOrigin).toEqual({
-      title: {
-        type: 'string',
-        description: 'A title.'
-      },
-      description: {
-        type: 'string',
-        description: 'A description for this resource.'
-      },
-      numberProperty: {
-        description: 'A number property on this entity.',
-        type: 'integer',
-        minimum: 0,
-        exclusiveMinimum: true
-      }
-    });
+    source.init(options, scheme, holdOvers);
+    expect(sourceBase.prototype.setOrigin).toBeCalledWith(schema);
+  });
+
+  test('Get Source.', () => {
+    expect.assertions(1);
+    const source = new (JsonTemplateFileSource(sourceBase)); // eslint-disable-line new-parens
+    options = {
+      origin: '../../__tests__/__helpers__/schemes/sourceSchema.json',
+      target: null
+    };
+    source.init(options, scheme, holdOvers);
+
     expect(source.getSource()).toEqual({
       title: {
         type: 'string',
@@ -94,15 +110,16 @@ describe('activeSchemeSource', () => {
       }
     });
   });
-  test('Json Template file source second test.', () => {
+
+  test('Super call json origin.', () => {
     expect.assertions(3);
-    const source = new (JsonTemplateFileSource(sourceBase2)); // eslint-disable-line new-parens
-    source.init({}, scheme, holdOvers);
-    source.options = {
+    options = {
       origin: '../../__tests__/__helpers__/schemes/sourceSchema.json',
-      target: null
+      target: 'numberProperty'
     };
-    source.setOrigin('../../__tests__/__helpers__/schemes/sourceSchema.json');
+    const source = new (JsonTemplateFileSource(sourceBase2)); // eslint-disable-line new-parens
+    source.init(options, scheme, holdOvers);
+
     expect(source.getSource()).toEqual({
       description: 'A number property on this entity.',
       type: 'integer',
@@ -110,6 +127,39 @@ describe('activeSchemeSource', () => {
       exclusiveMinimum: true
     });
     expect(source.getTraceIndex(0)).toEqual(0);
-    expect(source.getTraceIndex(2).toEqual(1));
+    expect(source.getTraceIndex(2)).toEqual(1);
   });
+
+  test('Super implementer', () => {
+    expect.assertions(1);
+    const Two = class SchemePunkSchemeSourceTest2 extends JsonTemplateFileSource(sourceBase2) {
+      setOrigin(passedValue) {
+        super.setOrigin(passedValue);
+      }
+    };
+    options = {
+      origin: '../../__tests__/__helpers__/schemes/sourceSchema.json',
+      target: null
+    };
+    const source = new Two();
+    source.init(options, scheme, holdOvers);
+
+    expect(source.getSource()).toEqual({
+      title: {
+        type: 'string',
+        description: 'A title.'
+      },
+      description: {
+        type: 'string',
+        description: 'A description for this resource.'
+      },
+      numberProperty: {
+        description: 'A number property on this entity.',
+        type: 'integer',
+        minimum: 0,
+        exclusiveMinimum: true
+      }
+    });
+  });
+
 });
