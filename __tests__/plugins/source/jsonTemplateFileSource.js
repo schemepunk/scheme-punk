@@ -132,9 +132,10 @@ describe('jsonTemplateFileSource', () => {
 
   test('Super implementer', () => {
     expect.assertions(1);
+    mocks.push(jest.spyOn(sourceBase2.prototype, 'init'));
     const Two = class SchemePunkSchemeSourceTest2 extends JsonTemplateFileSource(sourceBase2) {
       setOrigin(passedValue) {
-        super.setOrigin(passedValue);
+        this.origin = passedValue;
       }
     };
     options = {
@@ -144,22 +145,6 @@ describe('jsonTemplateFileSource', () => {
     const source = new Two();
     source.init(options, scheme, holdOvers);
 
-    expect(source.getSource()).toEqual({
-      title: {
-        type: 'string',
-        description: 'A title.'
-      },
-      description: {
-        type: 'string',
-        description: 'A description for this resource.'
-      },
-      numberProperty: {
-        description: 'A number property on this entity.',
-        type: 'integer',
-        minimum: 0,
-        exclusiveMinimum: true
-      }
-    });
+    expect(sourceBase2.prototype.init).toHaveBeenCalled();
   });
-
 });

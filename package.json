@@ -4,10 +4,10 @@
   "main": "lib/schemePunk.js",
   "scripts": {
     "lint": "eslint .",
-    "coverage": "istanbul check-coverage --statements 0 --lines 0 --branches 0 --functions 0",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
     "semantic-release": "semantic-release pre && yarn publish && semantic-release post",
-    "test": "jest --coverage"
+    "test": "jest --coverage",
+    "test-ci": "jest --coverage --runInBand"
   },
   "repository": {
     "type": "git",
@@ -31,7 +31,6 @@
     "eslint-find-rules": "^3.1.1",
     "eslint-plugin-import": "^2.7.0",
     "husky": "^0.14.3",
-    "istanbul": "^0.4.2",
     "jest": "^20.0.4",
     "jest-environment-node-debug": "^2.0.0",
     "npm-run-all": "^4.0.1",
