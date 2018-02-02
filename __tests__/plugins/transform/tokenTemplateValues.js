@@ -20,8 +20,13 @@ class BaseXform {
 let tokenTemplateValues;
 
 let value;
+let mocks = [];
 
 describe('Token Template Values Tests', () => {
+  afterEach(() => {
+    mocks.forEach(mock => mock.mockRestore());
+    mocks = [];
+  });
   test('Template only values', () => {
     tokenTemplateValues = new (TokenTemplateValues(BaseXform))();
     // Set options for a template.
