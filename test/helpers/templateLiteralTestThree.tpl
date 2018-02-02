@@ -1,1 +1,0 @@
-Dust template one name is: {{monkey}}, test has the value of testKey2: {{test}}.

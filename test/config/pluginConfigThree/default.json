@@ -1,8 +1,0 @@
-{
-  "schemePunk": {
-    "plugins": [
-      "../test/plugins/pluginsTest.js",
-      "../test/plugins/pluginsTest2.js"
-    ]
-  }
-}
