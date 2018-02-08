@@ -1,24 +1,8 @@
 'use strict';
 
 const MergeIntoDestination = require('../../../lib/plugins/destination/mergeIntoDestination');
+const BaseDestination = require('../../__helpers__/BaseDestination');
 
-class BaseDestination {
-  constructor(options) {
-    this.options = options;
-  }
-
-  getTarget() {
-    return this.target;
-  }
-
-  getValue() {
-    return this.value;
-  }
-
-  getDestination() {
-    return this.destination;
-  }
-}
 const mergeIntoDestination = new (MergeIntoDestination(BaseDestination))();
 
 describe('Merge into Destination Tests.', () => {

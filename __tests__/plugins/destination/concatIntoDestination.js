@@ -1,24 +1,8 @@
 'use strict';
 
 const ConcatIntoDestination = require('../../../lib/plugins/destination/concatIntoDestination');
+const BaseDestination = require('../../__helpers__/BaseDestination');
 
-class BaseDestination {
-  constructor(options) {
-    this.options = options;
-  }
-
-  getTarget() {
-    return this.target;
-  }
-
-  getValue() {
-    return this.value;
-  }
-
-  getDestination() {
-    return this.destination;
-  }
-}
 const concatIntoDestination = new (ConcatIntoDestination(BaseDestination))();
 
 describe('Concat into Destination Tests.', () => {
