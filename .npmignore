@@ -1,5 +1,9 @@
 __tests__
-./.*
+./.travis.yml
+./.eslintignore
+./.eslintrc
+./.coveralls.yml
+./.codeclimate.yml
 coverage
 __coverage__
 config/local.json
