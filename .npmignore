@@ -1,1 +1,11 @@
 __tests__
+./.*
+coverage
+__coverage__
+config/local.json
+config/local.yml
+config/local.yaml
+config/private.json
+test.js
+.tmp
+yarn.lock
