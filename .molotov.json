@@ -1,0 +1,67 @@
+{
+  "molotovPath": "lib/molotov.js",
+  "schemePunk": {
+    "supersNameSpacePaths": {
+      "transform": "./lib/supers/transform'",
+      "source": "./lib/supers/source",
+      "destination": "./lib/supers/destination"
+    },
+    "molotovPlugins": {
+      "destination": {
+        "destroyDestination": [
+          "destroyDestination"
+        ],
+        "pushDestination": [
+          "pushDestination"
+        ],
+        "mergeIntoDestination": [
+          "mergeIntoDestination"
+        ],
+        "concatIntoDestination": [
+          "concatIntoDestination"
+        ]
+      },
+      "source": {
+        "originalSchemeSource": [
+          "originalSchemeSource"
+        ],
+        "activeSchemeSource": [
+          "activeSchemeSource"
+        ],
+        "jsonTemplateFileSource": [
+          "jsonTemplateFileSource"
+        ]
+      },
+      "transform": {
+        "appendValuesAdapter": [
+          "typeAdapter",
+          "appendValues"
+        ],
+        "delimitValues": [
+          "delimitValues"
+        ],
+        "filterAttribute": [
+          "typeAdapter",
+          "filterAttributes"
+        ],
+        "objectKeysTransform": [
+          "objectKeysTransform"
+        ],
+        "prependValuesAdapter": [
+          "typeAdapter",
+          "prependValues"
+        ],
+        "regexWordBoundariesValues": [
+          "regexWordBoundariesValues"
+        ],
+        "tokenTemplateValues": [
+          "tokenTemplateValues"
+        ],
+        "tokenTemplateValuesMulti": [
+          "typeAdapter",
+          "tokenTemplateValues"
+        ]
+      }
+    }
+  }
+}

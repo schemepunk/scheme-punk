@@ -5,3 +5,11 @@ engines:
     checks:
       import/no-unresolved:
         enabled: false
+checks:
+  method-lines:
+    config:
+      threshold: 100
+  similar-code:
+    enabled: false
+exclude_patterns:
+  - "__tests__"
