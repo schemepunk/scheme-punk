@@ -18,7 +18,7 @@ stages:
     if: NOT tag =~ ^v\d+\.\d+\.\d+$
   - name: release
     # require the branch name to be one of the environment branches.
-    if: branch = master AND fork = false AND type IN (push, api)
+    if: type != pull_request AND branch = master
 
 jobs:
   include:
@@ -31,8 +31,6 @@ jobs:
 
     - stage: release
       node_js: 'lts/carbon'
-      before_install:
-        - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
       script:
         - yarn semantic-release-github
-        - yarn npm-publish-git-tag --access public
+        - yarn npm-publish-git-tag

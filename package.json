@@ -12,14 +12,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/schemepunk/scheme-punk.git"
+    "url": "git+https://github.com/schemepunk/scheme-punk.git"
   },
   "keywords": [
     "Schema",
     "transformation",
     "json"
   ],
-  "author": "David Diers <david.diers@gmail.com> (http://daviddiers.com/)",
+  "author": {
+    "name": "David Diers",
+    "email": "david.diers@gmail.com",
+    "url": "http://daviddiers.com/"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/schemepunk/scheme-punk/issues"
@@ -87,5 +91,7 @@
       "<rootDir>/__tests__/.*/[__mocks__|files]/"
     ]
   },
-  "version": "0.0.0-development"
+  "version": "3.0.4",
+  "readme": "ERROR: No README data found!",
+  "_id": "@schemepunk/scheme-punk@2.3.0"
 }
