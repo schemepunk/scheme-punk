@@ -18,7 +18,7 @@ stages:
     if: NOT tag =~ ^v\d+\.\d+\.\d+$
   - name: release
     # require the branch name to be one of the environment branches.
-    if: type != pull_request AND branch = master
+    if: branch = master AND fork = false AND type IN (push, api)
 
 jobs:
   include:
@@ -33,4 +33,4 @@ jobs:
       node_js: 'lts/carbon'
       script:
         - yarn semantic-release-github
-        - yarn npm-publish-git-tag
+        - yarn npm-publish-git-tag --access public
