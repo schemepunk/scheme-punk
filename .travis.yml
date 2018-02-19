@@ -31,8 +31,6 @@ jobs:
 
     - stage: release
       node_js: 'lts/carbon'
-      before_install:
-        - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
       script:
         - yarn semantic-release-github
         - yarn npm-publish-git-tag --access public
