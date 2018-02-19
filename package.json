@@ -43,6 +43,7 @@
     }
   },
   "dependencies": {
+    "ajv": "^6.1.1",
     "callsite": "^1.0.0",
     "config": "^1.24.0",
     "fs-extra": "^4.0.1",
