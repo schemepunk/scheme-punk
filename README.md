@@ -3,12 +3,13 @@
 [![Build Status](https://travis-ci.org/schemepunk/scheme-punk.svg?branch=master)](https://travis-ci.org/schemepunk/scheme-punk)
 [![Coverage Status](https://coveralls.io/repos/github/schemepunk/scheme-punk/badge.svg?branch=master)](https://coveralls.io/github/thebruce/scheme-punk?branch=master)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
-
 [![Greenkeeper badge](https://badges.greenkeeper.io/schemepunk/scheme-punk.svg)](https://greenkeeper.io/)
+[![Maintainability](https://api.codeclimate.com/v1/badges/d7751dc122844ec69e2e/maintainability)](https://codeclimate.com/github/schemepunk/scheme-punk/maintainability)
+
 
 ## What is it?
 
-Scheme Punk on NPM (Scheme Punk)[https://www.npmjs.com/package/scheme-punk]
+Scheme Punk on NPM [https://www.npmjs.com/package/@schemepunk/scheme-punk](Scheme Punk)
 
 Scheme Punk is a promise based information/object transformation module that
 uses a mixin approach that favors composition for its read, write and
@@ -19,8 +20,8 @@ and use these behaviors on objects.
 
 Scheme Punk originated from the need to reduce repetitive and error prone
 authoring tasks in JSON Schema [http://json-schema.org/] as well as the need to rewrite that schema
-in other JSON formats (open API)[https://www.openapis.org/] and to use that same schema to inform and
-interpret for even more JSON based utilities (postman collections)[https://www.getpostman.com/docs/collections].
+in other JSON formats [https://www.openapis.org/](open API) and to use that same schema to inform and
+interpret for even more JSON based utilities [https://www.getpostman.com/docs/collections](postman collections).
 
 ## Example uses:
 
