@@ -8,7 +8,7 @@
     "prepush": "npm test",
     "coveralls": "cat ./__coverage__/lcov.info | coveralls",
     "test": "jest --coverage",
-    "npmpublish": "npm npm-publish-git-tag --access public"
+    "npmpublish": "npm-publish-git-tag --access public"
   },
   "repository": {
     "type": "git",
@@ -91,5 +91,7 @@
       "<rootDir>/__tests__/.*/[__mocks__|files]/"
     ]
   },
-  "version": "0.0.0-development"
+  "version": "2.3.0",
+  "readme": "ERROR: No README data found!",
+  "_id": "@schemepunk/scheme-punk@0.0.0-development"
 }
