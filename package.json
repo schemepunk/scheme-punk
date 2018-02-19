@@ -58,7 +58,7 @@
     "try-require": "^1.2.1"
   },
   "engines": {
-    "node": ">=8.9.0"
+    "node": ">=6"
   },
   "jest": {
     "cacheDirectory": ".tmp/jest_cache",
