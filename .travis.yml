@@ -17,7 +17,7 @@ script:
 after_success:
   - yarn run coveralls
   - yarn semantic-release-github
-  - yarn npm-publish-git-tag
+  - yarn npm-publish-git-tag --access public
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
