@@ -1,17 +1,17 @@
 {
-  "name": "scheme-punk",
+  "name": "@schemepunk/scheme-punk",
   "description": "Transformation tool with pluggable sources, transformations, and destinations.",
   "main": "lib/schemePunk.js",
   "scripts": {
     "lint": "eslint .",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
-    "semantic-release": "semantic-release pre && yarn publish && semantic-release post",
     "test": "jest --coverage",
-    "test-ci": "jest --coverage --runInBand"
+    "test-ci": "jest --coverage --runInBand",
+    "semantic-release": "semantic-release"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/thebruce/scheme-punk.git"
+    "url": "https://github.com/schemepunk/scheme-punk.git"
   },
   "keywords": [
     "Schema",
@@ -21,9 +21,9 @@
   "author": "David Diers <david.diers@gmail.com> (http://daviddiers.com/)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/thebruce/scheme-punk/issues"
+    "url": "https://github.com/schemepunk/scheme-punk/issues"
   },
-  "homepage": "https://github.com/thebruce/scheme-punk#readme",
+  "homepage": "https://github.com/schemepunk/scheme-punk#readme",
   "devDependencies": {
     "coveralls": "^3.0.0",
     "eslint": "^4.8.0",
@@ -33,8 +33,10 @@
     "husky": "^0.14.3",
     "jest": "^20.0.4",
     "jest-environment-node-debug": "^2.0.0",
+    "npm-publish-git-tag": "^1.1.35",
     "npm-run-all": "^4.0.1",
-    "semantic-release": "^7.0.1"
+    "semantic-release": "^12.4.1",
+    "semantic-release-github": "^3.1.2"
   },
   "config": {
     "ghooks": {
@@ -51,6 +53,7 @@
     "molotov": "1.1.0",
     "mustache": "^2.3.0",
     "require-directory": "^2.1.1",
+    "setup": "0.0.3",
     "try-require": "^1.2.1"
   },
   "engines": {
@@ -82,5 +85,6 @@
       "<rootDir>/__tests__/__helpers__/",
       "<rootDir>/__tests__/.*/[__mocks__|files]/"
     ]
-  }
+  },
+  "version": "0.0.0-development"
 }
