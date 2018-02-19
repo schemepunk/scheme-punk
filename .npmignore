@@ -13,3 +13,4 @@ config/private.json
 test.js
 .tmp
 yarn.lock
+.npmrc
