@@ -42,5 +42,4 @@ jobs:
 
     - stage: deploy
       node_js: 'lts/carbon'
-      script:
-        - yarn npm-publish-git-tag --access public
+      script: npm npmpublish
