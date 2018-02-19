@@ -1,10 +1,10 @@
-[![Build Status](https://travis-ci.org/thebruce/scheme-punk.svg?branch=master)](https://travis-ci.org/thebruce/scheme-punk)
-[![Coverage Status](https://coveralls.io/repos/github/thebruce/scheme-punk/badge.svg?branch=master)](https://coveralls.io/github/thebruce/scheme-punk?branch=master)
-[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
-
 # Scheme Punk - Changing the world one schema at a time.
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/thebruce/scheme-punk.svg)](https://greenkeeper.io/)
+[![Build Status](https://travis-ci.org/schemepunk/scheme-punk.svg?branch=master)](https://travis-ci.org/schemepunk/scheme-punk)
+[![Coverage Status](https://coveralls.io/repos/github/schemepunk/scheme-punk/badge.svg?branch=master)](https://coveralls.io/github/thebruce/scheme-punk?branch=master)
+[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/schemepunk/scheme-punk.svg)](https://greenkeeper.io/)
 
 ## What is it?
 
