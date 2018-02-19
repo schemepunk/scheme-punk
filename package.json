@@ -8,7 +8,7 @@
     "prepush": "npm test",
     "coveralls": "cat ./__coverage__/lcov.info | coveralls",
     "test": "jest --coverage",
-    "semantic-release": "semantic-release"
+    "npmpublish": "npm npm-publish-git-tag --access public"
   },
   "repository": {
     "type": "git",
