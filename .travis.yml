@@ -7,30 +7,6 @@ notifications:
   email: false
 node_js:
   - '8'
-before_install:
-  - npm i -g npm@^2.0.0
-before_script:
-  - npm prune
-script:
-  - yarn run lint
-  - yarn test
-after_success:
-
-branches:
-  except:
-    - /^v\d+\.\d+\.\d+$/
-
-
-
-sudo: false
-language: node_js
-cache:
-  directories:
-    - node_modules
-notifications:
-  email: false
-node_js:
-  - '6'
 
 branches:
   except:
