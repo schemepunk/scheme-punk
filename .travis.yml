@@ -26,7 +26,7 @@ jobs:
       node_js: 'lts/carbon'
       script:
         - yarn run lint
-        - yarn test
+        - yarn test-ci
         - yarn run coveralls
 
     - stage: release
@@ -34,6 +34,5 @@ jobs:
       before_install:
         - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
       script:
-
         - yarn semantic-release-github
         - yarn npm-publish-git-tag --access public

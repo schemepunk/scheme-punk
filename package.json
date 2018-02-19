@@ -4,9 +4,9 @@
   "main": "lib/schemePunk.js",
   "scripts": {
     "lint": "eslint .",
-    "coveralls": "cat ./coverage/lcov.info | coveralls",
+    "coveralls": "jest --runInBand --coverage && cat ./coverage/lcov.info | coveralls",
     "test": "jest --coverage",
-    "test-ci": "jest --coverage --runInBand",
+    "test-ci": "jest --runInBand --coverage",
     "semantic-release": "semantic-release"
   },
   "repository": {
