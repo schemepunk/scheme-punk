@@ -6,7 +6,7 @@
     "lint": "eslint .",
     "precommit": "npm run lint",
     "prepush": "npm test",
-    "coveralls": "jest --runInBand --coverage && cat ./coverage/lcov.info | coveralls",
+    "coveralls": "cat ./__coverage__/lcov.info | coveralls",
     "test": "jest --coverage",
     "test-ci": "jest --runInBand --coverage",
     "semantic-release": "semantic-release"
