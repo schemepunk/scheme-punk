@@ -42,4 +42,4 @@ jobs:
 
     - stage: deploy
       node_js: 'lts/carbon'
-      script: npm npmpublish
+      script: npm run npmpublish
