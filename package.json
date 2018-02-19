@@ -4,6 +4,8 @@
   "main": "lib/schemePunk.js",
   "scripts": {
     "lint": "eslint .",
+    "precommit": "npm run lint",
+    "prepush": "npm test",
     "coveralls": "jest --runInBand --coverage && cat ./coverage/lcov.info | coveralls",
     "test": "jest --coverage",
     "test-ci": "jest --runInBand --coverage",
@@ -57,7 +59,7 @@
     "try-require": "^1.2.1"
   },
   "engines": {
-    "node": ">=4"
+    "node": ">=8.9.0"
   },
   "jest": {
     "cacheDirectory": ".tmp/jest_cache",
