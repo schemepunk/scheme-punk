@@ -3181,9 +3181,9 @@ modify-values@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/modify-values/-/modify-values-1.0.0.tgz#e2b6cdeb9ce19f99317a53722f3dbf5df5eaaab2"
 
-molotov@1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/molotov/-/molotov-1.1.1.tgz#ddfc41c51b4a7a2e9d5d51424b2de5b92225ee4f"
+molotov@1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/molotov/-/molotov-1.2.0.tgz#e6856825be1b90251e4b4e62f38793fc0ba97a20"
   dependencies:
     callsite "^1.0.0"
     config "^1.25.1"

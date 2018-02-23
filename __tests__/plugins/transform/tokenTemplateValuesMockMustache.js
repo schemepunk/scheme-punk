@@ -56,7 +56,9 @@ describe('Token Template Values Tests', () => {
       testKey: 'item0',
       testKey2: 'item1'
     };
-    tokenTemplateValues.transform(value);
-    expect(mustache.render).toHaveBeenCalled();
+    return tokenTemplateValues.transform(value)
+      .then(() => {
+        expect(mustache.render).toHaveBeenCalled();
+      });
   });
 });
