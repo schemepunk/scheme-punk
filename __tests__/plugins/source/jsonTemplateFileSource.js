@@ -33,6 +33,9 @@ class sourceBase {
   getOrigin() {
     return this.retrievedOrigin;
   }
+  getCallPath() { // eslint-disable-line class-methods-use-this
+    return __dirname;
+  }
 }
 
 class sourceBase2 {
@@ -49,6 +52,9 @@ class sourceBase2 {
   }
   getOrigin() {
     return this.retrievedOrigin;
+  }
+  getCallPath() { // eslint-disable-line class-methods-use-this
+    return __dirname;
   }
 }
 
@@ -77,7 +83,7 @@ describe('jsonTemplateFileSource', () => {
     const source = new (JsonTemplateFileSource(sourceBase)); // eslint-disable-line new-parens
     mocks.push(jest.spyOn(sourceBase.prototype, 'setOrigin'));
     options = {
-      origin: '../../__tests__/__helpers__/schemes/sourceSchema.json',
+      origin: '../../__helpers__/schemes/sourceSchema.json',
       target: null
     };
     source.init(options, scheme, holdOvers);
@@ -88,7 +94,7 @@ describe('jsonTemplateFileSource', () => {
     expect.assertions(1);
     const source = new (JsonTemplateFileSource(sourceBase)); // eslint-disable-line new-parens
     options = {
-      origin: '../../__tests__/__helpers__/schemes/sourceSchema.json',
+      origin: '../../__helpers__/schemes/sourceSchema.json',
       target: null
     };
     source.init(options, scheme, holdOvers);
@@ -112,9 +118,9 @@ describe('jsonTemplateFileSource', () => {
   });
 
   test('Super call json origin.', () => {
-    expect.assertions(3);
+    expect.assertions(1);
     options = {
-      origin: '../../__tests__/__helpers__/schemes/sourceSchema.json',
+      origin: '../../__helpers__/schemes/sourceSchema.json',
       target: 'numberProperty'
     };
     const source = new (JsonTemplateFileSource(sourceBase2)); // eslint-disable-line new-parens
@@ -126,8 +132,6 @@ describe('jsonTemplateFileSource', () => {
       minimum: 0,
       exclusiveMinimum: true
     });
-    expect(source.getTraceIndex(0)).toEqual(0);
-    expect(source.getTraceIndex(2)).toEqual(1);
   });
 
   test('Super implementer', () => {
@@ -139,7 +143,7 @@ describe('jsonTemplateFileSource', () => {
       }
     };
     options = {
-      origin: '../../__tests__/__helpers__/schemes/sourceSchema.json',
+      origin: '../../__helpers__/schemes/sourceSchema.json',
       target: null
     };
     const source = new Two();

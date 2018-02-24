@@ -15,23 +15,24 @@ class BaseXform {
   getHoldOvers() {
     return this.holdOvers;
   }
+  getCallPath() { // eslint-disable-line class-methods-use-this
+    return __dirname;
+  }
 }
-
-let tokenTemplateValues;
 
 let value;
 let mocks = [];
 
 describe('Token Template Values Tests', () => {
-  afterEach(() => {
+  beforeEach(() => {
     mocks.forEach(mock => mock.mockRestore());
     mocks = [];
   });
   test('Template only values', () => {
-    tokenTemplateValues = new (TokenTemplateValues(BaseXform))();
+    const tokenTemplateValues = new (TokenTemplateValues(BaseXform))();
     // Set options for a template.
     tokenTemplateValues.options = {
-      origin: './../../__tests__/__helpers__/templates/templateLiteralTestOne.tpl',
+      origin: './../../__helpers__/templates/templateLiteralTestOne.tpl',
       named: false,
       json: false,
       unescape: false
@@ -45,12 +46,18 @@ describe('Token Template Values Tests', () => {
     return tokenTemplateValues.transform(value)
       .then(tValue => expect(tValue).toEqual('Dust template one name is testName, testKey is item0.'));
   });
+});
 
+describe('Use a template and replace with passed values using named replacement', () => {
+  beforeEach(() => {
+    mocks.forEach(mock => mock.mockRestore());
+    mocks = [];
+  });
   test('Use a template and replace with passed values using named replacement.', () => {
-    tokenTemplateValues = new (TokenTemplateValues(BaseXform))();
+    const tokenTemplateValues = new (TokenTemplateValues(BaseXform))();
     // Set options for a template using tokens.
     tokenTemplateValues.options = {
-      origin: './../../../__tests__/__helpers__/templates/templateLiteralTestTwo.tpl',
+      origin: './../../__helpers__/templates/templateLiteralTestTwo.tpl',
       named: true,
       json: false,
       unescape: false,
@@ -68,18 +75,18 @@ describe('Token Template Values Tests', () => {
     return tokenTemplateValues.transform(value)
       .then(tValue => expect(tValue).toEqual('Dust template one name is: testName, test has the value of testKey2: item1.'));
   });
+});
 
-  test('Trace index test', () => {
-    tokenTemplateValues = new (TokenTemplateValues(BaseXform))();
-    // Set options for a template using tokens.
-    expect(tokenTemplateValues.getTraceIndex(1)).toEqual(0);
+describe('Use a template with passed values, named variables, and holdOvers.', () => {
+  beforeEach(() => {
+    mocks.forEach(mock => mock.mockRestore());
+    mocks = [];
   });
-
   test('Use a template with passed values, named variables, and holdOvers.', () => {
-    tokenTemplateValues = new (TokenTemplateValues(BaseXform))();
+    const tokenTemplateValues = new (TokenTemplateValues(BaseXform))();
     // Set options for a template using tokens.
     tokenTemplateValues.options = {
-      origin: '../../../__tests__/__helpers__/templates/templateLiteralTestThree.tpl',
+      origin: './../../__helpers__/templates/templateLiteralTestThree.tpl',
       named: true,
       json: false,
       unescape: false,
@@ -98,12 +105,18 @@ describe('Token Template Values Tests', () => {
     return tokenTemplateValues.transform(value)
       .then(tValue => expect(tValue).toEqual('Dust template one name is: toofer, test has the value of testKey2: item1.'));
   });
+});
 
+describe('Use a template in JSON format with holdovers', () => {
+  beforeEach(() => {
+    mocks.forEach(mock => mock.mockRestore());
+    mocks = [];
+  });
   test('Use a template in JSON format with holdovers', () => {
-    tokenTemplateValues = new (TokenTemplateValues(BaseXform))();
+    const tokenTemplateValues = new (TokenTemplateValues(BaseXform))();
     // Set options for a template using tokens.
     tokenTemplateValues.options = {
-      origin: '../../../__tests__/__helpers__/templates/templateJson.tpl',
+      origin: './../../__helpers__/templates/templateJson.tpl',
       json: true,
       unescape: true,
       named: false,
@@ -129,12 +142,18 @@ describe('Token Template Values Tests', () => {
         ]
       }));
   });
+});
 
+describe('Use a template but pass in an empty object for values and indicate that it should not render empty tokens.', () => {
+  beforeEach(() => {
+    mocks.forEach(mock => mock.mockRestore());
+    mocks = [];
+  });
   test('Use a template but pass in an empty object for values and indicate that it should not render empty tokens.', () => {
-    tokenTemplateValues = new (TokenTemplateValues(BaseXform))();
+    const tokenTemplateValues = new (TokenTemplateValues(BaseXform))();
     // Set options for a template.
     tokenTemplateValues.options = {
-      origin: '../../../__tests__/__helpers__/templates/templateFour.tpl',
+      origin: './../../__helpers__/templates/templateFour.tpl',
       template: {
         renderEmptyTokens: false
       }
@@ -145,12 +164,18 @@ describe('Token Template Values Tests', () => {
     return tokenTemplateValues.transform(value)
       .then(tValue => expect(tValue).toEqual({}));
   });
+});
 
+describe('Use a template with text escapes but enforce unescaping.', () => {
+  beforeEach(() => {
+    mocks.forEach(mock => mock.mockRestore());
+    mocks = [];
+  });
   test('Use a template with text escapes but enforce unescaping.', () => {
-    tokenTemplateValues = new (TokenTemplateValues(BaseXform))();
+    const tokenTemplateValues = new (TokenTemplateValues(BaseXform))();
     // Set options for a template.
     tokenTemplateValues.options = {
-      origin: '../../../__tests__/__helpers__/templates/templateFour.tpl',
+      origin: './../../__helpers__/templates/templateFour.tpl',
       json: false,
       unescape: true,
       named: false,
@@ -169,12 +194,18 @@ describe('Token Template Values Tests', () => {
     return tokenTemplateValues.transform(value)
       .then(tValue => expect(tValue).toEqual('Dust template "one" name is: testName, test has the value of \"testKey2: item1.')); // eslint-disable-line no-useless-escape
   });
+});
 
+describe('Use a template with a simple string value instead of an object.', () => {
+  beforeEach(() => {
+    mocks.forEach(mock => mock.mockRestore());
+    mocks = [];
+  });
   test('Use a template with a simple string value instead of an object.', () => {
-    tokenTemplateValues = new (TokenTemplateValues(BaseXform))();
+    const tokenTemplateValues = new (TokenTemplateValues(BaseXform))();
     // Set options for a template.
     tokenTemplateValues.options = {
-      origin: '../../../__tests__/__helpers__/templates/templateFive.tpl',
+      origin: './../../__helpers__/templates/templateFive.tpl',
       named: false,
       json: false,
       unescape: false

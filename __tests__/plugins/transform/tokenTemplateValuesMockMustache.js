@@ -19,9 +19,10 @@ class BaseXform {
   getHoldOvers() {
     return this.holdOvers;
   }
+  getCallPath() { // eslint-disable-line class-methods-use-this
+    return __dirname;
+  }
 }
-
-let tokenTemplateValues;
 
 let value;
 let mocks = [];
@@ -33,14 +34,14 @@ describe('Token Template Values Tests', () => {
   });
 
   test('Use a template in JSON format mustache spied', () => {
-    tokenTemplateValues = new (TokenTemplateValues(BaseXform))();
+    const tokenTemplateValues = new (TokenTemplateValues(BaseXform))();
     // Set options for a template using tokens.
     jest.spyOn(mustache, 'render')
       .mockReturnValueOnce(false)
       .mockReturnValueOnce('');
     mocks.push(mustache.render);
     tokenTemplateValues.options = {
-      origin: '../../__tests__/__helpers__/templates/templateJson.tpl',
+      origin: '../../__helpers__/templates/templateJson.tpl',
       json: true,
       unescape: true,
       named: false,
