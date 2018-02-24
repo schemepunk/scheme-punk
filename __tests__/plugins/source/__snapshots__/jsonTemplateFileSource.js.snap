@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`jsonTemplateFileSource Json Template file source set Origin. 1`] = `
+Object {
+  "description": Object {
+    "description": "A description for this resource.",
+    "type": "string",
+  },
+  "numberProperty": Object {
+    "description": "A number property on this entity.",
+    "exclusiveMinimum": true,
+    "minimum": 0,
+    "type": "integer",
+  },
+  "title": Object {
+    "description": "A title.",
+    "type": "string",
+  },
+}
+`;
