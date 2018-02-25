@@ -32,11 +32,11 @@ describe('Scheme Punk Source Super', () => {
     const holdOvers2 = {
       otherProp: 'otherValue'
     };
-
+    const callPath = './';
     schemePunkSource2 = new SchemePunkSource();
-    schemePunkSource2.init(options, scheme, holdOvers);
+    schemePunkSource2.init(options, scheme, holdOvers, callPath);
     schemePunkSource3 = new SchemePunkSource();
-    schemePunkSource3.init(options, scheme, holdOvers2);
+    schemePunkSource3.init(options, scheme, holdOvers2, callPath);
   });
 
   afterAll(() => {
@@ -56,6 +56,12 @@ describe('Scheme Punk Source Super', () => {
     schemePunkSource.getSchemePunkSourceTarget()
       .then(source => expect(source)
         .toEqual('test'));
+  });
+
+  test('getCallPath', () => {
+    expect.assertions(1);
+    expect(schemePunkSource2.getCallPath())
+      .toEqual('./');
   });
 
   test('getSource', () => {

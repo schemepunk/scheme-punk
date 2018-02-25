@@ -33,10 +33,11 @@ describe('Scheme Punk Destination Super', () => {
       otherProp: 'otherValue'
     };
 
+    const callPath = './';
     schemePunkDestination2 = new SchemePunkDestination();
-    schemePunkDestination2.init(options, scheme, holdOvers);
+    schemePunkDestination2.init(options, '', scheme, holdOvers, callPath);
     schemePunkDestination3 = new SchemePunkDestination();
-    schemePunkDestination3.init(options, scheme, holdOvers2);
+    schemePunkDestination3.init(options, '', scheme, holdOvers2, callPath);
   });
 
   afterAll(() => {
@@ -55,6 +56,12 @@ describe('Scheme Punk Destination Super', () => {
     schemePunkDestination.setDestination();
     return expect(schemePunkDestination.getDestination())
       .toEqual('activeScheme');
+  });
+
+  test('getCallPath', () => {
+    expect.assertions(1);
+    expect(schemePunkDestination2.getCallPath())
+      .toEqual('./');
   });
 
   // set/get value
