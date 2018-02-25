@@ -217,3 +217,25 @@ describe('Use a template with a simple string value instead of an object.', () =
       .then(tValue => expect(tValue).toEqual('this is a testBoogie'));
   });
 });
+
+describe('No File.', () => {
+  beforeEach(() => {
+    mocks.forEach(mock => mock.mockRestore());
+    mocks = [];
+  });
+  test('Use a template with a simple string value instead of an object.', () => {
+    const tokenTemplateValues = new (TokenTemplateValues(BaseXform))();
+    // Set options for a template.
+    tokenTemplateValues.options = {
+      origin: 'notther',
+      named: false,
+      json: false,
+      unescape: false
+    };
+
+    // Test case value.
+    value = 'testBoogie';
+    return tokenTemplateValues.transform(value)
+      .catch(err => expect(err.message).toContain('ENOENT:'));
+  });
+});
