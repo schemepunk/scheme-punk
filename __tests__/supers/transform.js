@@ -32,7 +32,7 @@ describe('Scheme Punk Transform Super', () => {
     };
 
     schemePunkTransform2 = new SchemePunkTransform();
-    schemePunkTransform2.init(options, holdOvers);
+    schemePunkTransform2.init(options, holdOvers, './');
     schemePunkTransform3 = new SchemePunkTransform();
     schemePunkTransform3.init(options, holdOvers2);
   });
@@ -73,6 +73,12 @@ describe('Scheme Punk Transform Super', () => {
     expect.assertions(1);
     return expect(schemePunkTransform.transform('transformTest'))
       .toEqual('transformTest');
+  });
+
+  test('call ', () => {
+    expect.assertions(1);
+    expect(schemePunkTransform2.getCallPath())
+      .toEqual('./');
   });
 
   test('get transform', () => {

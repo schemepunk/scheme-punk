@@ -1,37 +1,24 @@
 'use strict';
 
-const schema = {
-  description: {
-    description: 'A description for this resource.',
-    type: 'string'
-  },
-  numberProperty: {
-    description: 'A number property on this entity.',
-    exclusiveMinimum: true,
-    minimum: 0,
-    type: 'integer'
-  },
-  title: {
-    description: 'A title.',
-    type: 'string'
-  }
-};
-
-
 class sourceBase {
   init(options, scheme) {
     this.scheme = scheme;
     this.setOrigin(options.origin);
+    return this.getOrigin()
+      .then(() => this);
   }
   setOrigin() {} // eslint-disable-line class-methods-use-this
   setTarget(targetValue) {
     this.schemePunkSourceTarget = targetValue;
   }
   getSchemePunkSourceTarget() {
-    return this.schemePunkSourceTarget;
+    return Promise.resolve(this.schemePunkSourceTarget);
   }
   getOrigin() {
-    return this.retrievedOrigin;
+    return Promise.resolve(this.retrievedOrigin);
+  }
+  getCallPath() { // eslint-disable-line class-methods-use-this
+    return __dirname;
   }
 }
 
@@ -40,15 +27,24 @@ class sourceBase2 {
     this.scheme = scheme;
     this.setOrigin(options.origin);
     this.setTarget(options.target);
+    return this.getOrigin()
+      .then(() => this);
   }
   setTarget(targetValue) {
     this.schemePunkSourceTarget = targetValue;
   }
   getSchemePunkSourceTarget() {
-    return this.schemePunkSourceTarget;
+    return Promise.resolve(this.schemePunkSourceTarget);
   }
   getOrigin() {
-    return this.retrievedOrigin;
+    return Promise.resolve(this.retrievedOrigin);
+  }
+  getCallPath() { // eslint-disable-line class-methods-use-this
+    return __dirname;
+  }
+  getSource() {
+    return Promise.all([this.getOrigin(), this.getSchemePunkSourceTarget()])
+      .then(([origin, target]) => origin[target]);
   }
 }
 
@@ -77,57 +73,57 @@ describe('jsonTemplateFileSource', () => {
     const source = new (JsonTemplateFileSource(sourceBase)); // eslint-disable-line new-parens
     mocks.push(jest.spyOn(sourceBase.prototype, 'setOrigin'));
     options = {
-      origin: '../../__tests__/__helpers__/schemes/sourceSchema.json',
+      origin: '../../__helpers__/schemes/sourceSchema.json',
       target: null
     };
-    source.init(options, scheme, holdOvers);
-    expect(sourceBase.prototype.setOrigin).toBeCalledWith(schema);
+    return source.init(options, scheme, holdOvers)
+      .then(() => source.getOrigin())
+      .then(schemer => expect(schemer).toMatchSnapshot());
   });
 
   test('Get Source.', () => {
     expect.assertions(1);
     const source = new (JsonTemplateFileSource(sourceBase)); // eslint-disable-line new-parens
     options = {
-      origin: '../../__tests__/__helpers__/schemes/sourceSchema.json',
+      origin: '../../__helpers__/schemes/sourceSchema.json',
       target: null
     };
-    source.init(options, scheme, holdOvers);
 
-    expect(source.getSource()).toEqual({
-      title: {
-        type: 'string',
-        description: 'A title.'
-      },
-      description: {
-        type: 'string',
-        description: 'A description for this resource.'
-      },
-      numberProperty: {
+    return source.init(options, scheme, holdOvers)
+      .then(() => source.getSource())
+      .then(sourceStuff => expect(sourceStuff).toEqual({
+        title: {
+          type: 'string',
+          description: 'A title.'
+        },
+        description: {
+          type: 'string',
+          description: 'A description for this resource.'
+        },
+        numberProperty: {
+          description: 'A number property on this entity.',
+          type: 'integer',
+          minimum: 0,
+          exclusiveMinimum: true
+        }
+      }));
+  });
+
+  test('Super call json origin.', () => {
+    expect.assertions(1);
+    options = {
+      origin: '../../__helpers__/schemes/sourceSchema.json',
+      target: 'numberProperty'
+    };
+    const source = new (JsonTemplateFileSource(sourceBase2)); // eslint-disable-line new-parens
+    return source.init(options, scheme, holdOvers)
+      .then(() => source.getSource())
+      .then(sourceStuff => expect(sourceStuff).toEqual({
         description: 'A number property on this entity.',
         type: 'integer',
         minimum: 0,
         exclusiveMinimum: true
-      }
-    });
-  });
-
-  test('Super call json origin.', () => {
-    expect.assertions(3);
-    options = {
-      origin: '../../__tests__/__helpers__/schemes/sourceSchema.json',
-      target: 'numberProperty'
-    };
-    const source = new (JsonTemplateFileSource(sourceBase2)); // eslint-disable-line new-parens
-    source.init(options, scheme, holdOvers);
-
-    expect(source.getSource()).toEqual({
-      description: 'A number property on this entity.',
-      type: 'integer',
-      minimum: 0,
-      exclusiveMinimum: true
-    });
-    expect(source.getTraceIndex(0)).toEqual(0);
-    expect(source.getTraceIndex(2)).toEqual(1);
+      }));
   });
 
   test('Super implementer', () => {
@@ -139,7 +135,7 @@ describe('jsonTemplateFileSource', () => {
       }
     };
     options = {
-      origin: '../../__tests__/__helpers__/schemes/sourceSchema.json',
+      origin: '../../__helpers__/schemes/sourceSchema.json',
       target: null
     };
     const source = new Two();
