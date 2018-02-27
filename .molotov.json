@@ -44,6 +44,10 @@
           "typeAdapter",
           "filterAttributes"
         ],
+        "filterAttributeMulti": [
+          "typeAdapter",
+          "filterAttributes"
+        ],
         "objectKeysTransform": [
           "objectKeysTransform"
         ],
