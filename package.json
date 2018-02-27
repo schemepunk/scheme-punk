@@ -91,7 +91,7 @@
       "<rootDir>/__tests__/.*/[__mocks__|files]/"
     ]
   },
-  "version": "2.3.0",
+  "version": "4.0.0",
   "readme": "ERROR: No README data found!",
   "_id": "@schemepunk/scheme-punk@0.0.0-development"
 }
