@@ -21,15 +21,15 @@ describe('Scheme Punk Transform Super', () => {
     };
     schemePunkTransform = new SchemePunkTransform();
     schemePunkTransform.init(options);
-    const holdOvers = {
+    const holdOvers = Promise.resolve({
       src: {
         testive: 'test'
       },
       otherProp: 'otherValue'
-    };
-    const holdOvers2 = {
+    });
+    const holdOvers2 = Promise.resolve({
       otherProp: 'otherValue'
-    };
+    });
 
     schemePunkTransform2 = new SchemePunkTransform();
     schemePunkTransform2.init(options, holdOvers, './');

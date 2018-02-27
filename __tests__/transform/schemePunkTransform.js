@@ -24,8 +24,7 @@ describe('Scheme Punk Transform', () => {
       .then((SchemeTransform) => {
         testClass = SchemeTransform;
         const schemeTransform = new SchemeTransform();
-        schemeTransform.init(options.transform, {});
-        return schemeTransform;
+        return schemeTransform.init(options.transform, Promise.resolve({}));
       })
       .then(schemeTransform => expect(schemeTransform)
         .toBeInstanceOf(testClass));
@@ -38,8 +37,7 @@ describe('Scheme Punk Transform', () => {
       .then((SchemeTransform) => {
         testClass = SchemeTransform;
         const schemeTransform = new SchemeTransform();
-        schemeTransform.init(options.transform, {});
-        return schemeTransform;
+        return schemeTransform.init(options.transform, Promise.resolve({}));
       })
       .then(schemeTransform => expect(schemeTransform)
         .toBeInstanceOf(testClass));
@@ -50,10 +48,10 @@ describe('Scheme Punk Transform', () => {
     return SchemePunkTransformBase(options.transform.plugin)
       .then((TransformSource) => {
         const transformSource = new TransformSource();
-        transformSource.init(options.transform, {});
-        return Promise.all([transformSource, transformSource.transform({
-          dumber: 'dumb'
-        })]);
+        return transformSource.init(options.transform, Promise.resolve({}))
+          .then(transform => Promise.all([transform, transform.transform({
+            dumber: 'dumb'
+          })]));
       })
       .then(([transformer]) => transformer.getTransformedValue())
       .then(transformedValue => expect(transformedValue).toEqual(['dumber']));
