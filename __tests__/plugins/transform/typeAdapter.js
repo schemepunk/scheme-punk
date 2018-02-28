@@ -8,7 +8,7 @@ class BaseXform {
   }
 
   transform(value) { // eslint-disable-line class-methods-use-this
-    return value;
+    return Promise.resolve(value);
   }
 }
 
@@ -16,17 +16,21 @@ const prePend = require('../../../lib/plugins/transform/prependValues');
 
 const Implemented = class implementer extends TypeAdapter(prePend(BaseXform)) {
   transform(value) {
-    this.value = super.transform(value);
-    // Return for the purposes of this unit test.
-    return this.value;
+    return super.transform(value)
+      .then((xformedValue) => {
+        this.value = xformedValue;
+        return this.value;
+      });
   }
 };
 
 const Implemented2 = class implementer extends TypeAdapter(BaseXform) {
   transform(value) {
-    this.value = super.transform(value);
-    // Return for the purposes of this unit test.
-    return this.value;
+    return super.transform(value)
+      .then((xformedValue) => {
+        this.value = xformedValue;
+        return this.value;
+      });
   }
 };
 
@@ -63,32 +67,41 @@ describe('Append Values test', () => {
       sourcePrepend: 'thething',
       adapterPrevent: ['number']
     };
-    expect(typeAdapter.transform(testString)).toBe('thethingtestString');
+    return typeAdapter.transform(testString)
+      .then((val) => {
+        expect(val).toBe('thethingtestString');
+      });
   });
   test('test array.', () => {
     typeAdapter.options = {
       sourcePrepend: 'thething',
       adapterPrevent: []
     };
-    expect(typeAdapter.transform(testArray)).toEqual([
-      'thethingtest1',
-      'thethingtest2',
-      'thethingtest3'
-    ]);
+    return typeAdapter.transform(testArray)
+      .then((val) => {
+        expect(val).toEqual([
+          'thethingtest1',
+          'thethingtest2',
+          'thethingtest3'
+        ]);
+      });
   });
   test('test object.', () => {
     typeAdapter.options = {
       sourcePrepend: 'thething',
       adapterPrevent: ['number']
     };
-    expect(typeAdapter.transform(testObject)).toEqual({
-      thethingtest1: [
-        'test'
-      ],
-      thethingtest2: [
-        'boo'
-      ]
-    });
+    return typeAdapter.transform(testObject)
+      .then((val) => {
+        expect(val).toEqual({
+          thethingtest1: [
+            'test'
+          ],
+          thethingtest2: [
+            'boo'
+          ]
+        });
+      });
   });
   test('test object values.', () => {
     typeAdapter.options = {
@@ -96,10 +109,13 @@ describe('Append Values test', () => {
       adapterPrevent: ['number']
     };
     typeAdapter.options.typeAdapterObjectValues = true;
-    expect(typeAdapter.transform(testObject)).toEqual({
-      test1: 'thethingtest',
-      test2: 'thethingboo'
-    });
+    return typeAdapter.transform(testObject)
+      .then((val) => {
+        expect(val).toEqual({
+          test1: 'thethingtest',
+          test2: 'thethingboo'
+        });
+      });
   });
   test('test object array.', () => {
     typeAdapter.options = {
@@ -108,10 +124,13 @@ describe('Append Values test', () => {
     };
     typeAdapter.options.typeAdapterObjectValues = false;
     typeAdapter.options.typeAdapterObjectValuesArray = true;
-    expect(typeAdapter.transform(testObject)).toEqual([
-      'thethingtest',
-      'thethingboo'
-    ]);
+    return typeAdapter.transform(testObject)
+      .then((val) => {
+        expect(val).toEqual([
+          'thethingtest',
+          'thethingboo'
+        ]);
+      });
   });
   test('Test boolean throws', () => {
     expect(() => typeAdapter.transform(true)).toThrow();
@@ -120,14 +139,20 @@ describe('Append Values test', () => {
     typeAdapter.options = {
       adapterPrevent: 'number'
     };
-    expect(typeAdapter.transform(testNumber)).toEqual(1);
+    return typeAdapter.transform(testNumber)
+      .then((val) => {
+        expect(val).toEqual(1);
+      });
   });
   test('test Number.', () => {
     typeAdapter.options = {
       sourcePrepend: 'thething',
       adapterPrevent: []
     };
-    expect(typeAdapter.transform(testNumber)).toEqual('thething1');
+    return typeAdapter.transform(testNumber)
+      .then((val) => {
+        expect(val).toEqual('thething1');
+      });
   });
   test('test Null.', () => {
     typeAdapter.options = {
@@ -146,9 +171,11 @@ describe('Append Values test', () => {
       item1: 'thing',
       item2: {}
     };
-    typeAdapter2.transform(testObjecta);
-    expect(typeAdapter2.value).toEqual({
-      item1: 'thing'
-    });
+    return typeAdapter2.transform(testObjecta)
+      .then(() => {
+        expect(typeAdapter2.value).toEqual({
+          item1: 'thing'
+        });
+      });
   });
 });
