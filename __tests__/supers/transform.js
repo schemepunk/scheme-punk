@@ -71,8 +71,10 @@ describe('Scheme Punk Transform Super', () => {
 
   test('transform', () => {
     expect.assertions(1);
-    return expect(schemePunkTransform.transform('transformTest'))
-      .toEqual('transformTest');
+    return schemePunkTransform.transform('transformTest')
+      .then((val) => {
+        expect(val).toEqual('transformTest');
+      });
   });
 
   test('call ', () => {
