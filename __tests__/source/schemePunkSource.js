@@ -3,6 +3,7 @@
 const SchemePunkSourceBase = require('../../lib/source/schemePunkSource');
 const options = require('./../__helpers__/schemePunkTestOptions');
 const fs = require('fs-extra');
+const Molotov = require('../../lib/molotov');
 
 const schemePunkScheme = fs.readJSONSync('./__tests__/__mocks__/schemePunkMockScheme.json');
 const schemePart = fs.readJSONSync('./__tests__/__mocks__/sourceSchema.json');
@@ -174,5 +175,13 @@ describe('Scheme Punk Source', () => {
       .then(res => expect(res).toEqual({
         test: 'test'
       }));
+  });
+});
+
+describe('Molotov coverage', () => {
+  test('Class Construction', () => {
+    expect.assertions(1);
+    const molotov = Molotov();
+    expect(molotov.getNameSpace()).toBe('schemePunk');
   });
 });

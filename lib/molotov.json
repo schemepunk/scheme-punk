@@ -1,10 +1,9 @@
 {
-  "molotovPath": "lib/molotov.js",
   "schemePunk": {
-    "supersNameSpacePaths": {
-      "transform": "./lib/supers/transform'",
-      "source": "./lib/supers/source",
-      "destination": "./lib/supers/destination"
+    "supersNameSpace": {
+      "transform": "transform",
+      "source": "source",
+      "destination": "destination"
     },
     "molotovPlugins": {
       "destination": {
