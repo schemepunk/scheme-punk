@@ -75,9 +75,9 @@ describe('Scheme Punk Destination Super', () => {
   // set/get value
   test('getSetHoldovers', () => {
     expect.assertions(1);
-    schemePunkDestination.setHoldOvers('test');
-    return expect(schemePunkDestination.getHoldOvers())
-      .toEqual('test');
+    schemePunkDestination.setHoldOvers(Promise.resolve('test'));
+    return schemePunkDestination.getHoldOvers()
+      .then(value => expect(value).toEqual('test'));
   });
 
   // validateDestinationTarget
@@ -123,13 +123,13 @@ describe('Scheme Punk Destination Super', () => {
 
   test('getHoldOversWithValues', () => {
     expect.assertions(1);
-    schemePunkDestination.setHoldOvers(holdOvers);
-    return expect(schemePunkDestination.getHoldOvers())
-      .toEqual({
+    schemePunkDestination.setHoldOvers(Promise.resolve(holdOvers));
+    return schemePunkDestination.getHoldOvers()
+      .then(value => expect(value).toEqual({
         otherProp: 'otherValue',
         src: {
           testive: 'test'
         }
-      });
+      }));
   });
 });
