@@ -1,0 +1,119 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Scheme Runner Basic init and scheme running 1`] = `
+Object {
+  "activeScheme": Object {
+    "test": "testValue",
+  },
+  "newScheme": Object {
+    "test": "testValue",
+  },
+  "originalScheme": Object {
+    "test": "testValue",
+  },
+}
+`;
+
+exports[`Scheme Runner Basic init and scheme running 2`] = `
+Object {
+  "arbitraryNameForThisScheme": Array [
+    Array [
+      Object {
+        "destination": Object {
+          "target": "test",
+        },
+        "source": Object {
+          "plugin": "originalSchemeSource",
+          "target": "test",
+        },
+        "transform": Object {
+          "plugin": "prependValuesAdapter",
+          "sourcePrepend": "+",
+        },
+      },
+    ],
+    Array [
+      Object {
+        "destination": Object {
+          "plugin": "concatIntoDestination",
+          "target": "test",
+        },
+        "source": Object {
+          "plugin": "originalSchemeSource",
+          "target": "test",
+        },
+        "transform": Object {
+          "plugin": "appendValuesAdapter",
+          "sourceAppend": "-",
+        },
+      },
+    ],
+  ],
+}
+`;
+
+exports[`Scheme Runner Basic init and scheme running 3`] = `
+Object {
+  "cocktailClasses": Array [],
+  "overrides": Object {},
+}
+`;
+
+exports[`Scheme Runner Coverage Basic init and scheme running 1`] = `
+Object {
+  "activeScheme": Object {
+    "test": "testValue",
+  },
+  "newScheme": Object {
+    "test": "testValue",
+  },
+  "originalScheme": Object {
+    "test": "testValue",
+  },
+}
+`;
+
+exports[`Scheme Runner Coverage Basic init and scheme running 2`] = `
+Object {
+  "arbitraryNameForThisScheme": Array [
+    Array [
+      Object {
+        "destination": Object {
+          "target": "test",
+        },
+        "source": Object {
+          "plugin": "originalSchemeSource",
+          "target": "test",
+        },
+        "transform": Object {
+          "plugin": "prependValuesAdapter",
+          "sourcePrepend": "+",
+        },
+      },
+    ],
+    Array [
+      Object {
+        "destination": Object {
+          "plugin": "concatIntoDestination",
+          "target": "test",
+        },
+        "source": Object {
+          "plugin": "originalSchemeSource",
+          "target": "test",
+        },
+        "transform": Object {
+          "plugin": "appendValuesAdapter",
+          "sourceAppend": "-",
+        },
+      },
+    ],
+  ],
+}
+`;
+
+exports[`Scheme Runner Coverage Basic init and scheme running 3`] = `
+Object {
+  "cocktailClasses": Array [],
+  "overrides": Object {},
+}
+`;
