@@ -50,16 +50,10 @@
     }
   },
   "dependencies": {
-    "ajv": "^6.1.1",
-    "callsite": "^1.0.0",
-    "config": "^1.24.0",
     "fs-extra": "^5.0.0",
     "lodash": "^4.16.4",
     "molotov": "^2.0.1",
-    "mustache": "^2.3.0",
-    "require-directory": "^2.1.1",
-    "setup": "0.0.3",
-    "try-require": "^1.2.1"
+    "mustache": "^2.3.0"
   },
   "engines": {
     "node": ">=6"
