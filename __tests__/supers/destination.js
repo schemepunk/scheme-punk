@@ -51,6 +51,11 @@ describe('Scheme Punk Destination Super', () => {
       .toEqual('test');
   });
 
+  test('getTemplateObject', () => {
+    expect.assertions(1);
+    return expect(schemePunkDestination2.getTemplateObject()).toEqual(false);
+  });
+
   test('getSetDestination', () => {
     expect.assertions(1);
     schemePunkDestination.setDestination();

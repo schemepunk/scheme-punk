@@ -105,6 +105,11 @@ describe('Scheme Punk Source Super', () => {
         }));
   });
 
+  test('getTemplateObject', () => {
+    expect.assertions(1);
+    return expect(schemePunkSource2.getTemplateObject()).toEqual(false);
+  });
+
   test('setHoldOversWithoutValuesNoProp', () => {
     expect.assertions(1);
     return schemePunkSource.getHoldOvers()
