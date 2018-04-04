@@ -239,3 +239,111 @@ describe('No File.', () => {
       .catch(err => expect(err.message).toContain('ENOENT:'));
   });
 });
+
+describe('Token Template Object', () => {
+  beforeEach(() => {
+    mocks.forEach(mock => mock.mockRestore());
+    mocks = [];
+  });
+  test('Use a template object with an object', () => {
+    const tokenTemplateValues = new (TokenTemplateValues(BaseXform))();
+    // Set options for a template.
+    tokenTemplateValues.templateObject = {
+      title: '{{apiName}}',
+      destinationTemplate: "{{=<% %>=}}{<%={{ }}=%>swagger: '2.0', info: {{=<% %>=}}{<%={{ }}=%> title: '{{> title}}' {{=<% %>=}}}<%={{ }}=%> {{=<% %>=}}}<%={{ }}=%>"
+    };
+    tokenTemplateValues.options = {
+      origin: 'notther',
+      named: false,
+      json: false,
+      unescape: false
+    };
+
+    // Test case value.
+    value = {apiName: 'A test title'};
+    return tokenTemplateValues.transform(value)
+      .then(tValue => expect(tValue).toEqual("{swagger: '2.0', info: { title: 'A test title' } }"));
+  });
+  test('Use a template object with an object', () => {
+    const tokenTemplateValues = new (TokenTemplateValues(BaseXform))();
+    // Set options for a template.
+    tokenTemplateValues.templateObject = {
+      title: '{{apiName}}',
+      destinationTemplate: '{{=<% %>=}}{<%={{ }}=%> "swagger": "2.0", "info": {{=<% %>=}}{<%={{ }}=%> "title": "{{> title}}" {{=<% %>=}}}<%={{ }}=%> {{=<% %>=}}}<%={{ }}=%>'
+    };
+    tokenTemplateValues.options = {
+      origin: 'notther',
+      named: false,
+      json: true,
+      unescape: false
+    };
+
+    // Test case value.
+    value = {apiName: 'A test title'};
+    return tokenTemplateValues.transform(value)
+      .then(tValue => expect(tValue).toEqual({info: {title: 'A test title'}, swagger: '2.0'}));
+  });
+  test('template target partial', () => {
+    const tokenTemplateValues = new (TokenTemplateValues(BaseXform))();
+    // Set options for a template.
+    tokenTemplateValues.templateObject = {
+      title: '{{apiName}}',
+      destinationTemplate: '{{=<% %>=}}{<%={{ }}=%> "swagger": "2.0", "info": {{=<% %>=}}{<%={{ }}=%> "title": "{{> title}}" {{=<% %>=}}}<%={{ }}=%> {{=<% %>=}}}<%={{ }}=%>'
+    };
+    tokenTemplateValues.options = {
+      origin: 'notther',
+      named: false,
+      json: false,
+      unescape: false,
+      template: {
+        targetPartial: 'title'
+      }
+    };
+
+    // Test case value.
+    value = {apiName: 'A test title'};
+    return tokenTemplateValues.transform(value)
+      .then(tValue => expect(tValue).toEqual('A test title'));
+  });
+  test('Filter partials', () => {
+    const tokenTemplateValues = new (TokenTemplateValues(BaseXform))();
+    // Set options for a template.
+    tokenTemplateValues.templateObject = {
+      title: '{{apiName}}',
+      altTitle: '{{testName}}',
+      destinationTemplate: '{{=<% %>=}}{<%={{ }}=%> "swagger": "2.0", "info": {{=<% %>=}}{<%={{ }}=%> "title": "{{> title}}{{> altTitle}}" {{=<% %>=}}}<%={{ }}=%> {{=<% %>=}}}<%={{ }}=%>'
+    };
+    tokenTemplateValues.options = {
+      origin: 'notther',
+      named: false,
+      json: false,
+      unescape: false,
+      template: {
+        filterPartials: ['altTitle']
+      }
+    };
+
+    // Test case value.
+    value = {apiName: 'A test title', testName: 'a totally different test title'};
+    return tokenTemplateValues.transform(value)
+      .then(tValue => expect(tValue).toEqual('{ "swagger": "2.0", "info": { "title": "a totally different test title" } }'));
+  });
+  test('No destinationTeamplate in the object should be a problem.', () => {
+    expect.assertions(1);
+    const tokenTemplateValues = new (TokenTemplateValues(BaseXform))();
+    // Set options for a template.
+    tokenTemplateValues.templateObject = {
+      title: '{{apiName}}'
+    };
+    tokenTemplateValues.options = {
+      origin: 'notther',
+      named: false,
+      json: true,
+      unescape: false
+    };
+
+    // Test case value.
+    value = 'testBoogie';
+    expect(() => tokenTemplateValues.transform(value)).toThrowError('Using templated object with no destination template value.');
+  });
+});
