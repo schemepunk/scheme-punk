@@ -30,6 +30,7 @@ beforeEach(() => {
       }
     },
     callPath: __dirname,
+    templateObject: {test: 'test'},
   };
 });
 
@@ -39,9 +40,10 @@ afterAll(() => {
 
 describe('Scheme Runner', () => {
   test('Basic init and scheme running', () => {
-    expect.assertions(3);
+    expect.assertions(4);
     const schemePunk = new SchemePunk(scheme);
     expect(schemePunk).toBeInstanceOf(SchemePunk);
+    expect(schemePunk.templateObject).toEqual({test: 'test'});
     const dataObject = {originalScheme: data, activeScheme: {differentAttribute: null}, newScheme: {differentAttribute: null}};
     expect(schemePunk.constructor.createScheme(dataObject)).toEqual({
       activeScheme: {
