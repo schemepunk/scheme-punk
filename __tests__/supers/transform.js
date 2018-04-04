@@ -83,6 +83,11 @@ describe('Scheme Punk Transform Super', () => {
       .toEqual('./');
   });
 
+  test('getTemplateObject', () => {
+    expect.assertions(1);
+    return expect(schemePunkTransform2.getTemplateObject()).toEqual(false);
+  });
+
   test('get transform', () => {
     expect.assertions(1);
     schemePunkTransform.value = 'transformTest';
