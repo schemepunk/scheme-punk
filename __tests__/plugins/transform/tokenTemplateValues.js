@@ -13,7 +13,7 @@ class BaseXform {
   }
 
   getHoldOvers() {
-    return this.holdOvers;
+    return Promise.resolve(this.holdOvers);
   }
   getCallPath() { // eslint-disable-line class-methods-use-this
     return __dirname;
@@ -347,6 +347,7 @@ describe('Token Template Object', () => {
 
     // Test case value.
     value = 'testBoogie';
-    expect(() => tokenTemplateValues.transform(value)).toThrowError('Using templated object with no destination template value.');
+    return tokenTemplateValues.transform(value)
+      .catch(e => expect(e.message).toEqual('Using templated object with no destination template value.'));
   });
 });
