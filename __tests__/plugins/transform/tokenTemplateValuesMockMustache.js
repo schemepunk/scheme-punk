@@ -17,7 +17,7 @@ class BaseXform {
   }
 
   getHoldOvers() {
-    return this.holdOvers;
+    return Promise.resolve(this.holdOvers);
   }
   getCallPath() { // eslint-disable-line class-methods-use-this
     return __dirname;

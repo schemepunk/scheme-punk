@@ -10,6 +10,10 @@ class BaseXform {
   transform(value) { // eslint-disable-line class-methods-use-this
     return value;
   }
+
+  getHoldOvers() {
+    return Promise.resolve(this.holdOvers);
+  }
 }
 const appendValues = new (AppendValues(BaseXform))();
 
