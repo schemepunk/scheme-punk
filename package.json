@@ -50,7 +50,7 @@
     }
   },
   "dependencies": {
-    "fs-extra": "^5.0.0",
+    "fs-extra": "^6.0.0",
     "lodash": "^4.16.4",
     "molotov": "^2.0.1",
     "mustache": "^2.3.0"
