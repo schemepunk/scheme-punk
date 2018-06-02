@@ -38,7 +38,7 @@
     "husky": "^0.14.3",
     "jest": "^22.3.0",
     "jest-environment-node-debug": "^2.0.0",
-    "npm-publish-git-tag": "^1.1.35",
+    "npm-publish-git-tag": "^2.0.0",
     "npm-run-all": "^4.0.1",
     "semantic-release": "^15.1.2",
     "semantic-release-github": "^3.1.2"
