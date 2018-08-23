@@ -8,6 +8,7 @@
     "prepush": "npm test",
     "coveralls": "cat ./__coverage__/lcov.info | coveralls",
     "test": "jest --coverage",
+    "debug-test": "node --inspect-brk node_modules/.bin/jest --runInBand",
     "npmpublish": "npm-publish-git-tag --access public"
   },
   "repository": {

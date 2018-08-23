@@ -57,6 +57,22 @@ const testObject = {
   ]
 };
 
+const testObjectMerge = {
+  test1: {
+    foo: 'bar',
+    ary: [
+      1
+    ]
+  },
+  test2: {
+    bar: 'baz',
+    ary: [
+      1
+    ]
+  },
+  test3: {}
+};
+
 const testNull = null;
 
 const testNumber = 1;
@@ -114,6 +130,43 @@ describe('Append Values test', () => {
         expect(val).toEqual({
           test1: 'thethingtest',
           test2: 'thethingboo'
+        });
+      });
+  });
+  test('test object merge.', () => {
+    typeAdapter2.options = {
+      typeAdapterObjectValuesMerge: true,
+      typeAdapter: {
+        includeEmpty: false
+      }
+    };
+    typeAdapter2.options.typeAdapterObjectValuesMerge = true;
+    return typeAdapter2.transform(testObjectMerge)
+      .then((val) => {
+        expect(val).toEqual({
+          ary: [1],
+          foo: 'bar',
+          bar: 'baz',
+        });
+
+        typeAdapter2.options.typeAdapter.concatArrays = true;
+        return typeAdapter2.transform(testObjectMerge);
+      })
+      .then((val) => {
+        expect(val).toEqual({
+          ary: [1, 1],
+          foo: 'bar',
+          bar: 'baz',
+        });
+
+        typeAdapter2.options.typeAdapter.uniqArrays = true;
+        return typeAdapter2.transform(testObjectMerge);
+      })
+      .then((val) => {
+        expect(val).toEqual({
+          ary: [1],
+          foo: 'bar',
+          bar: 'baz',
         });
       });
   });
