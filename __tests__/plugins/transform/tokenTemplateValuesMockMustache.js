@@ -19,9 +19,11 @@ class BaseXform {
   getHoldOvers() {
     return Promise.resolve(this.holdOvers);
   }
+
   getCallPath() { // eslint-disable-line class-methods-use-this
     return __dirname;
   }
+
   getTemplateObject() {
     return this.templateObject;
   }

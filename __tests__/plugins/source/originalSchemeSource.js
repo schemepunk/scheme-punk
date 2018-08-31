@@ -5,9 +5,13 @@ class sourceBase {
     this.scheme = scheme;
     this.setOrigin(options.origin);
   }
+
   getSchemePunkSourceTarget() {} // eslint-disable-line class-methods-use-this
+
   setOrigin() {} // eslint-disable-line class-methods-use-this
+
   getOrigin() {} // eslint-disable-line class-methods-use-this
+
   getHoldOvers() {} // eslint-disable-line class-methods-use-this
 }
 
@@ -15,10 +19,13 @@ class sourceBase2 {
   init(options, scheme) {
     this.scheme = scheme;
   }
+
   getSchemePunkSourceTarget() {} // eslint-disable-line class-methods-use-this
+
   getOrigin() {
     return this.retrievedOrigin;
   }
+
   getHoldOvers() {} // eslint-disable-line class-methods-use-this
 }
 

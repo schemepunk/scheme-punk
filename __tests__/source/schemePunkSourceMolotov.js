@@ -4,6 +4,7 @@ jest.mock('../../lib/molotov', () => () => (new (class {
   mixSupers() {
     return this;
   }
+
   getMolotov() { // eslint-disable-line class-methods-use-this
     return {
       resolve() {
