@@ -7,16 +7,21 @@ class sourceBase {
     return this.getOrigin()
       .then(() => this);
   }
+
   setOrigin() {} // eslint-disable-line class-methods-use-this
+
   setTarget(targetValue) {
     this.schemePunkSourceTarget = targetValue;
   }
+
   getSchemePunkSourceTarget() {
     return Promise.resolve(this.schemePunkSourceTarget);
   }
+
   getOrigin() {
     return Promise.resolve(this.retrievedOrigin);
   }
+
   getCallPath() { // eslint-disable-line class-methods-use-this
     return __dirname;
   }
@@ -30,18 +35,23 @@ class sourceBase2 {
     return this.getOrigin()
       .then(() => this);
   }
+
   setTarget(targetValue) {
     this.schemePunkSourceTarget = targetValue;
   }
+
   getSchemePunkSourceTarget() {
     return Promise.resolve(this.schemePunkSourceTarget);
   }
+
   getOrigin() {
     return Promise.resolve(this.retrievedOrigin);
   }
+
   getCallPath() { // eslint-disable-line class-methods-use-this
     return __dirname;
   }
+
   getSource() {
     return Promise.all([this.getOrigin(), this.getSchemePunkSourceTarget()])
       .then(([origin, target]) => origin[target]);
