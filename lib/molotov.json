@@ -47,6 +47,14 @@
           "typeAdapter",
           "filterAttributes"
         ],
+        "filterObject": [
+          "typeAdapter",
+          "filterObjects"
+        ],
+        "filterObjectMulti": [
+          "typeAdapter",
+          "filterObjects"
+        ],
         "objectKeysTransform": [
           "objectKeysTransform"
         ],
