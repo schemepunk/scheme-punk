@@ -33,16 +33,16 @@
   "devDependencies": {
     "coveralls": "^3.0.0",
     "eslint": "^5.0.0",
-    "eslint-config-airbnb-base": "^12.0.2",
+    "eslint-config-airbnb-base": "^13.1.0",
     "eslint-find-rules": "^3.1.1",
     "eslint-plugin-import": "^2.7.0",
     "husky": "^0.14.3",
-    "jest": "^22.3.0",
+    "jest": "^23.5.0",
     "jest-environment-node-debug": "^2.0.0",
-    "npm-publish-git-tag": "^1.1.35",
+    "npm-publish-git-tag": "^2.1.16",
     "npm-run-all": "^4.0.1",
     "semantic-release": "^15.1.2",
-    "semantic-release-github": "^3.1.2"
+    "semantic-release-github": "^4.0.17"
   },
   "config": {
     "ghooks": {
@@ -51,7 +51,7 @@
     }
   },
   "dependencies": {
-    "fs-extra": "^5.0.0",
+    "fs-extra": "^7.0.0",
     "lodash": "^4.16.4",
     "molotov": "^2.0.1",
     "mustache": "^2.3.0"
