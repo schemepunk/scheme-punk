@@ -1,8 +1,10 @@
 'use strict';
 
+const _ = require('lodash');
+
 const SchemeRunner = require('../../lib/SchemeRunner');
 const SchemePunkErrors = require('../../lib/SchemePunkErrors');
-const _ = require('lodash');
+
 
 let tmpMocks = [];
 let data;

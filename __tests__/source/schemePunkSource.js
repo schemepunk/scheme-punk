@@ -1,8 +1,10 @@
 'use strict';
 
+const fs = require('fs-extra');
+
 const SchemePunkSourceBase = require('../../lib/source/schemePunkSource');
 const options = require('./../__helpers__/schemePunkTestOptions');
-const fs = require('fs-extra');
+
 const Molotov = require('../../lib/molotov');
 
 const schemePunkScheme = fs.readJSONSync('./__tests__/__mocks__/schemePunkMockScheme.json');
@@ -15,9 +17,13 @@ class sourceBase {
     super.init(options, scheme, holdOvers);
     this.setTarget();
   }
+
   getSchemePunkSourceTarget() {} // eslint-disable-line class-methods-use-this
+
   setOrigin() {} // eslint-disable-line class-methods-use-this
+
   getOrigin() {} // eslint-disable-line class-methods-use-this
+
   getHoldOvers() {} // eslint-disable-line class-methods-use-this
 }
 
