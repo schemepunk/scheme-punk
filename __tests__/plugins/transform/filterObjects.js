@@ -45,6 +45,7 @@ describe('Delimit Values tests', () => {
   });
 
   test('Filter out.', () => {
+    expect.assertions(1);
     filterObjectValues.options.filterBias = 'out';
     expect(filterObjectValues.transform(value)).toEqual({
       attribute3: {},
@@ -54,6 +55,7 @@ describe('Delimit Values tests', () => {
     });
   });
   test('Filter in.', () => {
+    expect.assertions(1);
     filterObjectValues.options.filterBias = 'in';
     expect(filterObjectValues.transform(value)).toEqual({
       attribute1: {

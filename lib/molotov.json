@@ -48,7 +48,6 @@
           "filterAttributes"
         ],
         "filterObject": [
-          "typeAdapter",
           "filterObjects"
         ],
         "filterObjectMulti": [
