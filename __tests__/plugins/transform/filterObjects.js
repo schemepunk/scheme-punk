@@ -68,10 +68,4 @@ describe('Delimit Values tests', () => {
       },
     });
   });
-  test('Bypasses non-objects', () => {
-    expect.assertions(1);
-    value.test = true;
-    filterObjectValues.options.filterBias = 'in';
-    expect(filterObjectValues.transform(true)).toEqual(true);
-  });
 });
