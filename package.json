@@ -42,7 +42,7 @@
     "npm-publish-git-tag": "^2.1.16",
     "npm-run-all": "^4.0.1",
     "semantic-release": "^15.1.2",
-    "semantic-release-github": "^4.0.17"
+    "semantic-release-github": "^4.1.0"
   },
   "config": {
     "ghooks": {
