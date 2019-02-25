@@ -54,7 +54,7 @@
     "fs-extra": "^7.0.0",
     "lodash": "^4.16.4",
     "molotov": "^2.0.1",
-    "mustache": "^2.3.0"
+    "mustache": "^3.0.0"
   },
   "engines": {
     "node": ">=6"
