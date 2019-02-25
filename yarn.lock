@@ -32,10 +32,9 @@
     esutils "^2.0.2"
     js-tokens "^4.0.0"
 
-"@hutson/parse-repository-url@^3.0.0":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@hutson/parse-repository-url/-/parse-repository-url-3.0.1.tgz#b9a7daec81cf1fa9cf5dc01576536d50cb9db899"
-  integrity sha512-gNd42W/1NDEp0o+jM3WNf9LIeQOoiPmrPwgNtHiFm/Tk52883qFrR07WCp6ezyfPvnHkz57Kwe94MbyE6J18Vg==
+"@hbetts/parse-repository-url@^2.1.1":
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/@hbetts/parse-repository-url/-/parse-repository-url-2.1.1.tgz#5cb1e1c66696ce034f15e48aadb1d8e2cac5dfe3"
 
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
@@ -2080,13 +2079,12 @@ get-pkg-repo@^1.0.0:
     through2 "^2.0.0"
 
 get-pkg-repo@^4.0.2:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/get-pkg-repo/-/get-pkg-repo-4.1.0.tgz#bd2b109e297af8ec541ba271607aab439f9a8610"
-  integrity sha512-BHJovsEz9igoxU9Idfa9XjKr0OuAfg6/wInYegP0/M3efsdVtKo1DipPebwnTZXtL9gzaPLvJv74J/U68yiiMg==
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/get-pkg-repo/-/get-pkg-repo-4.0.2.tgz#6cf2d71b5655b9c3a97c0057f4f04466f48971ab"
   dependencies:
-    "@hutson/parse-repository-url" "^3.0.0"
+    "@hbetts/parse-repository-url" "^2.1.1"
     hosted-git-info "^2.1.4"
-    meow "^5.0.0"
+    meow "^3.3.0"
     through2 "^2.0.0"
 
 get-stdin@^4.0.1:
@@ -3937,16 +3935,16 @@ normalize-url@2.0.1, normalize-url@^2.0.1:
     query-string "^5.0.1"
     sort-keys "^2.0.0"
 
-npm-publish-git-tag@^2.1.16:
-  version "2.1.16"
-  resolved "https://registry.yarnpkg.com/npm-publish-git-tag/-/npm-publish-git-tag-2.1.16.tgz#028d14c1aabae1fa0a44f4c514b9cf553620bf92"
-  integrity sha512-rhKCmpVat9znobbfEvWrE5qnmYlKK6i1qxU2THasjPRegzA0AE6+kI/iQl1kMxwhe8z3LHX/HwGG2m/wLspGyQ==
+npm-publish-git-tag@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/npm-publish-git-tag/-/npm-publish-git-tag-3.0.0.tgz#9b34909091d8b3e92b9ecbe6d1b1d2e03fe4617b"
   dependencies:
     bluebird "^3.5.0"
     commander "^2.9.0"
     git-latest-semver-tag "^1.0.2"
     is-scoped "^1.0.0"
     read-pkg "^4.0.0"
+    semver "^5.6.0"
     set-npm-auth-token-for-ci "^2.0.0"
     shelljs "^0.8.0"
     write-pkg "^3.0.1"
@@ -4907,7 +4905,7 @@ semver@^5.3.0:
   version "5.4.1"
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.4.1.tgz#e059c09d8571f0540823733433505d3a2f00b18e"
 
-semver@^5.5.1:
+semver@^5.5.1, semver@^5.6.0:
   version "5.6.0"
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.6.0.tgz#7e74256fbaa49c75aa7c7a205cc22799cac80004"
   integrity sha512-RS9R6R35NYgQn++fkDWaOmqGoj4Ek9gGs+DPxNUZKuwE183xjJroKvyo1IzVFeXvUrvmALy6FWD5xrdJT25gMg==
