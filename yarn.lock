@@ -6433,10 +6433,10 @@ scoped-regex@^1.0.0:
   resolved "https://registry.yarnpkg.com/scoped-regex/-/scoped-regex-1.0.0.tgz#a346bb1acd4207ae70bd7c0c7ca9e566b6baddb8"
   integrity sha1-o0a7Gs1CB65wvXwMfKnlZra63bg=
 
-semantic-release-github@^4.0.17:
-  version "4.2.4"
-  resolved "https://registry.yarnpkg.com/semantic-release-github/-/semantic-release-github-4.2.4.tgz#b28cb2e6e8b2ea8bcc370fe5eaf6abaa2e6e3d89"
-  integrity sha512-SerGaEYm9Eyna3wRaBXywrF8ZEWsfiYupGPnXjIK/kYIFUo/RDpGpKZ+JCtlTgQtJpzvjjyTkIZpBAmufZn0RQ==
+semantic-release-github@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/semantic-release-github/-/semantic-release-github-5.0.0.tgz#71da025cac266d014d14bc01853bf7bb73011840"
+  integrity sha512-8l1/0ONV2rNLPfpK5G4JmZ5mlB8m9colBXNcScrk04uRg+9SYeQu5OGX7biJYAXjj0bFePUmEugl7uAPdcU2LQ==
   dependencies:
     bluebird "^3.3.4"
     commander "^2.9.0"
@@ -6454,7 +6454,6 @@ semantic-release-github@^4.0.17:
     lodash "^4.7.0"
     semver "^5.1.0"
     shelljs "^0.8.0"
-    shifted-semver-increment "^2.0.0"
     stream-array "^1.1.2"
     stream-to-array "^2.3.0"
     through2 "^3.0.0"
@@ -6586,14 +6585,6 @@ shellwords@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/shellwords/-/shellwords-0.1.1.tgz#d6b9181c1a48d397324c84871efbcfc73fc0654b"
   integrity sha512-vFwSUfQvqybiICwZY5+DAWIPLKsWO31Q91JSKl3UYv+K5c2QRPzn0qzec6QPu1Qc9eHYItiP3NdJqNVqetYAww==
-
-shifted-semver-increment@^2.0.0:
-  version "2.0.13"
-  resolved "https://registry.yarnpkg.com/shifted-semver-increment/-/shifted-semver-increment-2.0.13.tgz#967dff38a4d7ca61aee10ec4a9a3d68041150b5b"
-  integrity sha512-zSdliPFW16IULq5kcEJBvNMhYIgJ0KpiO7sm2hhQSSSOyHorio2QclUJipxmV+Bo+p+ng7es9gDKu2jwxvQTpw==
-  dependencies:
-    debug "^4.0.0"
-    semver "^5.4.1"
 
 signal-exit@^3.0.0, signal-exit@^3.0.2:
   version "3.0.2"
