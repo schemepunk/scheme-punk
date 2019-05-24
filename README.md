@@ -9,7 +9,7 @@
 
 ## What is it?
 
-Scheme Punk on NPM [https://www.npmjs.com/package/@schemepunk/scheme-punk](Scheme Punk)
+Scheme Punk on NPM [SchemePunk](https://www.npmjs.com/package/@schemepunk/scheme-punk)
 
 Scheme Punk is a promise based information/object transformation module that
 uses a mixin approach that favors composition for its read, write and
@@ -47,7 +47,7 @@ components:
 
 ```js
 // require SchemePunk
-const SchemePunk = require('scheme-punk');
+const SchemePunk = require('@schemepunk/scheme-punk');
 var obj = {
   test: 'this',
   nextTest: {
