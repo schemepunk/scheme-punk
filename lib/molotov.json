@@ -29,6 +29,12 @@
         ],
         "jsonTemplateFileSource": [
           "jsonTemplateFileSource"
+        ],
+        "contingentSource": [
+          "contigentSource"
+        ],
+        "sourceComplete": [
+          "sourceComplete"
         ]
       },
       "transform": {
