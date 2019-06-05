@@ -9,7 +9,7 @@ let schemePunkDestination3;
 let holdOvers;
 
 describe('Scheme Punk Destination Super', () => {
-  beforeEach(() => {
+  beforeEach(async () => {
     tmpMocks.forEach(mock => mock.mockRestore());
     tmpMocks = [];
     jest.resetAllMocks();
@@ -35,9 +35,9 @@ describe('Scheme Punk Destination Super', () => {
 
     const callPath = './';
     schemePunkDestination2 = new SchemePunkDestination();
-    schemePunkDestination2.init(options, '', scheme, holdOvers, callPath);
+    await schemePunkDestination2.init(options, '', scheme, holdOvers, callPath);
     schemePunkDestination3 = new SchemePunkDestination();
-    schemePunkDestination3.init(options, '', scheme, holdOvers2, callPath);
+    await schemePunkDestination3.init(options, '', scheme, holdOvers2, callPath);
   });
 
   afterAll(() => {
@@ -100,7 +100,7 @@ describe('Scheme Punk Destination Super', () => {
       .toBeTruthy();
   });
 
-  test('destinationTargetAndPromote', () => {
+  test('destinationTargetAndPromote', async () => {
     expect.assertions(3);
     schemePunkDestination.scheme = {
       activeScheme: {

@@ -57,7 +57,7 @@
     "mustache": "^3.0.0"
   },
   "engines": {
-    "node": ">=6"
+    "node": ">=8"
   },
   "jest": {
     "cacheDirectory": ".tmp/jest_cache",
