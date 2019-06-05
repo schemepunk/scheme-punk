@@ -4,8 +4,6 @@
   "main": "lib/schemePunk.js",
   "scripts": {
     "lint": "eslint .",
-    "precommit": "npm run lint",
-    "prepush": "npm test",
     "coveralls": "cat ./__coverage__/lcov.info | coveralls",
     "test": "jest --coverage",
     "debug-test": "node --inspect-brk node_modules/.bin/jest --runInBand",
@@ -88,5 +86,11 @@
   },
   "version": "4.0.0",
   "readme": "ERROR: No README data found!",
-  "_id": "@schemepunk/scheme-punk@0.0.0-development"
+  "_id": "@schemepunk/scheme-punk@0.0.0-development",
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint",
+      "pre-push": "npm test"
+    }
+  }
 }
