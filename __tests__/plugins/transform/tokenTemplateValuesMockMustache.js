@@ -12,12 +12,12 @@ class BaseXform {
     this.holdOvers = holdOvers;
   }
 
-  transform(value) { // eslint-disable-line class-methods-use-this
+  async transform(value) { // eslint-disable-line class-methods-use-this
     return value;
   }
 
-  getHoldOvers() {
-    return Promise.resolve(this.holdOvers);
+  async getHoldOvers() {
+    return this.holdOvers;
   }
 
   getCallPath() { // eslint-disable-line class-methods-use-this
@@ -38,7 +38,7 @@ describe('Token Template Values Tests', () => {
     mocks = [];
   });
 
-  test('Use a template in JSON format mustache spied', () => {
+  test('Use a template in JSON format mustache spied', async () => {
     const tokenTemplateValues = new (TokenTemplateValues(BaseXform))();
     // Set options for a template using tokens.
     jest.spyOn(mustache, 'render')
@@ -62,9 +62,7 @@ describe('Token Template Values Tests', () => {
       testKey: 'item0',
       testKey2: 'item1'
     };
-    return tokenTemplateValues.transform(value)
-      .then(() => {
-        expect(mustache.render).toHaveBeenCalled();
-      });
+    await tokenTemplateValues.transform(value);
+    expect(mustache.render).toHaveBeenCalled();
   });
 });

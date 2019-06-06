@@ -7,30 +7,26 @@ class BaseXform {
     this.options = options;
   }
 
-  transform(value) { // eslint-disable-line class-methods-use-this
-    return Promise.resolve(value);
+  async transform(value) { // eslint-disable-line class-methods-use-this
+    return value;
   }
 }
 
 const prePend = require('../../../lib/plugins/transform/prependValues');
 
 const Implemented = class implementer extends TypeAdapter(prePend(BaseXform)) {
-  transform(value) {
-    return super.transform(value)
-      .then((xformedValue) => {
-        this.value = xformedValue;
-        return this.value;
-      });
+  async transform(value) {
+    const xformedValue = await super.transform(value);
+    this.value = xformedValue;
+    return this.value;
   }
 };
 
 const Implemented2 = class implementer extends TypeAdapter(BaseXform) {
-  transform(value) {
-    return super.transform(value)
-      .then((xformedValue) => {
-        this.value = xformedValue;
-        return this.value;
-      });
+  async transform(value) {
+    const xformedValue = await super.transform(value);
+    this.value = xformedValue;
+    return this.value;
   }
 };
 
@@ -78,62 +74,54 @@ const testNull = null;
 const testNumber = 1;
 
 describe('Append Values test', () => {
-  test('test string.', () => {
+  test('test string.', async () => {
     typeAdapter.options = {
       sourcePrepend: 'thething',
       adapterPrevent: ['number']
     };
-    return typeAdapter.transform(testString)
-      .then((val) => {
-        expect(val).toBe('thethingtestString');
-      });
+    const val = await typeAdapter.transform(testString);
+    expect(val).toBe('thethingtestString');
   });
-  test('test array.', () => {
+  test('test array.', async () => {
     typeAdapter.options = {
       sourcePrepend: 'thething',
       adapterPrevent: []
     };
-    return typeAdapter.transform(testArray)
-      .then((val) => {
-        expect(val).toEqual([
-          'thethingtest1',
-          'thethingtest2',
-          'thethingtest3'
-        ]);
-      });
+    const val = await typeAdapter.transform(testArray);
+    expect(val).toEqual([
+      'thethingtest1',
+      'thethingtest2',
+      'thethingtest3'
+    ]);
   });
-  test('test object.', () => {
+  test('test object.', async () => {
     typeAdapter.options = {
       sourcePrepend: 'thething',
       adapterPrevent: ['number']
     };
-    return typeAdapter.transform(testObject)
-      .then((val) => {
-        expect(val).toEqual({
-          thethingtest1: [
-            'test'
-          ],
-          thethingtest2: [
-            'boo'
-          ]
-        });
-      });
+    const val = await typeAdapter.transform(testObject);
+    expect(val).toEqual({
+      thethingtest1: [
+        'test'
+      ],
+      thethingtest2: [
+        'boo'
+      ]
+    });
   });
-  test('test object values.', () => {
+  test('test object values.', async () => {
     typeAdapter.options = {
       sourcePrepend: 'thething',
       adapterPrevent: ['number']
     };
     typeAdapter.options.typeAdapterObjectValues = true;
-    return typeAdapter.transform(testObject)
-      .then((val) => {
-        expect(val).toEqual({
-          test1: 'thethingtest',
-          test2: 'thethingboo'
-        });
-      });
+    const val = await typeAdapter.transform(testObject);
+    expect(val).toEqual({
+      test1: 'thethingtest',
+      test2: 'thethingboo'
+    });
   });
-  test('test object merge.', () => {
+  test('test object merge.', async () => {
     typeAdapter2.options = {
       typeAdapterObjectValuesMerge: true,
       typeAdapter: {
@@ -141,79 +129,82 @@ describe('Append Values test', () => {
       }
     };
     typeAdapter2.options.typeAdapterObjectValuesMerge = true;
-    return typeAdapter2.transform(testObjectMerge)
-      .then((val) => {
-        expect(val).toEqual({
-          ary: [1],
-          foo: 'bar',
-          bar: 'baz',
-        });
+    const val = await typeAdapter2.transform(testObjectMerge);
 
-        typeAdapter2.options.typeAdapter.concatArrays = true;
-        return typeAdapter2.transform(testObjectMerge);
-      })
-      .then((val) => {
-        expect(val).toEqual({
-          ary: [1, 1],
-          foo: 'bar',
-          bar: 'baz',
-        });
+    expect(val).toEqual({
+      ary: [1],
+      foo: 'bar',
+      bar: 'baz',
+    });
 
-        typeAdapter2.options.typeAdapter.uniqArrays = true;
-        return typeAdapter2.transform(testObjectMerge);
-      })
-      .then((val) => {
-        expect(val).toEqual({
-          ary: [1],
-          foo: 'bar',
-          bar: 'baz',
-        });
-      });
+    typeAdapter2.options.typeAdapter.concatArrays = true;
+    const val2 = await typeAdapter2.transform(testObjectMerge);
+
+    expect(val2).toEqual({
+      ary: [1, 1],
+      foo: 'bar',
+      bar: 'baz',
+    });
+
+    typeAdapter2.options.typeAdapter.uniqArrays = true;
+
+    const val3 = await typeAdapter2.transform(testObjectMerge);
+
+    expect(val3).toEqual({
+      ary: [1],
+      foo: 'bar',
+      bar: 'baz',
+    });
   });
-  test('test object array.', () => {
+  test('test object array.', async () => {
     typeAdapter.options = {
       sourcePrepend: 'thething',
       adapterPrevent: ['number']
     };
     typeAdapter.options.typeAdapterObjectValues = false;
     typeAdapter.options.typeAdapterObjectValuesArray = true;
-    return typeAdapter.transform(testObject)
-      .then((val) => {
-        expect(val).toEqual([
-          'thethingtest',
-          'thethingboo'
-        ]);
-      });
+    const val = await typeAdapter.transform(testObject);
+
+    expect(val).toEqual([
+      'thethingtest',
+      'thethingboo'
+    ]);
   });
-  test('Test boolean throws', () => {
-    expect(() => typeAdapter.transform(true)).toThrow();
+  test('Test boolean throws', async () => {
+    try {
+      await typeAdapter.transform(true);
+    }
+    catch (error) {
+      expect(error).toBeInstanceOf(Error);
+    }
   });
-  test('test Number ignored.', () => {
+  test('test Number ignored.', async () => {
     typeAdapter.options = {
       adapterPrevent: 'number'
     };
-    return typeAdapter.transform(testNumber)
-      .then((val) => {
-        expect(val).toEqual(1);
-      });
+    const val = await typeAdapter.transform(testNumber);
+    expect(val).toEqual(1);
   });
-  test('test Number.', () => {
+  test('test Number.', async () => {
     typeAdapter.options = {
       sourcePrepend: 'thething',
       adapterPrevent: []
     };
-    return typeAdapter.transform(testNumber)
-      .then((val) => {
-        expect(val).toEqual('thething1');
-      });
+    const val = await typeAdapter.transform(testNumber);
+    expect(val).toEqual('thething1');
   });
-  test('test Null.', () => {
+  test('test Null.', async () => {
     typeAdapter.options = {
       adapterPrevent: []
     };
-    expect(() => typeAdapter.transform(testNull)).toThrow();
+    try {
+      await typeAdapter.transform(testNull);
+    }
+    catch (error) {
+      expect(error).toBeInstanceOf(Error);
+    }
   });
-  test('testObjectValuesNoEmpty', () => {
+  test('testObjectValuesNoEmpty', async () => {
     typeAdapter2.options = {
       typeAdapterObjectValues: true,
       typeAdapter: {
@@ -224,11 +215,9 @@ describe('Append Values test', () => {
       item1: 'thing',
       item2: {}
     };
-    return typeAdapter2.transform(testObjecta)
-      .then(() => {
-        expect(typeAdapter2.value).toEqual({
-          item1: 'thing'
-        });
-      });
+    await typeAdapter2.transform(testObjecta);
+    expect(typeAdapter2.value).toEqual({
+      item1: 'thing'
+    });
   });
 });

@@ -8,11 +8,11 @@ class BaseXform {
     this.holdOvers = holdOvers;
   }
 
-  transform(value) { // eslint-disable-line class-methods-use-this
+  async transform(value) { // eslint-disable-line class-methods-use-this
     return value;
   }
 
-  getHoldOvers() {
+  async getHoldOvers() {
     return Promise.resolve(this.holdOvers);
   }
 
@@ -33,7 +33,7 @@ describe('Token Template Values Tests', () => {
     mocks.forEach(mock => mock.mockRestore());
     mocks = [];
   });
-  test('Template only values', () => {
+  test('Template only values', async () => {
     const tokenTemplateValues = new (TokenTemplateValues(BaseXform))();
     // Set options for a template.
     tokenTemplateValues.options = {
@@ -48,8 +48,8 @@ describe('Token Template Values Tests', () => {
       testKey: 'item0',
       testKey2: 'item1'
     };
-    return tokenTemplateValues.transform(value)
-      .then(tValue => expect(tValue).toEqual('Dust template one name is testName, testKey is item0.'));
+    const tValue = await tokenTemplateValues.transform(value);
+    expect(tValue).toEqual('Dust template one name is testName, testKey is item0.');
   });
 });
 
@@ -58,7 +58,7 @@ describe('Use a template and replace with passed values using named replacement'
     mocks.forEach(mock => mock.mockRestore());
     mocks = [];
   });
-  test('Use a template and replace with passed values using named replacement.', () => {
+  test('Use a template and replace with passed values using named replacement.', async () => {
     const tokenTemplateValues = new (TokenTemplateValues(BaseXform))();
     // Set options for a template using tokens.
     tokenTemplateValues.options = {
@@ -77,8 +77,9 @@ describe('Use a template and replace with passed values using named replacement'
       testKey: 'item0',
       testKey2: 'item1'
     };
-    return tokenTemplateValues.transform(value)
-      .then(tValue => expect(tValue).toEqual('Dust template one name is: testName, test has the value of testKey2: item1.'));
+    const tValue = await tokenTemplateValues.transform(value);
+
+    expect(tValue).toEqual('Dust template one name is: testName, test has the value of testKey2: item1.');
   });
 });
 
@@ -87,7 +88,7 @@ describe('Use a template with passed values, named variables, and holdOvers.', (
     mocks.forEach(mock => mock.mockRestore());
     mocks = [];
   });
-  test('Use a template with passed values, named variables, and holdOvers.', () => {
+  test('Use a template with passed values, named variables, and holdOvers.', async () => {
     const tokenTemplateValues = new (TokenTemplateValues(BaseXform))();
     // Set options for a template using tokens.
     tokenTemplateValues.options = {
@@ -107,8 +108,8 @@ describe('Use a template with passed values, named variables, and holdOvers.', (
       testKey: 'item0',
       testKey2: 'item1'
     };
-    return tokenTemplateValues.transform(value)
-      .then(tValue => expect(tValue).toEqual('Dust template one name is: toofer, test has the value of testKey2: item1.'));
+    const tValue = await tokenTemplateValues.transform(value);
+    expect(tValue).toEqual('Dust template one name is: toofer, test has the value of testKey2: item1.');
   });
 });
 
@@ -117,7 +118,7 @@ describe('Use a template in JSON format with holdovers', () => {
     mocks.forEach(mock => mock.mockRestore());
     mocks = [];
   });
-  test('Use a template in JSON format with holdovers', () => {
+  test('Use a template in JSON format with holdovers', async () => {
     const tokenTemplateValues = new (TokenTemplateValues(BaseXform))();
     // Set options for a template using tokens.
     tokenTemplateValues.options = {
@@ -137,15 +138,15 @@ describe('Use a template in JSON format with holdovers', () => {
       testKey: 'item0',
       testKey2: 'item1'
     };
-    return tokenTemplateValues.transform(value)
-      .then(tValue => expect(tValue).toEqual({
-        test: 'testName',
-        item: 'item1',
-        thing: [
-          'one',
-          'two'
-        ]
-      }));
+    const tValue = await tokenTemplateValues.transform(value);
+    expect(tValue).toEqual({
+      test: 'testName',
+      item: 'item1',
+      thing: [
+        'one',
+        'two'
+      ]
+    });
   });
 });
 
@@ -154,7 +155,7 @@ describe('Use a template but pass in an empty object for values and indicate tha
     mocks.forEach(mock => mock.mockRestore());
     mocks = [];
   });
-  test('Use a template but pass in an empty object for values and indicate that it should not render empty tokens.', () => {
+  test('Use a template but pass in an empty object for values and indicate that it should not render empty tokens.', async () => {
     const tokenTemplateValues = new (TokenTemplateValues(BaseXform))();
     // Set options for a template.
     tokenTemplateValues.options = {
@@ -166,8 +167,8 @@ describe('Use a template but pass in an empty object for values and indicate tha
 
     // Test case value.
     value = {};
-    return tokenTemplateValues.transform(value)
-      .then(tValue => expect(tValue).toEqual({}));
+    const tValue = await tokenTemplateValues.transform(value);
+    expect(tValue).toEqual({});
   });
 });
 
@@ -176,7 +177,7 @@ describe('Use a template with text escapes but enforce unescaping.', () => {
     mocks.forEach(mock => mock.mockRestore());
     mocks = [];
   });
-  test('Use a template with text escapes but enforce unescaping.', () => {
+  test('Use a template with text escapes but enforce unescaping.', async () => {
     const tokenTemplateValues = new (TokenTemplateValues(BaseXform))();
     // Set options for a template.
     tokenTemplateValues.options = {
@@ -196,8 +197,8 @@ describe('Use a template with text escapes but enforce unescaping.', () => {
       testKey: 'item0',
       testKey2: 'item1'
     };
-    return tokenTemplateValues.transform(value)
-      .then(tValue => expect(tValue).toEqual('Dust template "one" name is: testName, test has the value of \"testKey2: item1.')); // eslint-disable-line no-useless-escape
+    const tValue = await tokenTemplateValues.transform(value);
+    expect(tValue).toEqual('Dust template "one" name is: testName, test has the value of \"testKey2: item1.'); // eslint-disable-line no-useless-escape
   });
 });
 
@@ -206,7 +207,7 @@ describe('Use a template with a simple string value instead of an object.', () =
     mocks.forEach(mock => mock.mockRestore());
     mocks = [];
   });
-  test('Use a template with a simple string value instead of an object.', () => {
+  test('Use a template with a simple string value instead of an object.', async () => {
     const tokenTemplateValues = new (TokenTemplateValues(BaseXform))();
     // Set options for a template.
     tokenTemplateValues.options = {
@@ -218,8 +219,9 @@ describe('Use a template with a simple string value instead of an object.', () =
 
     // Test case value.
     value = 'testBoogie';
-    return tokenTemplateValues.transform(value)
-      .then(tValue => expect(tValue).toEqual('this is a testBoogie'));
+    const tValue = await tokenTemplateValues.transform(value);
+
+    expect(tValue).toEqual('this is a testBoogie');
   });
 });
 
@@ -228,7 +230,7 @@ describe('No File.', () => {
     mocks.forEach(mock => mock.mockRestore());
     mocks = [];
   });
-  test('Use a template with a simple string value instead of an object.', () => {
+  test('Use a template with a simple string value instead of an object.', async () => {
     const tokenTemplateValues = new (TokenTemplateValues(BaseXform))();
     // Set options for a template.
     tokenTemplateValues.options = {
@@ -240,8 +242,12 @@ describe('No File.', () => {
 
     // Test case value.
     value = 'testBoogie';
-    return tokenTemplateValues.transform(value)
-      .catch(err => expect(err.message).toContain('ENOENT:'));
+    try {
+      await tokenTemplateValues.transform(value);
+    }
+    catch (error) {
+      expect(error.message).toContain('ENOENT:');
+    }
   });
 });
 
@@ -250,7 +256,7 @@ describe('Token Template Object', () => {
     mocks.forEach(mock => mock.mockRestore());
     mocks = [];
   });
-  test('Use a template object with an object', () => {
+  test('Use a template object with an object', async () => {
     const tokenTemplateValues = new (TokenTemplateValues(BaseXform))();
     // Set options for a template.
     tokenTemplateValues.templateObject = {
@@ -266,10 +272,11 @@ describe('Token Template Object', () => {
 
     // Test case value.
     value = {apiName: 'A test title'};
-    return tokenTemplateValues.transform(value)
-      .then(tValue => expect(tValue).toEqual("{swagger: '2.0', info: { title: 'A test title' } }"));
+    const tValue = await tokenTemplateValues.transform(value);
+
+    expect(tValue).toEqual("{swagger: '2.0', info: { title: 'A test title' } }");
   });
-  test('Use a template object with an object', () => {
+  test('Use a template object with an object', async () => {
     const tokenTemplateValues = new (TokenTemplateValues(BaseXform))();
     // Set options for a template.
     tokenTemplateValues.templateObject = {
@@ -285,10 +292,11 @@ describe('Token Template Object', () => {
 
     // Test case value.
     value = {apiName: 'A test title'};
-    return tokenTemplateValues.transform(value)
-      .then(tValue => expect(tValue).toEqual({info: {title: 'A test title'}, swagger: '2.0'}));
+    const tValue = await tokenTemplateValues.transform(value);
+
+    expect(tValue).toEqual({info: {title: 'A test title'}, swagger: '2.0'});
   });
-  test('template target partial', () => {
+  test('template target partial', async () => {
     const tokenTemplateValues = new (TokenTemplateValues(BaseXform))();
     // Set options for a template.
     tokenTemplateValues.templateObject = {
@@ -307,10 +315,10 @@ describe('Token Template Object', () => {
 
     // Test case value.
     value = {apiName: 'A test title'};
-    return tokenTemplateValues.transform(value)
-      .then(tValue => expect(tValue).toEqual('A test title'));
+    const tValue = await tokenTemplateValues.transform(value);
+    expect(tValue).toEqual('A test title');
   });
-  test('Filter partials', () => {
+  test('Filter partials', async () => {
     const tokenTemplateValues = new (TokenTemplateValues(BaseXform))();
     // Set options for a template.
     tokenTemplateValues.templateObject = {
@@ -330,10 +338,11 @@ describe('Token Template Object', () => {
 
     // Test case value.
     value = {apiName: 'A test title', testName: 'a totally different test title'};
-    return tokenTemplateValues.transform(value)
-      .then(tValue => expect(tValue).toEqual('{ "swagger": "2.0", "info": { "title": "a totally different test title" } }'));
+    const tValue = await tokenTemplateValues.transform(value);
+
+    expect(tValue).toEqual('{ "swagger": "2.0", "info": { "title": "a totally different test title" } }');
   });
-  test('No destinationTeamplate in the object should be a problem.', () => {
+  test('No destinationTeamplate in the object should be a problem.', async () => {
     expect.assertions(1);
     const tokenTemplateValues = new (TokenTemplateValues(BaseXform))();
     // Set options for a template.
@@ -349,7 +358,11 @@ describe('Token Template Object', () => {
 
     // Test case value.
     value = 'testBoogie';
-    return tokenTemplateValues.transform(value)
-      .catch(e => expect(e.message).toEqual('Using templated object with no destination template value.'));
+    try {
+      await tokenTemplateValues.transform(value);
+    }
+    catch (error) {
+      expect(error.message).toEqual('Using templated object with no destination template value.');
+    }
   });
 });

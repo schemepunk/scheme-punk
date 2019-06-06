@@ -7,12 +7,12 @@ class BaseXform {
     this.options = options;
   }
 
-  transform(value) { // eslint-disable-line class-methods-use-this
+  async transform(value) { // eslint-disable-line class-methods-use-this
     return value;
   }
 
-  getHoldOvers() {
-    return Promise.resolve(this.holdOvers);
+  async getHoldOvers() {
+    return this.holdOvers;
   }
 }
 const appendValues = new (AppendValues(BaseXform))();
@@ -22,7 +22,7 @@ appendValues.options = {
 };
 
 describe('Append Values test', () => {
-  test('Can append values', () => {
-    expect(appendValues.transform('test')).toBe('test-');
+  test('Can append values', async () => {
+    expect(await appendValues.transform('test')).toBe('test-');
   });
 });
