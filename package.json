@@ -1,7 +1,6 @@
 {
   "name": "@schemepunk/scheme-punk",
   "description": "Transformation tool with pluggable sources, transformations, and destinations.",
-  "main": "lib/schemePunk.js",
   "scripts": {
     "lint": "eslint .",
     "coveralls": "cat ./__coverage__/lcov.info | coveralls",
@@ -84,7 +83,7 @@
       "<rootDir>/__tests__/.*/[__mocks__|files]/"
     ]
   },
-  "version": "4.0.0",
+  "version": "0.0.0-development",
   "readme": "ERROR: No README data found!",
   "_id": "@schemepunk/scheme-punk@0.0.0-development",
   "husky": {
