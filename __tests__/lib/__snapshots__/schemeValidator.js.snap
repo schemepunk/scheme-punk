@@ -1,0 +1,176 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ActiveSchemeSource Validation Basic schemePunk validation 1`] = `
+Object {
+  "destination": Object {
+    "plugin": "concatIntoDestination",
+    "target": "test",
+  },
+  "source": Object {
+    "plugin": "activeSchemeSource",
+    "target": "test",
+  },
+  "transform": Object {
+    "plugin": "appendValuesAdapter",
+    "sourceAppend": "-",
+  },
+}
+`;
+
+exports[`ContingentSource Validation Basic schemePunk validation 1`] = `
+Object {
+  "destination": Object {
+    "plugin": "concatIntoDestination",
+    "target": "test",
+  },
+  "source": Object {
+    "contingencies": Object {
+      "defined": Array [
+        Object {
+          "path": "type",
+          "type": "static",
+          "value": "staticTestDefined",
+        },
+      ],
+      "testValue1": Array [
+        Object {
+          "path": "newTest",
+          "target": "testValue1",
+          "type": "dynamic",
+        },
+        Object {
+          "path": "type",
+          "type": "static",
+          "value": "staticTest",
+        },
+        Object {
+          "holdover": Object {
+            "type": "static",
+            "value": "test2",
+          },
+          "path": "holdOverTest",
+          "type": "holdOver",
+        },
+      ],
+      "undefined": Array [
+        Object {
+          "path": "type",
+          "type": "static",
+          "value": "staticTestUndefined",
+        },
+      ],
+    },
+    "plugin": "contingentSource",
+    "target": "test",
+  },
+  "transform": Object {
+    "plugin": "appendValuesAdapter",
+    "sourceAppend": "-",
+  },
+}
+`;
+
+exports[`ContingentSource Validation Basic schemePunk validation 2`] = `
+Object {
+  "destination": Object {
+    "plugin": "concatIntoDestination",
+    "target": "test",
+  },
+  "source": Object {
+    "contingencies": Object {
+      "defined": Array [
+        Object {
+          "path": "type",
+          "type": "static",
+          "value": "staticTestDefined",
+        },
+      ],
+      "undefined": Array [
+        Object {
+          "path": "type",
+          "type": "static",
+          "value": "staticTestUndefined",
+        },
+      ],
+    },
+    "plugin": "contingentSource",
+    "target": "test",
+  },
+  "transform": Object {
+    "plugin": "appendValuesAdapter",
+    "sourceAppend": "-",
+  },
+}
+`;
+
+exports[`OriginalSchemeSource Validation Basic schemePunk validation 1`] = `
+Object {
+  "destination": Object {
+    "plugin": "concatIntoDestination",
+    "target": "test",
+  },
+  "source": Object {
+    "plugin": "originalSchemeSource",
+    "target": "test",
+  },
+  "transform": Object {
+    "plugin": "appendValuesAdapter",
+    "sourceAppend": "-",
+  },
+}
+`;
+
+exports[`Scheme Runner Validation Basic schemePunk validation 1`] = `
+Object {
+  "destination": Object {
+    "plugin": "concatIntoDestination",
+    "target": "test",
+  },
+  "source": Object {
+    "plugin": "originalSchemeSource",
+    "target": "test",
+  },
+  "transform": Object {
+    "plugin": "appendValuesAdapter",
+    "sourceAppend": "-",
+  },
+}
+`;
+
+exports[`Scheme Runner Validation Basic schemeRunner validation 1`] = `
+Object {
+  "arbitraryNameForThisScheme": Array [
+    Array [
+      Object {
+        "destination": Object {
+          "target": "test",
+        },
+        "source": Object {
+          "plugin": "originalSchemeSource",
+          "target": "test",
+        },
+        "transform": Object {
+          "plugin": "prependValuesAdapter",
+          "sourcePrepend": "+",
+        },
+      },
+    ],
+    Array [
+      Object {
+        "destination": Object {
+          "plugin": "concatIntoDestination",
+          "target": "test",
+        },
+        "source": Object {
+          "plugin": "activeSchemeSource",
+          "target": "test",
+        },
+        "transform": Object {
+          "plugin": "appendValuesAdapter",
+          "sourceAppend": "-",
+        },
+      },
+    ],
+  ],
+}
+`;

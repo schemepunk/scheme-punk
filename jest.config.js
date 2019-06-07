@@ -19,6 +19,7 @@ module.exports = {
   },
   collectCoverageFrom: [
     '<rootDir>/lib/**',
+    '!<rootDir>/lib/schemas/**',
     '!<rootDir>/src/**/__snapshots__/**',
     '!<rootDir>/__tests__/helpers/**/*',
     '!<rootDir>/__tests__/helpers/*',

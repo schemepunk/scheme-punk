@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Scheme Runner Validation Can pass in AJV Validator 1`] = `
+Object {
+  "destination": Object {
+    "plugin": "concatIntoDestination",
+    "target": "test",
+  },
+  "source": Object {
+    "plugin": "originalSchemeSource",
+    "target": "test",
+  },
+  "transform": Object {
+    "plugin": "appendValuesAdapter",
+    "sourceAppend": "-",
+  },
+}
+`;
