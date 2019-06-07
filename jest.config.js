@@ -2,6 +2,13 @@
 
 module.exports = {
   coverageDirectory: '__coverage__',
+  coverageReporters: [
+    'json',
+    'json-summary',
+    'lcov',
+    'text',
+    'text-summary'
+  ],
   coverageThreshold: {
     global: {
       branches: 100,
@@ -16,10 +23,12 @@ module.exports = {
     '!<rootDir>/__tests__/helpers/**/*',
     '!<rootDir>/__tests__/helpers/*',
   ],
-  testPathIgnorePatterns: ['<rootDir>/__tests__/helpers/'],
-  testEnvironment: 'node',
-  transform: {
-    '^.+\\.jsx?$': 'babel-jest',
-  },
-  reporters: ['default'],
+  testMatch: [
+    '<rootDir>/__tests__/**/*.js'
+  ],
+  testPathIgnorePatterns: [
+    '<rootDir>/__tests__/__helpers__/',
+    '<rootDir>/__tests__/.*/[__mocks__|files]/'
+  ],
+  testEnvironment: 'node'
 };
