@@ -22,6 +22,7 @@ module.exports = {
     '!<rootDir>/src/**/__snapshots__/**',
     '!<rootDir>/__tests__/helpers/**/*',
     '!<rootDir>/__tests__/helpers/*',
+    '!<rootDir>/lib/molotov.json'
   ],
   testMatch: [
     '<rootDir>/__tests__/**/*.js'
