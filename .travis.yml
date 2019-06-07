@@ -19,7 +19,7 @@ after_script: greenkeeper-lockfile-upload
 stages:
   - name: test
     # require the event type to not be a semantic release tag.
-    if: NOT tag =~ ^\d+\.\d+\.\d+$
+    if: NOT tag =~ ^v\d+\.\d+\.\d+$
   - name: release
     # require the branch name to be one of the environment branches.
     if: branch = master AND fork = false AND type IN (push, api)
@@ -28,12 +28,13 @@ stages:
 
 jobs:
   include:
-    - stage: test
+    -
+      stage: test
       node_js: 'lts/carbon'
       script:
-        - yarn run lint
+        - yar run lint
         - yarn test
-        - yarn run coveralls
+        - yarn coveralls
 
     - stage: release
       node_js: 'lts/carbon'
@@ -41,5 +42,12 @@ jobs:
         - yarn semantic-release-github
 
     - stage: deploy
+      if: branch = master
+      # Semantic release will fail if it's not using node 8.
       node_js: 'lts/carbon'
-      script: npm run npmpublish
+      before_install:
+        - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
+      provider: script
+      skip_cleanup: true
+      script:
+        - npx semantic-release
