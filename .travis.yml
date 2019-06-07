@@ -32,7 +32,7 @@ jobs:
       stage: test
       node_js: 'lts/carbon'
       script:
-        - yar run lint
+        - yarn run lint
         - yarn test
         - yarn coveralls
 
