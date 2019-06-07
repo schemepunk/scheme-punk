@@ -85,16 +85,47 @@ describe('Scheme Runner', () => {
 
 describe('Scheme Runner Error Cases', () => {
   test('No data', () => {
-    expect.assertions(1);
+    expect.assertions(2);
     const schemeRunner = new SchemeRunner();
-    return schemeRunner.init(undefined, _.cloneDeep(schemeArray), _.cloneDeep(molotovOptions))
-      .catch(e => expect(e).toBeInstanceOf(SchemePunkErrors));
+    return schemeRunner.init(null, _.cloneDeep(schemeArray), _.cloneDeep(molotovOptions))
+      .catch((e) => {
+        expect(e).toBeInstanceOf(SchemePunkErrors);
+        expect(e.message).toBe('Could not initialize the scheme runner: No data was provided to schemePunk Runner to run through scheme');
+      });
   });
   test('No Scheme', () => {
     expect.assertions(1);
     const schemeRunner = new SchemeRunner();
     return schemeRunner.init(_.cloneDeep(data), undefined, _.cloneDeep(molotovOptions))
       .catch(e => expect(e).toBeInstanceOf(SchemePunkErrors));
+  });
+
+  test('Basic init and scheme running Error.', async () => {
+    expect.assertions(3);
+    const schemeRunner = new SchemeRunner();
+    expect(schemeRunner).toBeInstanceOf(SchemeRunner);
+    const badScheme = _.cloneDeep(schemeArray);
+    badScheme.arbitraryNameForThisScheme.push(
+      {
+        source: {
+          target: null,
+          plugin: 'originala'
+        },
+        transform: {},
+        destination: {
+          target: 'test',
+          plugin: 'concatIntoDestination'
+        }
+      }
+    );
+    try {
+      await schemeRunner.init(_.cloneDeep(data), _.cloneDeep(badScheme), _.cloneDeep(molotovOptions));
+      await schemeRunner.runScheme();
+    }
+    catch (e) {
+      expect(e).toBeInstanceOf(SchemePunkErrors);
+      expect(e.message).toBe("Scheme runner failed to run a scheme: SchemePunk Source failed: Cannot read property 'plugin' of undefined");
+    }
   });
 });
 
