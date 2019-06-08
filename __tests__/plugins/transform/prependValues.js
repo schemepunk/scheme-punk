@@ -7,26 +7,26 @@ class BaseXform {
     this.options = options;
   }
 
-  transform(value) { // eslint-disable-line class-methods-use-this
+  async transform(value) { // eslint-disable-line class-methods-use-this
     return value;
   }
 
-  getHoldOvers() {
-    return Promise.resolve(this.holdOvers);
+  async getHoldOvers() {
+    return this.holdOvers;
   }
 }
 const prependValues = new (PrependValues(BaseXform))();
 
 let value;
 
-describe('Object keys', () => {
-  test('objectKeysTransformNoSuper.', () => {
+describe('Object keys', async () => {
+  test('objectKeysTransformNoSuper.', async () => {
     // Set options source prepend.
     prependValues.options = {
       sourcePrepend: '-'
     };
     // Test case value.
     value = 'test3';
-    expect(prependValues.transform(value)).toEqual('-test3');
+    expect(await prependValues.transform(value)).toEqual('-test3');
   });
 });

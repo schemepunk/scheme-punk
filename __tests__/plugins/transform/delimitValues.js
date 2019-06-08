@@ -7,12 +7,12 @@ class BaseXform {
     this.options = options;
   }
 
-  transform(value) { // eslint-disable-line class-methods-use-this
+  async transform(value) { // eslint-disable-line class-methods-use-this
     return value;
   }
 
-  getHoldOvers() {
-    return Promise.resolve(this.holdOvers);
+  async getHoldOvers() {
+    return this.holdOvers;
   }
 }
 const delimitValues = new (DelimitValues(BaseXform))();
@@ -29,14 +29,14 @@ describe('Delimit Values tests', () => {
     ];
   });
 
-  test('Default delimit is comma.', () => {
-    expect(delimitValues.transform(value)).toBe('test1,test2,test3');
+  test('Default delimit is comma.', async () => {
+    expect(await delimitValues.transform(value)).toBe('test1,test2,test3');
   });
-  test('Can specify a custom delimiter.', () => {
+  test('Can specify a custom delimiter.', async () => {
     // Emulate a custom option from a scheme.
     delimitValues.options = {
       sourceDelimiter: '-'
     };
-    expect(delimitValues.transform(value)).toBe('test1-test2-test3');
+    expect(await delimitValues.transform(value)).toBe('test1-test2-test3');
   });
 });

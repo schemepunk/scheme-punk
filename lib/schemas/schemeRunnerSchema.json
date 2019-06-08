@@ -1,0 +1,366 @@
+{
+  "title": "Schemepunk Scheme Runner",
+  "description": "This is a schema describing a schemeRunner",
+  "$id": "http://daviddiers.com/schemas/schemeRunner.json",
+  "definitions": {
+    "contigency": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["static", "holdOver", "dynamic"]
+        },
+        "path": {
+          "type": "string"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": { "type": {"const": "static" } }
+          },
+          "then": {
+            "required": ["path", "value"],
+            "properties": {
+              "value": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": { "type": {"const": "dynamic" } }
+          },
+          "then": {
+            "required": ["type", "path", "target"],
+            "properties": {
+              "target": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": { "type": {"const": "holdOver" } }
+          },
+          "then": {
+            "properties": {
+              "holdover": {
+                "type": "object",
+                "required": ["type", "value"],
+                "properties": {
+                  "type": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "type": "object",
+  "additionalProperties": {
+    "type": "array",
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "source",
+          "transform",
+          "destination"
+        ],
+        "properties": {
+          "source": {
+            "type": "object",
+            "properties": {
+              "target": {
+                "type": "string"
+              },
+              "plugin": {
+                "type": "string"
+              }
+            },
+            "allOf": [
+              {
+                "if": {
+                  "properties": { "plugin": { "const": "originalSchemeSource" } }
+                },
+                "then": {
+                  "required": ["plugin", "target"]
+                }
+              },
+              {
+                "if": {
+                  "properties": { "plugin": { "const": "activeSchemeSource" } }
+                },
+                "then": {
+                  "required": ["plugin", "target"]
+                }
+              },
+              {
+                "if": {
+                  "properties": { "plugin": { "const": "contingentSource" } }
+                },
+                "then": {
+                  "required": ["plugin", "target", "contingencies"],
+                  "properties": {
+                    "contingencies": {
+                      "type": "object",
+                      "minProperties": 1,
+                      "properties": {
+                        "defined": {
+                          "type": "array",
+                          "items": { "$ref": "#/definitions/contigency"}
+                        },
+                        "undefined": {
+                          "type": "array",
+                          "items": { "$ref": "#/definitions/contigency"}
+                        }
+                      },
+                      "additionalProperties": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/definitions/contigency"
+                        }
+                      }
+                    },
+                    "reducer": {
+                      "type": "string"
+                    }
+                  }
+                }
+              } 
+            ],
+            "additionalProperties": true
+          },
+          "transform": {
+            "type": "object",
+            "properties": {
+              "plugin": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": true,
+            "allOf": [
+              {
+                "if": {
+                  "properties": { "plugin": { "const": "appendValuesAdapter" } }
+                },
+                "then": {
+                  "required": ["plugin", "sourceAppend"],
+                  "properties": {
+                    "sourceAppend": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": { "plugin": { "const": "delimitValues" } }
+                },
+                "then": {
+                  "properties": {
+                    "sourceDelimiter": {
+                      "type": "string"
+                    }
+                  },
+                  "required": ["plugin", "sourceDelimiter"]
+                }
+              },
+              {
+                "if": {
+                  "properties": { "plugin": { "const": "filterAttribute" } }
+                },
+                "then": {
+                  "properties": {
+                    "filterItems": {
+                      "type": "array"
+                    },
+                    "filterBias": {
+                      "type": "string",
+                      "default": "out"
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": { "plugin": { "const": "filterAttributeMulti" } }
+                },
+                "then": {
+                  "properties": {
+                    "filterItems": {
+                      "type": "array"
+                    },
+                    "filterBias": {
+                      "type": "string",
+                      "default": "out"
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": { "plugin": { "const": "filterObject" } }
+                },
+                "then": {
+                  "properties": {
+                    "filterItems": {
+                      "type": "array"
+                    },
+                    "filterBias": {
+                      "type": "string",
+                      "default": "out"
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": { "plugin": { "const": "filterObjectMulti" } }
+                },
+                "then": {
+                  "properties": {
+                    "filterItems": {
+                      "type": "array"
+                    },
+                    "filterBias": {
+                      "type": "string",
+                      "default": "out"
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": { "plugin": { "const": "prependValuesAdapter" } }
+                },
+                "then": {
+                  "required": ["plugin", "sourcePrepend"],
+                  "properties": {
+                    "sourceAppend": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": { "plugin": { "const": "tokenTemplateValues" } }
+                },
+                "then": {
+                  "required": ["plugin"],
+                  "properties": {
+                    "named": {
+                      "type": "boolean"
+                    },
+                    "json": {
+                      "type": "boolean"
+                    },
+                    "unescape": {
+                      "type": "boolean"
+                    },
+                    "tokens": {
+                      "type": ["object", "array"]
+                    },
+                    "template": {
+                      "type": "object",
+                      "properties": {
+                        "targetPartial": {
+                          "type": "string"
+                        },
+                        "filterPartials": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "allOf": [
+                    {
+                      "if": {
+                        "properties": { "named": { "const": true } }
+                      },
+                      "then": {
+                        "required": ["tokens"]
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "destination": {
+            "type": "object",
+            "description": "Scheme instructions for the destination mixins.",
+            "properties": {
+              "target": {
+                "type": "string"
+              },
+              "plugin": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": true,
+            "allOf": [
+              {
+                "if": {
+                  "properties": { "plugin": { "const": "concatIntoDestination" } }
+                },
+                "then": {
+                  "required": ["target"]
+                }
+              },
+              {
+                "if": {
+                  "properties": { "plugin": { "const": "destroyDestination" } }
+                },
+                "then": {
+                  "required": ["target"]
+                }
+              },
+              {
+                "if": {
+                  "properties": { "plugin": { "const": "mergeIntoDestination" } }
+                },
+                "then": {
+                  "required": ["target"]
+                }
+              },
+              {
+                "if": {
+                  "properties": { "plugin": { "const": "pushDestination" } }
+                },
+                "then": {
+                  "required": ["target"]
+                }
+              }   
+            ]
+          },
+          "callPath": {
+            "type": "string",
+            "description": "The path to use when reading template files."
+          },
+          "templateObject": {
+            "type": "object",
+            "description": "An object to be used as a template for transformations."
+          },
+          "holdOvers": {
+            "type":  "object"
+          }
+        }
+      }
+    }
+  }
+}

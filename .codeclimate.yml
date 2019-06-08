@@ -13,3 +13,4 @@ checks:
     enabled: false
 exclude_patterns:
   - "__tests__"
+  - "lib/plugins/source/contingentSource.js"

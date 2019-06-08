@@ -71,9 +71,9 @@ describe('Scheme Punk Source Super', () => {
         .toEqual('this test'));
   });
 
-  test('setHoldOversWithValues', () => {
+  test('setHoldOversWithValues', async () => {
     expect.assertions(1);
-    schemePunkSource.setHoldOvers({
+    await schemePunkSource.setHoldOvers({
       src: {
         testive: 'test'
       },
@@ -92,7 +92,7 @@ describe('Scheme Punk Source Super', () => {
         }));
   });
 
-  test('getHoldOversWithValues', () => {
+  test('getHoldOversWithValues', async () => {
     expect.assertions(1);
     return schemePunkSource2.getHoldOvers()
       .then(thing => expect(thing)
@@ -110,13 +110,13 @@ describe('Scheme Punk Source Super', () => {
     return expect(schemePunkSource2.getTemplateObject()).toEqual(false);
   });
 
-  test('setHoldOversWithoutValuesNoProp', () => {
+  test('setHoldOversWithoutValuesNoProp', async () => {
     expect.assertions(1);
     return schemePunkSource.getHoldOvers()
       .then(item => expect(item).toEqual({}));
   });
 
-  test('getHoldOversWithoutValues', () => {
+  test('getHoldOversWithoutValues', async () => {
     expect.assertions(1);
     return schemePunkSource3.getHoldOvers()
       .then(item => expect(item)

@@ -1,15 +1,16 @@
 {
   "name": "@schemepunk/scheme-punk",
   "description": "Transformation tool with pluggable sources, transformations, and destinations.",
-  "main": "lib/schemePunk.js",
   "scripts": {
+    "commitmsg": "commitlint -e $GIT_PARAMS",
     "lint": "eslint .",
-    "precommit": "npm run lint",
-    "prepush": "npm test",
     "coveralls": "cat ./__coverage__/lcov.info | coveralls",
+    "travis-deploy-once": "travis-deploy-once",
     "test": "jest --coverage",
     "debug-test": "node --inspect-brk node_modules/.bin/jest --runInBand",
-    "npmpublish": "npm-publish-git-tag --access public"
+    "npmpublish": "npm-publish-git-tag --access public",
+    "prettier": "prettier --write 'lib/**/*.js' && eslint 'lib/**/*.js' --fix",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
     "type": "git",
@@ -31,18 +32,28 @@
   },
   "homepage": "https://github.com/schemepunk/scheme-punk#readme",
   "devDependencies": {
+    "@commitlint/config-angular": "^8.0.0",
+    "@hutson/npm-deploy-git-tag": "^5.0.2",
+    "@semantic-release/github": "^5.2.10",
+    "@semantic-release/npm": "^5.1.7",
+    "@semantic-release/release-notes-generator": "^7.1.4",
+    "commitlint": "^8.0.0",
     "coveralls": "^3.0.0",
     "eslint": "5.16.0",
     "eslint-config-airbnb-base": "13.1.0",
+    "eslint-config-prettier": "^4.3.0",
+    "eslint-config-problems": "^3.0.1",
     "eslint-find-rules": "3.3.1",
-    "eslint-plugin-import": "2.17.3",
-    "husky": "^1.3.1",
+    "eslint-plugin-better": "^0.1.5",
+    "eslint-plugin-import": "^2.17.3",
+    "eslint-plugin-jest": "^22.6.4",
+    "eslint-plugin-prettier": "^3.1.0",
+    "husky": "2.4.0",
     "jest": "^23.5.0",
     "jest-environment-node-debug": "^2.0.0",
-    "npm-publish-git-tag": "^3.0.0",
     "npm-run-all": "^4.0.1",
-    "semantic-release": "^15.1.2",
-    "semantic-release-github": "^5.0.1"
+    "prettier": "^1.18.0",
+    "semantic-release": "15.13.12"
   },
   "config": {
     "ghooks": {
@@ -52,41 +63,22 @@
   },
   "dependencies": {
     "fs-extra": "^8.0.1",
-    "lodash": "^4.16.4",
+    "lodash": "^4.17.11",
+    "loglevel": "^1.6.2",
     "molotov": "^2.0.1",
-    "mustache": "^3.0.0"
+    "mustache": "^3.0.0",
+    "ajv": "^6.10.0"
   },
   "engines": {
-    "node": ">=6"
+    "node": ">=8"
   },
-  "jest": {
-    "cacheDirectory": ".tmp/jest_cache",
-    "coverageDirectory": "__coverage__",
-    "coverageReporters": [
-      "json",
-      "json-summary",
-      "lcov",
-      "text",
-      "text-summary"
-    ],
-    "coverageThreshold": {
-      "global": {
-        "branches": 100,
-        "functions": 100,
-        "lines": 100,
-        "statements": 100
-      }
-    },
-    "testEnvironment": "node",
-    "testMatch": [
-      "<rootDir>/__tests__/**/*.js"
-    ],
-    "testPathIgnorePatterns": [
-      "<rootDir>/__tests__/__helpers__/",
-      "<rootDir>/__tests__/.*/[__mocks__|files]/"
-    ]
-  },
-  "version": "4.0.0",
+  "version": "0.0.0-development",
   "readme": "ERROR: No README data found!",
-  "_id": "@schemepunk/scheme-punk@0.0.0-development"
+  "_id": "@schemepunk/scheme-punk@0.0.0-development",
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint",
+      "pre-push": "npm test"
+    }
+  }
 }

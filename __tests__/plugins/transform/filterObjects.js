@@ -7,11 +7,11 @@ class BaseXform {
     this.options = options;
   }
 
-  transform(value) { // eslint-disable-line class-methods-use-this
+  async transform(value) { // eslint-disable-line class-methods-use-this
     return value;
   }
 
-  getHoldOvers() {
+  async getHoldOvers() {
     return Promise.resolve(this.holdOvers);
   }
 }
@@ -44,20 +44,20 @@ describe('Delimit Values tests', () => {
     };
   });
 
-  test('Filter out.', () => {
+  test('Filter out.', async () => {
     expect.assertions(1);
     filterObjectValues.options.filterBias = 'out';
-    expect(filterObjectValues.transform(value)).toEqual({
+    expect(await filterObjectValues.transform(value)).toEqual({
       attribute3: {},
       attribute4: {
         someProp: false,
       }
     });
   });
-  test('Filter in.', () => {
+  test('Filter in.', async () => {
     expect.assertions(1);
     filterObjectValues.options.filterBias = 'in';
-    expect(filterObjectValues.transform(value)).toEqual({
+    expect(await filterObjectValues.transform(value)).toEqual({
       attribute1: {
         someProp: true,
       },
