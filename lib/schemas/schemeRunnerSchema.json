@@ -8,11 +8,7 @@
       "properties": {
         "type": {
           "type": "string",
-          "enum": [
-            "static",
-            "holdOver",
-            "dynamic"
-          ]
+          "enum": ["static", "holdOver", "dynamic"]
         },
         "path": {
           "type": "string"
@@ -21,13 +17,10 @@
       "allOf": [
         {
           "if": {
-            "properties": {
-              "type": {
-                "const": "static"
-              }
-            }
+            "properties": { "type": {"const": "static" } }
           },
           "then": {
+            "required": ["path", "value"],
             "properties": {
               "value": {
                 "type": "string"
@@ -37,32 +30,26 @@
         },
         {
           "if": {
-            "properties": {
-              "type": {
-                "const": "dynamic"
-              }
-            }
+            "properties": { "type": {"const": "dynamic" } }
           },
           "then": {
+            "required": ["type", "path", "target"],
             "properties": {
-              "value": {
-                "target": "string"
+              "target": {
+                "type": "string"
               }
             }
           }
         },
         {
           "if": {
-            "properties": {
-              "type": {
-                "const": "holdOver"
-              }
-            }
+            "properties": { "type": {"const": "holdOver" } }
           },
           "then": {
             "properties": {
               "holdover": {
                 "type": "object",
+                "required": ["type", "value"],
                 "properties": {
                   "type": {
                     "type": "string"
@@ -226,7 +213,6 @@
                   "properties": { "plugin": { "const": "filterObject" } }
                 },
                 "then": {
-                  "required": ["plugin", "filterItems"],
                   "properties": {
                     "filterItems": {
                       "type": "array"
@@ -261,7 +247,7 @@
                 "then": {
                   "required": ["plugin", "sourcePrepend"],
                   "properties": {
-                    "sourcePrepend": {
+                    "sourceAppend": {
                       "type": "string"
                     }
                   }
