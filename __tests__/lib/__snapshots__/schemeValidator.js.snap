@@ -17,6 +17,23 @@ Object {
 }
 `;
 
+exports[`ConcatIntoDestination Basic schemePunk validation 1`] = `
+Object {
+  "destination": Object {
+    "plugin": "concatIntoDestination",
+    "target": "test",
+  },
+  "source": Object {
+    "plugin": "originalSchemeSource",
+    "target": "test",
+  },
+  "transform": Object {
+    "plugin": "appendValuesAdapter",
+    "sourceAppend": "-",
+  },
+}
+`;
+
 exports[`ContingentSource Validation Basic schemePunk validation 1`] = `
 Object {
   "destination": Object {
@@ -61,6 +78,7 @@ Object {
       ],
     },
     "plugin": "contingentSource",
+    "reducer": "newTest",
     "target": "test",
   },
   "transform": Object {
@@ -103,10 +121,61 @@ Object {
 }
 `;
 
+exports[`Destroy Destination Basic schemePunk validation 1`] = `
+Object {
+  "destination": Object {
+    "plugin": "destroyDestination",
+    "target": "test",
+  },
+  "source": Object {
+    "plugin": "originalSchemeSource",
+    "target": "test",
+  },
+  "transform": Object {
+    "plugin": "appendValuesAdapter",
+    "sourceAppend": "-",
+  },
+}
+`;
+
+exports[`Merge into Destination Basic schemePunk validation 1`] = `
+Object {
+  "destination": Object {
+    "plugin": "mergeIntoDestination",
+    "target": "test",
+  },
+  "source": Object {
+    "plugin": "originalSchemeSource",
+    "target": "test",
+  },
+  "transform": Object {
+    "plugin": "appendValuesAdapter",
+    "sourceAppend": "-",
+  },
+}
+`;
+
 exports[`OriginalSchemeSource Validation Basic schemePunk validation 1`] = `
 Object {
   "destination": Object {
     "plugin": "concatIntoDestination",
+    "target": "test",
+  },
+  "source": Object {
+    "plugin": "originalSchemeSource",
+    "target": "test",
+  },
+  "transform": Object {
+    "plugin": "appendValuesAdapter",
+    "sourceAppend": "-",
+  },
+}
+`;
+
+exports[`Push Destination Basic schemePunk validation 1`] = `
+Object {
+  "destination": Object {
+    "plugin": "pushDestination",
     "target": "test",
   },
   "source": Object {
@@ -172,5 +241,169 @@ Object {
       },
     ],
   ],
+}
+`;
+
+exports[`appendValues Validation Basic schemePunk validation 1`] = `
+Object {
+  "destination": Object {
+    "plugin": "concatIntoDestination",
+    "target": "test",
+  },
+  "source": Object {
+    "plugin": "activeSchemeSource",
+    "target": "test",
+  },
+  "transform": Object {
+    "plugin": "appendValuesAdapter",
+    "sourceAppend": "-",
+  },
+}
+`;
+
+exports[`delimit Validation Basic schemePunk validation 1`] = `
+Object {
+  "destination": Object {
+    "plugin": "concatIntoDestination",
+    "target": "test",
+  },
+  "source": Object {
+    "plugin": "activeSchemeSource",
+    "target": "test",
+  },
+  "transform": Object {
+    "plugin": "delimitValues",
+    "sourceDelimiter": "-",
+  },
+}
+`;
+
+exports[`filterAttributes Basic schemePunk validation 1`] = `
+Object {
+  "destination": Object {
+    "plugin": "concatIntoDestination",
+    "target": "test",
+  },
+  "source": Object {
+    "plugin": "activeSchemeSource",
+    "target": "test",
+  },
+  "transform": Object {
+    "filterBias": "out",
+    "filterItems": Array [
+      "item1",
+      "item2",
+    ],
+    "plugin": "filterAttribute",
+  },
+}
+`;
+
+exports[`filterAttributes filterAttributeMulti Basic schemePunk validation 1`] = `
+Object {
+  "destination": Object {
+    "plugin": "concatIntoDestination",
+    "target": "test",
+  },
+  "source": Object {
+    "plugin": "activeSchemeSource",
+    "target": "test",
+  },
+  "transform": Object {
+    "filterBias": "out",
+    "filterItems": Array [
+      "item1",
+      "item2",
+    ],
+    "plugin": "filterAttributeMulti",
+  },
+}
+`;
+
+exports[`filterObject Validation Basic schemePunk validation 1`] = `
+Object {
+  "destination": Object {
+    "plugin": "concatIntoDestination",
+    "target": "test",
+  },
+  "source": Object {
+    "plugin": "activeSchemeSource",
+    "target": "test",
+  },
+  "transform": Object {
+    "filterBias": "out",
+    "filterItems": Array [
+      "things",
+      "things1",
+    ],
+    "plugin": "filterObject",
+  },
+}
+`;
+
+exports[`filterObjectMulti Validation Basic schemePunk validation 1`] = `
+Object {
+  "destination": Object {
+    "plugin": "concatIntoDestination",
+    "target": "test",
+  },
+  "source": Object {
+    "plugin": "activeSchemeSource",
+    "target": "test",
+  },
+  "transform": Object {
+    "filterBias": "out",
+    "filterItems": Array [
+      "things",
+      "things1",
+    ],
+    "plugin": "filterObjectMulti",
+  },
+}
+`;
+
+exports[`prependValues Validation Basic schemePunk validation 1`] = `
+Object {
+  "destination": Object {
+    "plugin": "concatIntoDestination",
+    "target": "test",
+  },
+  "source": Object {
+    "plugin": "activeSchemeSource",
+    "target": "test",
+  },
+  "transform": Object {
+    "plugin": "prependValuesAdapter",
+    "sourcePrepend": "-",
+  },
+}
+`;
+
+exports[`tokenTemplates Validation Basic schemePunk validation 1`] = `
+Object {
+  "destination": Object {
+    "plugin": "concatIntoDestination",
+    "target": "test",
+  },
+  "source": Object {
+    "plugin": "activeSchemeSource",
+    "target": "test",
+  },
+  "transform": Object {
+    "json": true,
+    "named": true,
+    "plugin": "tokenTemplateValues",
+    "template": Object {
+      "filterPartials": Array [
+        "this1",
+        "this2",
+      ],
+      "targetPartial": "this",
+    },
+    "tokens": Array [
+      "item",
+    ],
+    "unescape": true,
+  },
 }
 `;

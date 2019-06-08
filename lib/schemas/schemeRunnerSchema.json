@@ -104,67 +104,45 @@
             "allOf": [
               {
                 "if": {
-                  "properties": {
-                    "plugin": {
-                      "const": "originalSchemeSource"
-                    }
-                  }
+                  "properties": { "plugin": { "const": "originalSchemeSource" } }
                 },
                 "then": {
-                  "required": [
-                    "plugin",
-                    "target"
-                  ]
+                  "required": ["plugin", "target"]
                 }
               },
               {
                 "if": {
-                  "properties": {
-                    "plugin": {
-                      "const": "activeSchemeSource"
-                    }
-                  }
+                  "properties": { "plugin": { "const": "activeSchemeSource" } }
                 },
                 "then": {
-                  "required": [
-                    "plugin",
-                    "target"
-                  ]
+                  "required": ["plugin", "target"]
                 }
               },
               {
                 "if": {
-                  "properties": {
-                    "plugin": {
-                      "const": "contingentSource"
-                    }
-                  }
+                  "properties": { "plugin": { "const": "contingentSource" } }
                 },
                 "then": {
-                  "required": [
-                    "plugin",
-                    "target",
-                    "contingencies"
-                  ],
+                  "required": ["plugin", "target", "contingencies"],
                   "properties": {
-                    "contigencies": {
+                    "contingencies": {
                       "type": "object",
+                      "minProperties": 1,
                       "properties": {
                         "defined": {
                           "type": "array",
-                          "items": {
-                            "$ref": "#/definitions/contigency"
-                          }
+                          "items": { "$ref": "#/definitions/contigency"}
                         },
                         "undefined": {
                           "type": "array",
-                          "items": {
-                            "$ref": "#/definitions/contigency"
-                          }
+                          "items": { "$ref": "#/definitions/contigency"}
                         }
                       },
                       "additionalProperties": {
-                        "$ref": "#/definitions/contigency"
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/definitions/contigency"
+                        }
                       }
                     },
                     "reducer": {
@@ -172,7 +150,7 @@
                     }
                   }
                 }
-              }
+              } 
             ],
             "additionalProperties": true
           },
@@ -187,17 +165,10 @@
             "allOf": [
               {
                 "if": {
-                  "properties": {
-                    "plugin": {
-                      "const": "appendValuesAdapter"
-                    }
-                  }
+                  "properties": { "plugin": { "const": "appendValuesAdapter" } }
                 },
                 "then": {
-                  "required": [
-                    "plugin",
-                    "sourceAppend"
-                  ],
+                  "required": ["plugin", "sourceAppend"],
                   "properties": {
                     "sourceAppend": {
                       "type": "string"
@@ -207,27 +178,20 @@
               },
               {
                 "if": {
-                  "properties": {
-                    "plugin": {
-                      "const": "delimitValues"
-                    }
-                  }
+                  "properties": { "plugin": { "const": "delimitValues" } }
                 },
                 "then": {
                   "properties": {
                     "sourceDelimiter": {
                       "type": "string"
                     }
-                  }
+                  },
+                  "required": ["plugin", "sourceDelimiter"]
                 }
               },
               {
                 "if": {
-                  "properties": {
-                    "plugin": {
-                      "const": "filterAttribute"
-                    }
-                  }
+                  "properties": { "plugin": { "const": "filterAttribute" } }
                 },
                 "then": {
                   "properties": {
@@ -243,11 +207,7 @@
               },
               {
                 "if": {
-                  "properties": {
-                    "plugin": {
-                      "const": "filterAttributeMulti"
-                    }
-                  }
+                  "properties": { "plugin": { "const": "filterAttributeMulti" } }
                 },
                 "then": {
                   "properties": {
@@ -263,11 +223,24 @@
               },
               {
                 "if": {
+                  "properties": { "plugin": { "const": "filterObject" } }
+                },
+                "then": {
+                  "required": ["plugin", "filterItems"],
                   "properties": {
-                    "plugin": {
-                      "const": "filterObject"
+                    "filterItems": {
+                      "type": "array"
+                    },
+                    "filterBias": {
+                      "type": "string",
+                      "default": "out"
                     }
                   }
+                }
+              },
+              {
+                "if": {
+                  "properties": { "plugin": { "const": "filterObjectMulti" } }
                 },
                 "then": {
                   "properties": {
@@ -283,39 +256,12 @@
               },
               {
                 "if": {
-                  "properties": {
-                    "plugin": {
-                      "const": "filterObjectMulti"
-                    }
-                  }
+                  "properties": { "plugin": { "const": "prependValuesAdapter" } }
                 },
                 "then": {
+                  "required": ["plugin", "sourcePrepend"],
                   "properties": {
-                    "filterItems": {
-                      "type": "array"
-                    },
-                    "filterBias": {
-                      "type": "string",
-                      "default": "out"
-                    }
-                  }
-                }
-              },
-              {
-                "if": {
-                  "properties": {
-                    "plugin": {
-                      "const": "prependValuesAdapter"
-                    }
-                  }
-                },
-                "then": {
-                  "required": [
-                    "plugin",
-                    "sourcePrepend"
-                  ],
-                  "properties": {
-                    "sourceAppend": {
+                    "sourcePrepend": {
                       "type": "string"
                     }
                   }
@@ -323,16 +269,10 @@
               },
               {
                 "if": {
-                  "properties": {
-                    "plugin": {
-                      "const": "tokenTemplateValues"
-                    }
-                  }
+                  "properties": { "plugin": { "const": "tokenTemplateValues" } }
                 },
                 "then": {
-                  "required": [
-                    "plugin"
-                  ],
+                  "required": ["plugin"],
                   "properties": {
                     "named": {
                       "type": "boolean"
@@ -344,10 +284,7 @@
                       "type": "boolean"
                     },
                     "tokens": {
-                      "type": [
-                        "object",
-                        "array"
-                      ]
+                      "type": ["object", "array"]
                     },
                     "template": {
                       "type": "object",
@@ -363,7 +300,17 @@
                         }
                       }
                     }
-                  }
+                  },
+                  "allOf": [
+                    {
+                      "if": {
+                        "properties": { "named": { "const": true } }
+                      },
+                      "then": {
+                        "required": ["tokens"]
+                      }
+                    }
+                  ]
                 }
               }
             ]
@@ -383,60 +330,36 @@
             "allOf": [
               {
                 "if": {
-                  "properties": {
-                    "plugin": {
-                      "const": "concatIntoDestination"
-                    }
-                  }
+                  "properties": { "plugin": { "const": "concatIntoDestination" } }
                 },
                 "then": {
-                  "required": [
-                    "target"
-                  ]
+                  "required": ["target"]
                 }
               },
               {
                 "if": {
-                  "properties": {
-                    "plugin": {
-                      "const": "destroyDestination"
-                    }
-                  }
+                  "properties": { "plugin": { "const": "destroyDestination" } }
                 },
                 "then": {
-                  "required": [
-                    "target"
-                  ]
+                  "required": ["target"]
                 }
               },
               {
                 "if": {
-                  "properties": {
-                    "plugin": {
-                      "const": "mergeIntoDestination"
-                    }
-                  }
+                  "properties": { "plugin": { "const": "mergeIntoDestination" } }
                 },
                 "then": {
-                  "required": [
-                    "target"
-                  ]
+                  "required": ["target"]
                 }
               },
               {
                 "if": {
-                  "properties": {
-                    "plugin": {
-                      "const": "pushDestination"
-                    }
-                  }
+                  "properties": { "plugin": { "const": "pushDestination" } }
                 },
                 "then": {
-                  "required": [
-                    "target"
-                  ]
+                  "required": ["target"]
                 }
-              }
+              }   
             ]
           },
           "callPath": {
@@ -448,32 +371,9 @@
             "description": "An object to be used as a template for transformations."
           },
           "holdOvers": {
-            "type": "object"
+            "type":  "object"
           }
-        },
-        "allOf": [
-          {
-            "if": {
-              "properties": {
-                "source": {
-                  "properties": {
-                    "plugin": {
-                      "const": "jsonTemplateFileSource"
-                    }
-                  }
-                }
-              }
-            },
-            "then": {
-              "required": [
-                "source",
-                "destination",
-                "transform",
-                "callPath"
-              ]
-            }
-          }
-        ]
+        }
       }
     }
   }

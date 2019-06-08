@@ -51,6 +51,7 @@
             "properties": {
               "holdover": {
                 "type": "object",
+                "required": ["type", "value"],
                 "properties": {
                   "type": {
                     "type": "string"
@@ -161,7 +162,8 @@
               "sourceDelimiter": {
                 "type": "string"
               }
-            }
+            },
+            "required": ["plugin", "sourceDelimiter"]
           }
         },
         {
@@ -274,7 +276,17 @@
                   }
                 }
               }
-            }
+            },
+            "allOf": [
+              {
+                "if": {
+                  "properties": { "named": { "const": true } }
+                },
+                "then": {
+                  "required": ["tokens"]
+                }
+              }
+            ]
           }
         }
       ]

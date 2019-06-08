@@ -111,7 +111,10 @@ describe('Scheme Runner Error Cases', () => {
           target: null,
           plugin: 'originala'
         },
-        transform: {},
+        transform: {
+          target: 'test',
+          value: 'test'
+        },
         destination: {
           target: 'test',
           plugin: 'concatIntoDestination'
@@ -124,7 +127,7 @@ describe('Scheme Runner Error Cases', () => {
     }
     catch (e) {
       expect(e).toBeInstanceOf(SchemePunkErrors);
-      expect(e.message).toBe("Scheme runner failed to run a scheme: SchemePunk Source failed: Cannot read property 'plugin' of undefined");
+      expect(e.message).toBe('Could not initialize the scheme runner: The scheme is invalid');
     }
   });
 });
