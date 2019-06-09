@@ -20,11 +20,9 @@ stages:
   - name: test
     # require the event type to not be a semantic release tag.
     if: NOT tag =~ ^v\d+\.\d+\.\d+$
-  - name: release
-    # require the branch name to be one of the environment branches.
-    if: branch = master AND fork = false AND type IN (push, api)
   - name: deploy
-    if: tag =~ ^\d+\.\d+\.\d+$
+    # require the branch name to be one of the environment branches.
+    if: branch IN (master) AND fork = false AND type IN (push, api)
 
 jobs:
   include:
@@ -35,13 +33,8 @@ jobs:
         - yarn run lint
         - yarn test
         - yarn coveralls
-
-    - stage: release
-      node_js: 'lts/carbon'
-      script:
-        - yarn semantic-release-github
-
-    - stage: deploy
+    - 
+      stage: deploy
       if: branch = master
       # Semantic release will fail if it's not using node 8.
       node_js: 'lts/carbon'
