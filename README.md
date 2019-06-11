@@ -11,10 +11,9 @@
 
 Scheme Punk on NPM [SchemePunk](https://www.npmjs.com/package/@schemepunk/scheme-punk)
 
-Scheme Punk is a promise based information/object transformation module that
-uses a mixin approach that favors composition for its read, write and
-transform behaviors. It can use the config module to specify how it should connect
-and use these behaviors on objects.
+Scheme Punk is an extensible mapping and transformation library for js objects that you control with configuration not code (js objects or json).
+
+It is easy to extend schemePunk with your own plugins too!
 
 ## Where did it come from?
 
@@ -23,18 +22,17 @@ authoring tasks in JSON Schema [http://json-schema.org/] as well as the need to 
 in other JSON formats [https://www.openapis.org/](open API) and to use that same schema to inform and
 interpret for even more JSON based utilities [https://www.getpostman.com/docs/collections](postman collections).
 
+
+
 ## Example uses:
 
-* Use it to fill out json schema hyper properties like enums, and regex properties based on information already in the JSON schema. (Ex: using field properties to inform query parameters)
+From it's humble roots as a JSON Schema Preprocessor SchemePunk is now it's in place in a wide variety of use cases:
 
-* Use it to transform a json schema document into a json schema hyper document based on expected API behavior, paths, and information contained in your base json schema document.
-
-* Create Open API documents from a JSON schema document.
-
-* Use a single object format and perform different transformations to different destinations to create any number of different objects from a single source.
-
-Even though its origin is in schema transformation, its highly configurable
-behaviors can be used in any object transformation.
+* Transforming JS Objects into JSON Schema
+* Transforming and mapping user submitted form data to conform to a different shape.
+* Altering the results of one version of an API to a different spec for another version of the API.
+* Transforming JSON Schema into Open API/Swagger docs.
+* Transforming JSON Schema into postman collections.
 
 ## How to use scheme Punk:
 
@@ -47,7 +45,7 @@ components:
 
 ```js
 // require SchemePunk
-const SchemePunk = require('@schemepunk/scheme-punk');
+const { SchemePunk } = require('@schemepunk/scheme-punk');
 var obj = {
   test: 'this',
   nextTest: {

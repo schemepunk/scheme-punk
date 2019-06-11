@@ -67,7 +67,7 @@
     "fs-extra": "^8.0.1",
     "lodash": "^4.17.11",
     "loglevel": "^1.6.2",
-    "molotov": "^2.0.1",
+    "molotov": "^2.1.11",
     "mustache": "^3.0.0"
   },
   "engines": {

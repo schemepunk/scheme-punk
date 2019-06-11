@@ -84,7 +84,10 @@
             "properties": { "plugin": { "const": "originalSchemeSource" } }
           },
           "then": {
-            "required": ["plugin", "target"]
+            "dependencies": {
+              "plugin": ["target"],
+              "target": ["plugin"]
+            }
           }
         },
         {
@@ -92,7 +95,10 @@
             "properties": { "plugin": { "const": "activeSchemeSource" } }
           },
           "then": {
-            "required": ["plugin", "target"]
+            "dependencies": {
+              "plugin": ["target"],
+              "target": ["plugin"]
+            }
           }
         },
         {
@@ -100,7 +106,11 @@
             "properties": { "plugin": { "const": "contingentSource" } }
           },
           "then": {
-            "required": ["plugin", "target", "contingencies"],
+            "dependencies": {
+              "plugin": ["target", "contingencies"],
+              "target": ["plugin", "contingencies"],
+              "contingencies": ["plugin", "target"]
+            },
             "properties": {
               "contingencies": {
                 "type": "object",
@@ -142,10 +152,18 @@
       "allOf": [
         {
           "if": {
+            "properties": {}
+          }
+        },
+        {
+          "if": {
             "properties": { "plugin": { "const": "appendValuesAdapter" } }
           },
           "then": {
-            "required": ["plugin", "sourceAppend"],
+            "dependencies": {
+              "plugin": ["sourceAppend"],
+              "sourceAppend": ["plugin"]
+            },
             "properties": {
               "sourceAppend": {
                 "type": "string"
@@ -163,7 +181,10 @@
                 "type": "string"
               }
             },
-            "required": ["plugin", "sourceDelimiter"]
+            "dependencies": {
+              "plugin": ["sourceDelimiter"],
+              "sourceDelimiter": ["plugin"]
+            }
           }
         },
         {
@@ -235,9 +256,12 @@
             "properties": { "plugin": { "const": "prependValuesAdapter" } }
           },
           "then": {
-            "required": ["plugin", "sourcePrepend"],
+            "dependencies": {
+              "plugin": ["sourcePrepend"],
+              "sourcePrepend": ["plugin"]
+            },
             "properties": {
-              "sourceAppend": {
+              "sourcePrepend": {
                 "type": "string"
               }
             }
@@ -248,7 +272,6 @@
             "properties": { "plugin": { "const": "tokenTemplateValues" } }
           },
           "then": {
-            "required": ["plugin"],
             "properties": {
               "named": {
                 "type": "boolean"
@@ -283,7 +306,9 @@
                   "properties": { "named": { "const": true } }
                 },
                 "then": {
-                  "required": ["tokens"]
+                  "dependencies": {
+                    "named": ["tokens"]
+                  }
                 }
               }
             ]
@@ -306,10 +331,24 @@
       "allOf": [
         {
           "if": {
+            "properties": {
+              "target": {
+                "type": "string"
+              }
+            }
+          },
+          "then": {
+            "dependencies": {}
+          }
+        },
+        {
+          "if": {
             "properties": { "plugin": { "const": "concatIntoDestination" } }
           },
           "then": {
-            "required": ["target"]
+            "dependencies": {
+              "plugin": ["target"]
+            }
           }
         },
         {
@@ -317,7 +356,9 @@
             "properties": { "plugin": { "const": "destroyDestination" } }
           },
           "then": {
-            "required": ["target"]
+            "dependencies": {
+              "plugin": ["target"]
+            }
           }
         },
         {
@@ -325,7 +366,9 @@
             "properties": { "plugin": { "const": "mergeIntoDestination" } }
           },
           "then": {
-            "required": ["target"]
+            "dependencies": {
+              "plugin": ["target"]
+            }
           }
         },
         {
@@ -333,7 +376,9 @@
             "properties": { "plugin": { "const": "pushDestination" } }
           },
           "then": {
-            "required": ["target"]
+            "dependencies": {
+              "plugin": ["target"]
+            }
           }
         }   
       ]

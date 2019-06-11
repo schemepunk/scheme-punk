@@ -17,7 +17,7 @@ Object {
 }
 `;
 
-exports[`ConcatIntoDestination Basic schemePunk validation 1`] = `
+exports[`ConcatIntoDestination Basic concatIntoDestination schemePunk validation 1`] = `
 Object {
   "destination": Object {
     "plugin": "concatIntoDestination",
@@ -121,7 +121,7 @@ Object {
 }
 `;
 
-exports[`Destroy Destination Basic schemePunk validation 1`] = `
+exports[`Destroy Destination Basic destroyDestination schemePunk validation 1`] = `
 Object {
   "destination": Object {
     "plugin": "destroyDestination",
@@ -138,7 +138,7 @@ Object {
 }
 `;
 
-exports[`Merge into Destination Basic schemePunk validation 1`] = `
+exports[`Merge into Destination Basic merge into destination 1`] = `
 Object {
   "destination": Object {
     "plugin": "mergeIntoDestination",
@@ -172,7 +172,7 @@ Object {
 }
 `;
 
-exports[`Push Destination Basic schemePunk validation 1`] = `
+exports[`Push Destination Basic Push Destination 1`] = `
 Object {
   "destination": Object {
     "plugin": "pushDestination",
@@ -203,6 +203,20 @@ Object {
     "plugin": "appendValuesAdapter",
     "sourceAppend": "-",
   },
+}
+`;
+
+exports[`Scheme Runner Validation Basic schemePunk validation just mapping. 1`] = `
+Object {
+  "destination": Object {
+    "plugin": "concatIntoDestination",
+    "target": "test",
+  },
+  "source": Object {
+    "plugin": "originalSchemeSource",
+    "target": "test",
+  },
+  "transform": Object {},
 }
 `;
 

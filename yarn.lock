@@ -2469,7 +2469,7 @@ from2@^2.1.0, from2@^2.1.1:
     inherits "^2.0.1"
     readable-stream "^2.0.0"
 
-fs-extra@^7.0.0, fs-extra@^7.0.1:
+fs-extra@^7.0.0:
   version "7.0.1"
   resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-7.0.1.tgz#4f189c44aa123b895f722804f55ea23eadc348e9"
   integrity sha512-YJDaCJZEnBmcbw13fvdAM9AwNOJwOzrE4pqMqBq5nFiEqXUqHwlK4B+3pUw6JNvfSPtX05xFHtYy/1ni01eGCw==
@@ -4701,13 +4701,13 @@ modify-values@^1.0.0:
   resolved "https://registry.yarnpkg.com/modify-values/-/modify-values-1.0.1.tgz#b3939fa605546474e3e3e3c63d64bd43b4ee6022"
   integrity sha512-xV2bxeN6F7oYjZWTe/YPAy6MN2M+sL4u/Rlm2AHCIVGfo2p1yGmBHQ6vHehl4bRTZBdHu3TSkWdYgkwpYzAGSw==
 
-molotov@^2.0.1:
-  version "2.1.10"
-  resolved "https://registry.yarnpkg.com/molotov/-/molotov-2.1.10.tgz#68e157770792fc8f92f81b738967f6e1e6cedc80"
-  integrity sha512-Un5q8KSXHKRoBJ/poNEWLeBo2TKZjaGe7KspgSYbqofqgkQkeIGG8nRHmtE7JR8hoe3HuEHNjeInYgjIv8ozpA==
+molotov@^2.1.11:
+  version "2.1.11"
+  resolved "https://registry.yarnpkg.com/molotov/-/molotov-2.1.11.tgz#5276fe07d7df73c8a0fa663cd681042d5e85e8ef"
+  integrity sha512-XPxSlGYuIcpQlJA/tR1Wa95wXJBMQbnERdbBwyhmBjZWieZS0rtLmuCaPTexrCMwofjdlAnofygnbpOAygtcpg==
   dependencies:
     ajv "^6.2.0"
-    fs-extra "^7.0.1"
+    fs-extra "^8.0.1"
     lodash "^4.17.4"
 
 move-concurrently@^1.0.1:

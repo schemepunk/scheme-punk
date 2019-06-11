@@ -72,6 +72,21 @@ describe('Scheme Runner Validation', async () => {
     };
     expect(await schemeValidator({scheme: testScheme, useValidator: 'schemePunkValidator'})).toMatchSnapshot();
   });
+  test('Basic schemePunk validation just mapping.', async () => {
+    expect.assertions(1);
+    testScheme = {
+      source: {
+        target: 'test',
+        plugin: 'originalSchemeSource'
+      },
+      transform: {},
+      destination: {
+        target: 'test',
+        plugin: 'concatIntoDestination'
+      }
+    };
+    expect(await schemeValidator({scheme: testScheme, useValidator: 'schemePunkValidator'})).toMatchSnapshot();
+  });
   it('Validation Error no Source', async () => {
     expect.assertions(2);
     testScheme = {
@@ -182,7 +197,7 @@ describe('OriginalSchemeSource Validation', async () => {
     }
     catch (error) {
       expect(error).toBeInstanceOf(SchemePunkErrors);
-      expect(error.message).toBe("data.source should have required property 'target', data.source should match \"then\" schema");
+      expect(error.message).toBe('data.source should have property target when property plugin is present, data.source should match "then" schema');
     }
   });
 });
@@ -232,7 +247,7 @@ describe('ActiveSchemeSource Validation', async () => {
     }
     catch (error) {
       expect(error).toBeInstanceOf(SchemePunkErrors);
-      expect(error.message).toBe("data.source should have required property 'target', data.source should match \"then\" schema");
+      expect(error.message).toBe('data.source should have property target when property plugin is present, data.source should match "then" schema');
     }
   });
 });
@@ -537,7 +552,8 @@ describe('appendValues Validation', async () => {
     expect.assertions(2);
     testScheme = {
       source: {
-        plugin: 'activeSchemeSource'
+        plugin: 'activeSchemeSource',
+        target: 'aSourceTarget'
       },
       transform: {
         plugin: 'appendValuesAdapter'
@@ -552,7 +568,7 @@ describe('appendValues Validation', async () => {
     }
     catch (error) {
       expect(error).toBeInstanceOf(SchemePunkErrors);
-      expect(error.message).toBe("data.source should have required property 'target', data.source should match \"then\" schema, data.transform should have required property 'sourceAppend', data.transform should match \"then\" schema");
+      expect(error.message).toBe('data.transform should have property sourceAppend when property plugin is present, data.transform should match "then" schema');
     }
   });
 });
@@ -602,7 +618,7 @@ describe('delimit Validation', async () => {
     }
     catch (error) {
       expect(error).toBeInstanceOf(SchemePunkErrors);
-      expect(error.message).toBe("data.transform should have required property 'sourceDelimiter', data.transform should match \"then\" schema");
+      expect(error.message).toBe('data.transform should have property sourceDelimiter when property plugin is present, data.transform should match "then" schema');
     }
   });
 });
@@ -913,7 +929,7 @@ describe('prependValues Validation', async () => {
     }
     catch (error) {
       expect(error).toBeInstanceOf(SchemePunkErrors);
-      expect(error.message).toBe("data.transform should have required property 'sourcePrepend', data.transform should match \"then\" schema");
+      expect(error.message).toBe('data.transform should have property sourcePrepend when property plugin is present, data.transform should match "then" schema');
     }
   });
 });
@@ -1008,7 +1024,7 @@ describe('tokenTemplates Validation', async () => {
     }
     catch (error) {
       expect(error).toBeInstanceOf(SchemePunkErrors);
-      expect(error.message).toBe("data.transform should have required property 'tokens', data.transform should match \"then\" schema, data.transform should match \"then\" schema");
+      expect(error.message).toBe('data.transform should have property tokens when property named is present, data.transform should match "then" schema, data.transform should match "then" schema');
     }
   });
 });
@@ -1020,7 +1036,7 @@ describe('ConcatIntoDestination', async () => {
   afterAll(() => {
     jest.restoreAllMocks();
   });
-  test('Basic schemePunk validation', async () => {
+  test('Basic concatIntoDestination schemePunk validation', async () => {
     expect.assertions(1);
     testScheme = {
       source: {
@@ -1042,7 +1058,8 @@ describe('ConcatIntoDestination', async () => {
     expect.assertions(2);
     testScheme = {
       source: {
-        plugin: 'originalSchemeSource'
+        plugin: 'originalSchemeSource',
+        target: 'aSourceTarget'
       },
       transform: {
         plugin: 'appendValuesAdapter',
@@ -1057,7 +1074,7 @@ describe('ConcatIntoDestination', async () => {
     }
     catch (error) {
       expect(error).toBeInstanceOf(SchemePunkErrors);
-      expect(error.message).toBe("data.source should have required property 'target', data.source should match \"then\" schema, data.destination should have required property 'target', data.destination should match \"then\" schema");
+      expect(error.message).toBe('data.destination should have property target when property plugin is present, data.destination should match "then" schema');
     }
   });
 });
@@ -1069,7 +1086,7 @@ describe('Destroy Destination', async () => {
   afterAll(() => {
     jest.restoreAllMocks();
   });
-  test('Basic schemePunk validation', async () => {
+  test('Basic destroyDestination schemePunk validation', async () => {
     expect.assertions(1);
     testScheme = {
       source: {
@@ -1091,7 +1108,8 @@ describe('Destroy Destination', async () => {
     expect.assertions(2);
     testScheme = {
       source: {
-        plugin: 'originalSchemeSource'
+        plugin: 'originalSchemeSource',
+        target: 'aSourceTarget'
       },
       transform: {
         plugin: 'appendValuesAdapter',
@@ -1106,7 +1124,7 @@ describe('Destroy Destination', async () => {
     }
     catch (error) {
       expect(error).toBeInstanceOf(SchemePunkErrors);
-      expect(error.message).toBe("data.source should have required property 'target', data.source should match \"then\" schema, data.destination should have required property 'target', data.destination should match \"then\" schema");
+      expect(error.message).toBe('data.destination should have property target when property plugin is present, data.destination should match "then" schema');
     }
   });
 });
@@ -1118,7 +1136,7 @@ describe('Merge into Destination', async () => {
   afterAll(() => {
     jest.restoreAllMocks();
   });
-  test('Basic schemePunk validation', async () => {
+  test('Basic merge into destination', async () => {
     expect.assertions(1);
     testScheme = {
       source: {
@@ -1140,7 +1158,8 @@ describe('Merge into Destination', async () => {
     expect.assertions(2);
     testScheme = {
       source: {
-        plugin: 'originalSchemeSource'
+        plugin: 'originalSchemeSource',
+        target: 'infinity'
       },
       transform: {
         plugin: 'appendValuesAdapter',
@@ -1155,7 +1174,7 @@ describe('Merge into Destination', async () => {
     }
     catch (error) {
       expect(error).toBeInstanceOf(SchemePunkErrors);
-      expect(error.message).toBe("data.source should have required property 'target', data.source should match \"then\" schema, data.destination should have required property 'target', data.destination should match \"then\" schema");
+      expect(error.message).toBe('data.destination should have property target when property plugin is present, data.destination should match "then" schema');
     }
   });
 });
@@ -1167,7 +1186,7 @@ describe('Push Destination', async () => {
   afterAll(() => {
     jest.restoreAllMocks();
   });
-  test('Basic schemePunk validation', async () => {
+  test('Basic Push Destination', async () => {
     expect.assertions(1);
     testScheme = {
       source: {
@@ -1185,10 +1204,11 @@ describe('Push Destination', async () => {
     };
     expect(await schemeValidator({scheme: testScheme, useValidator: 'schemePunkValidator'})).toMatchSnapshot();
   });
-  it('Merge into Destination No target', async () => {
+  it('Push into Destination No target', async () => {
     expect.assertions(2);
     testScheme = {
       source: {
+        target: 'thisGuy',
         plugin: 'originalSchemeSource'
       },
       transform: {
@@ -1204,7 +1224,7 @@ describe('Push Destination', async () => {
     }
     catch (error) {
       expect(error).toBeInstanceOf(SchemePunkErrors);
-      expect(error.message).toBe("data.source should have required property 'target', data.source should match \"then\" schema, data.destination should have required property 'target', data.destination should match \"then\" schema");
+      expect(error.message).toBe('data.destination should have property target when property plugin is present, data.destination should match "then" schema');
     }
   });
 });
