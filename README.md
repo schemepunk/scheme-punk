@@ -11,10 +11,9 @@
 
 Scheme Punk on NPM [SchemePunk](https://www.npmjs.com/package/@schemepunk/scheme-punk)
 
-Scheme Punk is a promise based information/object transformation module that
-uses a mixin approach that favors composition for its read, write and
-transform behaviors. It can use the config module to specify how it should connect
-and use these behaviors on objects.
+Scheme Punk is extensible mapping and transformation library for js objects that you control with configuration not code (js objects or json).
+
+It is easy to extend schemePunk with your own plugins too!
 
 ## Where did it come from?
 
@@ -47,7 +46,7 @@ components:
 
 ```js
 // require SchemePunk
-const SchemePunk = require('@schemepunk/scheme-punk');
+const { SchemePunk } = require('@schemepunk/scheme-punk');
 var obj = {
   test: 'this',
   nextTest: {
