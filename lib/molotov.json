@@ -35,6 +35,9 @@
         ],
         "sourceComplete": [
           "sourceComplete"
+        ],
+        "sourceFromConstant": [
+          "sourceFromConstant"
         ]
       },
       "transform": {
