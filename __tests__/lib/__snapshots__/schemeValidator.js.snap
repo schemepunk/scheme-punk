@@ -258,6 +258,23 @@ Object {
 }
 `;
 
+exports[`Source From constant Validation Basic schemePunk validation 1`] = `
+Object {
+  "destination": Object {
+    "plugin": "concatIntoDestination",
+    "target": "test",
+  },
+  "source": Object {
+    "constant": "test",
+    "plugin": "sourceFromConstant",
+  },
+  "transform": Object {
+    "plugin": "appendValuesAdapter",
+    "sourceAppend": "-",
+  },
+}
+`;
+
 exports[`appendValues Validation Basic schemePunk validation 1`] = `
 Object {
   "destination": Object {

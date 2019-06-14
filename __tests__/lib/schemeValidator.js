@@ -252,6 +252,57 @@ describe('ActiveSchemeSource Validation', async () => {
   });
 });
 
+describe('Source From constant Validation', async () => {
+  beforeEach(() => {
+    tmpMocks.forEach(mock => mock.mockRestore());
+  });
+  afterAll(() => {
+    jest.restoreAllMocks();
+  });
+  test('Basic schemePunk validation', async () => {
+    expect.assertions(1);
+    testScheme = {
+      source: {
+        constant: 'test',
+        plugin: 'sourceFromConstant'
+      },
+      transform: {
+        plugin: 'appendValuesAdapter',
+        sourceAppend: '-'
+      },
+      destination: {
+        target: 'test',
+        plugin: 'concatIntoDestination'
+      }
+    };
+    expect(await schemeValidator({scheme: testScheme, useValidator: 'schemePunkValidator'})).toMatchSnapshot();
+  });
+  it('sourceFromConstant no constant', async () => {
+    expect.assertions(2);
+    testScheme = {
+      source: {
+        plugin: 'sourceFromConstant'
+      },
+      transform: {
+        plugin: 'appendValuesAdapter',
+        sourceAppend: '-'
+      },
+      destination: {
+        target: 'test',
+        plugin: 'concatIntoDestination'
+      }
+    };
+    try {
+      await schemeValidator({scheme: testScheme, useValidator: 'schemePunkValidator'});
+    }
+    catch (error) {
+      expect(error).toBeInstanceOf(SchemePunkErrors);
+      expect(error.message).toBe('data.source should have property constant when property plugin is present, data.source should match "then" schema');
+    }
+  });
+});
+
+
 describe('ContingentSource Validation', async () => {
   beforeEach(() => {
     tmpMocks.forEach(mock => mock.mockRestore());

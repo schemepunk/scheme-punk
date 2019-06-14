@@ -102,6 +102,20 @@
           }
         },
         {
+          "if":  {
+            "properties": {"plugin": { "const": "sourceFromConstant"}}
+          },
+          "then": {
+            "dependencies": {
+              "plugin": ["constant"],
+              "constant": ["plugin"]
+            },
+            "properties": {
+              "constant": {}
+            }
+          }
+        },
+        {
           "if": {
             "properties": { "plugin": { "const": "contingentSource" } }
           },
