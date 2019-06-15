@@ -22,9 +22,7 @@
           "then": {
             "required": ["path", "value"],
             "properties": {
-              "value": {
-                "type": "string"
-              }
+              "value": {}
             }
           }
         },
@@ -54,9 +52,7 @@
                   "type": {
                     "type": "string"
                   },
-                  "value": {
-                    "type": "string"
-                  }
+                  "value": {}
                 }
               }
             }
@@ -108,6 +104,20 @@
                   "dependencies": {
                     "plugin": ["target"],
                     "target": ["plugin"]
+                  }
+                }
+              },
+              {
+                "if":  {
+                  "properties": {"plugin": { "const": "sourceFromConstant"}}
+                },
+                "then": {
+                  "dependencies": {
+                    "plugin": ["constant"],
+                    "constant": ["plugin"]
+                  },
+                  "properties": {
+                    "constant": {}
                   }
                 }
               },
