@@ -1,6 +1,5 @@
 {
   "name": "@schemepunk/scheme-punk",
-  "version": "6.0.0",
   "description": "Transformation tool with pluggable sources, transformations, and destinations.",
   "scripts": {
     "commitmsg": "commitlint -e $GIT_PARAMS",
@@ -74,7 +73,6 @@
     "node": ">=8"
   },
   "readme": "ERROR: No README data found!",
-  "_id": "@schemepunk/scheme-punk@6.0.0-development",
   "husky": {
     "hooks": {
       "pre-commit": "npm run lint",
