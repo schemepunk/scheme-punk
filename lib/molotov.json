@@ -31,7 +31,11 @@
           "jsonTemplateFileSource"
         ],
         "contingentSource": [
-          "contigentSource"
+          "contingentSource"
+        ],
+        "activeContingent": [
+          "contingentSource",
+          "activeSchemeSource"
         ],
         "sourceComplete": [
           "sourceComplete"
