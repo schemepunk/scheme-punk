@@ -39,4 +39,11 @@ describe('Delimit Values tests', () => {
     };
     expect(await delimitValues.transform(value)).toBe('test1-test2-test3');
   });
+  test('no value is ok.', async () => {
+    // Emulate a custom option from a scheme.
+    delimitValues.options = {
+      sourceDelimiter: '-'
+    };
+    expect(await delimitValues.transform()).toBe('');
+  });
 });
