@@ -67,6 +67,7 @@
     "lodash": "^4.17.13",
     "loglevel": "^1.6.2",
     "molotov": "^2.1.11",
+    "moment": "^2.24.0",
     "mustache": "^3.0.0"
   },
   "engines": {

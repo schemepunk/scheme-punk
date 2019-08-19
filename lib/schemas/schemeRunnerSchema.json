@@ -193,6 +193,21 @@
               },
               {
                 "if": {
+                  "properties": { "plugin": { "const": "dateParser" } }
+                },
+                "then": {
+                  "properties": {
+                    "inputFormat": {
+                      "type": "string"
+                    },
+                    "inputUseUtc": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
                   "properties": { "plugin": { "const": "delimitValues" } }
                 },
                 "then": {
