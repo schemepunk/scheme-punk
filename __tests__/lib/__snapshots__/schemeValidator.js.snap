@@ -292,6 +292,118 @@ Object {
 }
 `;
 
+exports[`dateFormatter validation Basic schemePunk validation 1`] = `
+Object {
+  "destination": Object {
+    "plugin": "concatIntoDestination",
+    "target": "test",
+  },
+  "source": Object {
+    "plugin": "activeSchemeSource",
+    "target": "test",
+  },
+  "transform": Object {
+    "inputFormat": "YYYY MM DD",
+    "outputFormat": "YY",
+    "plugin": "dateFormatter",
+  },
+}
+`;
+
+exports[`dateFormatter validation Basic schemePunk validation with utc 1`] = `
+Object {
+  "destination": Object {
+    "plugin": "concatIntoDestination",
+    "target": "test",
+  },
+  "source": Object {
+    "plugin": "activeSchemeSource",
+    "target": "test",
+  },
+  "transform": Object {
+    "outputFormat": "YYYY MM DD",
+    "plugin": "dateFormatter",
+  },
+}
+`;
+
+exports[`dateManipulate validation Basic schemePunk validation 1`] = `
+Object {
+  "destination": Object {
+    "plugin": "concatIntoDestination",
+    "target": "test",
+  },
+  "source": Object {
+    "plugin": "activeSchemeSource",
+    "target": "test",
+  },
+  "transform": Object {
+    "inputFormat": "YYYY MM DD",
+    "manipulateArgs": Array [
+      7,
+      "days",
+    ],
+    "manipulator": "add",
+    "outputFormat": "YY",
+    "plugin": "dateManipulate",
+  },
+}
+`;
+
+exports[`dateManipulate validation Basic schemePunk validation with endOf 1`] = `
+Object {
+  "destination": Object {
+    "plugin": "concatIntoDestination",
+    "target": "test",
+  },
+  "source": Object {
+    "plugin": "activeSchemeSource",
+    "target": "test",
+  },
+  "transform": Object {
+    "inputFormat": "YYYY MM DD",
+    "manipulator": "endOf",
+    "outputFormat": "YY",
+    "plugin": "dateManipulate",
+  },
+}
+`;
+
+exports[`dateParse validation Basic schemePunk validation 1`] = `
+Object {
+  "destination": Object {
+    "plugin": "concatIntoDestination",
+    "target": "test",
+  },
+  "source": Object {
+    "plugin": "activeSchemeSource",
+    "target": "test",
+  },
+  "transform": Object {
+    "inputFormat": "YYYY MM DD",
+    "plugin": "dateParser",
+  },
+}
+`;
+
+exports[`dateParse validation Basic schemePunk validation with utc 1`] = `
+Object {
+  "destination": Object {
+    "plugin": "concatIntoDestination",
+    "target": "test",
+  },
+  "source": Object {
+    "plugin": "activeSchemeSource",
+    "target": "test",
+  },
+  "transform": Object {
+    "inputFormat": "YYYY MM DD",
+    "inputUseUtc": true,
+    "plugin": "dateParser",
+  },
+}
+`;
+
 exports[`delimit Validation Basic schemePunk validation 1`] = `
 Object {
   "destination": Object {

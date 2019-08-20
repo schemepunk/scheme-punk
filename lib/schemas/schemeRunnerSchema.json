@@ -193,6 +193,24 @@
               },
               {
                 "if": {
+                  "properties": { "plugin": { "const": "dateFormatter" } }
+                },
+                "then": {
+                  "properties": {
+                    "inputFormat": {
+                      "type": "string"
+                    },
+                    "inputUseUtc": {
+                      "type": "boolean"
+                    },
+                    "outputFormat": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
                   "properties": { "plugin": { "const": "dateParser" } }
                 },
                 "then": {
@@ -202,6 +220,31 @@
                     },
                     "inputUseUtc": {
                       "type": "boolean"
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": { "plugin": { "const": "dateManipulate" } }
+                },
+                "then": {
+                  "properties": {
+                    "inputFormat": {
+                      "type": "string"
+                    },
+                    "inputUseUtc": {
+                      "type": "boolean"
+                    },
+                    "outputFormat": {
+                      "type": "string"
+                    },
+                    "manipulator": {
+                      "type": "string",
+                      "enum": ["add", "subtract", "startOf", "endOf", "local"]
+                    },
+                    "manipulatorArgs": {
+                      "type": ["array", "string", "object"]
                     }
                   }
                 }

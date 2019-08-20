@@ -624,6 +624,248 @@ describe('appendValues Validation', async () => {
   });
 });
 
+describe('dateParse validation', async () => {
+  beforeEach(() => {
+    tmpMocks.forEach(mock => mock.mockRestore());
+  });
+  afterAll(() => {
+    jest.restoreAllMocks();
+  });
+  test('Basic schemePunk validation', async () => {
+    expect.assertions(1);
+    testScheme = {
+      source: {
+        target: 'test',
+        plugin: 'activeSchemeSource'
+      },
+      transform: {
+        plugin: 'dateParser',
+        inputFormat: 'YYYY MM DD'
+      },
+      destination: {
+        target: 'test',
+        plugin: 'concatIntoDestination'
+      }
+    };
+    expect(await schemeValidator({scheme: testScheme, useValidator: 'schemePunkValidator'})).toMatchSnapshot();
+  });
+  test('Basic schemePunk validation with utc', async () => {
+    expect.assertions(1);
+    testScheme = {
+      source: {
+        target: 'test',
+        plugin: 'activeSchemeSource'
+      },
+      transform: {
+        plugin: 'dateParser',
+        inputFormat: 'YYYY MM DD',
+        inputUseUtc: true
+      },
+      destination: {
+        target: 'test',
+        plugin: 'concatIntoDestination'
+      }
+    };
+    expect(await schemeValidator({scheme: testScheme, useValidator: 'schemePunkValidator'})).toMatchSnapshot();
+  });
+  it('Date parser bad format', async () => {
+    expect.assertions(2);
+    testScheme = {
+      source: {
+        plugin: 'activeSchemeSource',
+        target: 'aSourceTarget'
+      },
+      transform: {
+        plugin: 'dateParser',
+        inputFormat: 1
+      },
+      destination: {
+        target: 'test',
+        plugin: 'concatIntoDestination'
+      }
+    };
+    try {
+      await schemeValidator({scheme: testScheme, useValidator: 'schemePunkValidator'});
+    }
+    catch (error) {
+      expect(error).toBeInstanceOf(SchemePunkErrors);
+      expect(error.message).toBe('data.transform.inputFormat should be string, data.transform should match "then" schema');
+    }
+  });
+  it('Date parser bad format', async () => {
+    expect.assertions(2);
+    testScheme = {
+      source: {
+        plugin: 'activeSchemeSource',
+        target: 'aSourceTarget'
+      },
+      transform: {
+        plugin: 'dateParser',
+        inputFormat: 'YYYY',
+        inputUseUtc: 'adfadsfasdf'
+      },
+      destination: {
+        target: 'test',
+        plugin: 'concatIntoDestination'
+      }
+    };
+    try {
+      await schemeValidator({scheme: testScheme, useValidator: 'schemePunkValidator'});
+    }
+    catch (error) {
+      expect(error).toBeInstanceOf(SchemePunkErrors);
+      expect(error.message).toBe('data.transform.inputUseUtc should be boolean, data.transform should match "then" schema');
+    }
+  });
+});
+
+describe('dateFormatter validation', async () => {
+  beforeEach(() => {
+    tmpMocks.forEach(mock => mock.mockRestore());
+  });
+  afterAll(() => {
+    jest.restoreAllMocks();
+  });
+  test('Basic schemePunk validation', async () => {
+    expect.assertions(1);
+    testScheme = {
+      source: {
+        target: 'test',
+        plugin: 'activeSchemeSource'
+      },
+      transform: {
+        plugin: 'dateFormatter',
+        inputFormat: 'YYYY MM DD',
+        outputFormat: 'YY'
+      },
+      destination: {
+        target: 'test',
+        plugin: 'concatIntoDestination'
+      }
+    };
+    expect(await schemeValidator({scheme: testScheme, useValidator: 'schemePunkValidator'})).toMatchSnapshot();
+  });
+  test('Basic schemePunk validation with utc', async () => {
+    expect.assertions(1);
+    testScheme = {
+      source: {
+        target: 'test',
+        plugin: 'activeSchemeSource'
+      },
+      transform: {
+        plugin: 'dateFormatter',
+        outputFormat: 'YYYY MM DD'
+      },
+      destination: {
+        target: 'test',
+        plugin: 'concatIntoDestination'
+      }
+    };
+    expect(await schemeValidator({scheme: testScheme, useValidator: 'schemePunkValidator'})).toMatchSnapshot();
+  });
+  it('Date formatter bad format', async () => {
+    expect.assertions(2);
+    testScheme = {
+      source: {
+        plugin: 'activeSchemeSource',
+        target: 'aSourceTarget'
+      },
+      transform: {
+        plugin: 'dateFormatter',
+        outputFormat: 1
+      },
+      destination: {
+        target: 'test',
+        plugin: 'concatIntoDestination'
+      }
+    };
+    try {
+      await schemeValidator({scheme: testScheme, useValidator: 'schemePunkValidator'});
+    }
+    catch (error) {
+      expect(error).toBeInstanceOf(SchemePunkErrors);
+      expect(error.message).toBe('data.transform.outputFormat should be string, data.transform should match "then" schema');
+    }
+  });
+});
+
+describe('dateManipulate validation', async () => {
+  beforeEach(() => {
+    tmpMocks.forEach(mock => mock.mockRestore());
+  });
+  afterAll(() => {
+    jest.restoreAllMocks();
+  });
+  test('Basic schemePunk validation', async () => {
+    expect.assertions(1);
+    testScheme = {
+      source: {
+        target: 'test',
+        plugin: 'activeSchemeSource'
+      },
+      transform: {
+        plugin: 'dateManipulate',
+        inputFormat: 'YYYY MM DD',
+        outputFormat: 'YY',
+        manipulator: 'add',
+        manipulateArgs: [7, 'days']
+      },
+      destination: {
+        target: 'test',
+        plugin: 'concatIntoDestination'
+      }
+    };
+    expect(await schemeValidator({scheme: testScheme, useValidator: 'schemePunkValidator'})).toMatchSnapshot();
+  });
+  test('Basic schemePunk validation with endOf', async () => {
+    expect.assertions(1);
+    testScheme = {
+      source: {
+        target: 'test',
+        plugin: 'activeSchemeSource'
+      },
+      transform: {
+        plugin: 'dateManipulate',
+        inputFormat: 'YYYY MM DD',
+        outputFormat: 'YY',
+        manipulator: 'endOf'
+      },
+      destination: {
+        target: 'test',
+        plugin: 'concatIntoDestination'
+      }
+    };
+    expect(await schemeValidator({scheme: testScheme, useValidator: 'schemePunkValidator'})).toMatchSnapshot();
+  });
+  it('Date formatter bad format', async () => {
+    expect.assertions(2);
+    testScheme = {
+      source: {
+        plugin: 'activeSchemeSource',
+        target: 'aSourceTarget'
+      },
+      transform: {
+        plugin: 'dateManipulate',
+        inputFormat: 'YYYY MM DD',
+        outputFormat: 'YY',
+        manipulator: 'notAThing'
+      },
+      destination: {
+        target: 'test',
+        plugin: 'concatIntoDestination'
+      }
+    };
+    try {
+      await schemeValidator({scheme: testScheme, useValidator: 'schemePunkValidator'});
+    }
+    catch (error) {
+      expect(error).toBeInstanceOf(SchemePunkErrors);
+      expect(error.message).toBe('data.transform.manipulator should be equal to one of the allowed values, data.transform should match "then" schema');
+    }
+  });
+});
+
+
 describe('delimit Validation', async () => {
   beforeEach(() => {
     tmpMocks.forEach(mock => mock.mockRestore());
