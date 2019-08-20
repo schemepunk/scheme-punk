@@ -5,6 +5,8 @@ engines:
     checks:
       import/no-unresolved:
         enabled: false
+      arrow-parens:
+        enabled: false
 checks:
   method-lines:
     config:
