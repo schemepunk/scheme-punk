@@ -2,7 +2,6 @@
   "name": "@schemepunk/scheme-punk",
   "description": "Transformation tool with pluggable sources, transformations, and destinations.",
   "scripts": {
-    "commitmsg": "commitlint -e $GIT_PARAMS",
     "lint": "eslint .",
     "coveralls": "cat ./__coverage__/lcov.info | coveralls",
     "travis-deploy-once": "travis-deploy-once",
