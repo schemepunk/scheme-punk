@@ -9,7 +9,7 @@ let schemePunkTransform3;
 
 describe('Scheme Punk Transform Super', () => {
   beforeEach(() => {
-    tmpMocks.forEach(mock => mock.mockRestore());
+    tmpMocks.forEach((mock) => mock.mockRestore());
     tmpMocks = [];
     jest.resetAllMocks();
     jest.spyOn(Date, 'now').mockReturnValue(2000);
@@ -55,13 +55,13 @@ describe('Scheme Punk Transform Super', () => {
   test('getHoldOvers Empty.', () => {
     expect.assertions(1);
     return schemePunkTransform.getHoldOvers()
-      .then(holdOver => expect(holdOver).toEqual({}));
+      .then((holdOver) => expect(holdOver).toEqual({}));
   });
 
   test('getHoldovers Populated', () => {
     expect.assertions(1);
     return schemePunkTransform2.getHoldOvers()
-      .then(source => expect(source).toEqual({
+      .then((source) => expect(source).toEqual({
         src: {
           testive: 'test'
         },
@@ -92,7 +92,7 @@ describe('Scheme Punk Transform Super', () => {
     expect.assertions(1);
     schemePunkTransform.value = 'transformTest';
     return schemePunkTransform.getTransformedValue()
-      .then(testItem => expect(testItem)
+      .then((testItem) => expect(testItem)
         .toEqual('transformTest'));
   });
 });

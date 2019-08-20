@@ -41,7 +41,7 @@ const goodOptionsStr = {constant: 'test'};
 
 describe('sourceFromConstant', () => {
   afterEach(() => {
-    mocks.forEach(mock => mock.mockRestore());
+    mocks.forEach((mock) => mock.mockRestore());
     mocks = [];
   });
 

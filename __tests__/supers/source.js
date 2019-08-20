@@ -10,7 +10,7 @@ let schemePunkSource3;
 
 describe('Scheme Punk Source Super', () => {
   beforeEach(() => {
-    tmpMocks.forEach(mock => mock.mockRestore());
+    tmpMocks.forEach((mock) => mock.mockRestore());
     tmpMocks = [];
     jest.resetAllMocks();
     jest.spyOn(Date, 'now').mockReturnValue(2000);
@@ -46,7 +46,7 @@ describe('Scheme Punk Source Super', () => {
   test('getOrigin', () => {
     expect.assertions(1);
     return schemePunkSource.getOrigin()
-      .then(source => expect(source).toEqual({
+      .then((source) => expect(source).toEqual({
         test: 'this test'
       }));
   });
@@ -54,7 +54,7 @@ describe('Scheme Punk Source Super', () => {
   test('getTarget', () => {
     expect.assertions(1);
     schemePunkSource.getSchemePunkSourceTarget()
-      .then(source => expect(source)
+      .then((source) => expect(source)
         .toEqual('test'));
   });
 
@@ -67,7 +67,7 @@ describe('Scheme Punk Source Super', () => {
   test('getSource', () => {
     expect.assertions(1);
     return schemePunkSource.getSource()
-      .then(source => expect(source)
+      .then((source) => expect(source)
         .toEqual('this test'));
   });
 
@@ -81,8 +81,8 @@ describe('Scheme Punk Source Super', () => {
       testive: {}
     });
     return schemePunkSource.getHoldOvers()
-      .then(thing => thing)
-      .then(thing => expect(thing)
+      .then((thing) => thing)
+      .then((thing) => expect(thing)
         .toEqual({
           src: {
             testive: 'test'
@@ -95,7 +95,7 @@ describe('Scheme Punk Source Super', () => {
   test('getHoldOversWithValues', async () => {
     expect.assertions(1);
     return schemePunkSource2.getHoldOvers()
-      .then(thing => expect(thing)
+      .then((thing) => expect(thing)
         .toEqual({
           src: {
             testive: 'test'
@@ -113,13 +113,13 @@ describe('Scheme Punk Source Super', () => {
   test('setHoldOversWithoutValuesNoProp', async () => {
     expect.assertions(1);
     return schemePunkSource.getHoldOvers()
-      .then(item => expect(item).toEqual({}));
+      .then((item) => expect(item).toEqual({}));
   });
 
   test('getHoldOversWithoutValues', async () => {
     expect.assertions(1);
     return schemePunkSource3.getHoldOvers()
-      .then(item => expect(item)
+      .then((item) => expect(item)
         .toEqual({
           otherProp: 'otherValue'
         }));

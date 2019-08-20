@@ -9,7 +9,7 @@ let scheme;
 let holdOvers;
 
 beforeEach(() => {
-  tmpMocks.forEach(mock => mock.mockRestore());
+  tmpMocks.forEach((mock) => mock.mockRestore());
   tmpMocks = [];
   jest.resetAllMocks();
   jest.spyOn(Date, 'now').mockReturnValue(2000);
@@ -46,7 +46,7 @@ describe('Scheme Punk Destination', () => {
         schemeDestination.init(options.destination, transformedValue, scheme, holdOvers);
         return schemeDestination;
       })
-      .then(schemeDestination => expect(schemeDestination)
+      .then((schemeDestination) => expect(schemeDestination)
         .toBeInstanceOf(testClass));
   });
 
@@ -60,7 +60,7 @@ describe('Scheme Punk Destination', () => {
         schemeDestination.init(options.destination, transformedValue, scheme, holdOvers);
         return schemeDestination;
       })
-      .then(schemeDestination => expect(schemeDestination)
+      .then((schemeDestination) => expect(schemeDestination)
         .toBeInstanceOf(testClass));
   });
 
@@ -76,6 +76,6 @@ describe('Scheme Punk Destination', () => {
         destination.promoteActiveToNewScheme();
         return destination;
       })
-      .then(destination => expect(destination.getScheme().newScheme.links[0].schema.properties.fields.enum).toEqual('testValue'));
+      .then((destination) => expect(destination.getScheme().newScheme.links[0].schema.properties.fields.enum).toEqual('testValue'));
   });
 });

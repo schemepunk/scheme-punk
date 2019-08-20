@@ -1,10 +1,11 @@
 {
   "parserOptions": {
-    "ecmaVersion": 8,
+    "ecmaVersion": 2018,
     "sourceType": "script"
   },
   "extends": "airbnb-base",
   "rules": {
+    "arrow-parens": ["error", "always"],
     "brace-style": [2, "stroustrup"],
     "comma-dangle": [2, "only-multiline"],
     "global-require": 0,
@@ -20,6 +21,7 @@
     "no-underscore-dangle": "off",
     "no-warning-comments": "warn",
     "no-restricted-syntax": 0,
+    "no-useless-catch": "off",
     "object-curly-spacing": ["error", "never"],
     "quotes": ["error", "single", {"avoidEscape": true, "allowTemplateLiterals": true}],
     "strict": ["error", "global"]

@@ -10,3 +10,5 @@ rules:
   no-plusplus: off
   import/newline-after-import: off
   import/no-extraneous-dependencies: off
+  max-classes-per-file: off
+  no-useless-catch: off

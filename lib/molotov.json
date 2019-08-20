@@ -49,6 +49,18 @@
           "typeAdapter",
           "appendValues"
         ],
+        "dateParser": [
+          "dateParser"
+        ],
+        "dateFormatter": [
+          "dateParser",
+          "dateFormatter"
+        ],
+        "dateManipulate": [
+          "dateParser",
+          "dateManipulate",
+          "dateFormatter"
+        ],
         "delimitValues": [
           "delimitValues"
         ],

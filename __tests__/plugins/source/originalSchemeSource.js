@@ -43,7 +43,7 @@ const holdOvers = {};
 
 describe('originalSource', () => {
   afterEach(() => {
-    mocks.forEach(mock => mock.mockRestore());
+    mocks.forEach((mock) => mock.mockRestore());
     mocks = [];
   });
 

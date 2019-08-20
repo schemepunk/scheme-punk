@@ -34,7 +34,7 @@ let mocks = [];
 
 describe('Token Template Values Tests', () => {
   afterEach(() => {
-    mocks.forEach(mock => mock.mockRestore());
+    mocks.forEach((mock) => mock.mockRestore());
     mocks = [];
   });
 

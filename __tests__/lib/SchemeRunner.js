@@ -12,7 +12,7 @@ let schemeArray;
 let molotovOptions;
 
 beforeEach(() => {
-  tmpMocks.forEach(mock => mock.mockRestore());
+  tmpMocks.forEach((mock) => mock.mockRestore());
   tmpMocks = [];
   jest.resetAllMocks();
   jest.spyOn(Date, 'now').mockReturnValue(2000);
@@ -74,7 +74,7 @@ describe('Scheme Runner', () => {
         expect(sr.getMolotovOptions()).toMatchSnapshot();
         return schemeRunner.runScheme();
       })
-      .then(item => expect(item).toEqual({
+      .then((item) => expect(item).toEqual({
         test: [
           '+testValue',
           'testValue-'
@@ -97,7 +97,7 @@ describe('Scheme Runner Error Cases', () => {
     expect.assertions(1);
     const schemeRunner = new SchemeRunner();
     return schemeRunner.init(_.cloneDeep(data), undefined, _.cloneDeep(molotovOptions))
-      .catch(e => expect(e).toBeInstanceOf(SchemePunkErrors));
+      .catch((e) => expect(e).toBeInstanceOf(SchemePunkErrors));
   });
 
   test('Basic init and scheme running Error.', async () => {
@@ -150,7 +150,7 @@ describe('Scheme Runner Coverage', () => {
         expect(sr.getMolotovOptions()).toMatchSnapshot();
         return schemeRunner.runScheme();
       })
-      .then(item => expect(item).toEqual({
+      .then((item) => expect(item).toEqual({
         test: [
           '+testValue',
           'testValue-'

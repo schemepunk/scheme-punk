@@ -28,7 +28,7 @@ class sourceBase {
 }
 
 beforeEach(() => {
-  tmpMocks.forEach(mock => mock.mockRestore());
+  tmpMocks.forEach((mock) => mock.mockRestore());
   tmpMocks = [];
   jest.resetAllMocks();
   jest.spyOn(Date, 'now').mockReturnValue(2000);
@@ -65,7 +65,7 @@ describe('Scheme Punk Source', () => {
         schemeSource.init(options.source, scheme, {});
         return schemeSource;
       })
-      .then(schemeSource => expect(schemeSource)
+      .then((schemeSource) => expect(schemeSource)
         .toBeInstanceOf(testClass));
   });
 
@@ -79,7 +79,7 @@ describe('Scheme Punk Source', () => {
         schemeSource.init(options.source, scheme, {});
         return schemeSource;
       })
-      .then(schemeSource => expect(schemeSource)
+      .then((schemeSource) => expect(schemeSource)
         .toBeInstanceOf(testClass));
   });
 
@@ -128,7 +128,7 @@ describe('Scheme Punk Source', () => {
         );
         return schemeSource.getSource();
       })
-      .then(source => expect(source)
+      .then((source) => expect(source)
         .toEqual([
           'test1',
           'test2',
@@ -144,7 +144,7 @@ describe('Scheme Punk Source', () => {
         schemeSource.init(options.source, scheme, {});
         return schemeSource.getHoldOvers();
       })
-      .then(res => expect(res).toEqual({}));
+      .then((res) => expect(res).toEqual({}));
   });
 
   test('Set Holdovers', () => {
@@ -158,8 +158,8 @@ describe('Scheme Punk Source', () => {
         });
         return schemeSource;
       })
-      .then(schemeSource => schemeSource.getHoldOvers())
-      .then(holdOvers => expect(holdOvers)
+      .then((schemeSource) => schemeSource.getHoldOvers())
+      .then((holdOvers) => expect(holdOvers)
         .toEqual({
           tough: 'test'
         }));
@@ -178,7 +178,7 @@ describe('Scheme Punk Source', () => {
         );
         return schemeSource.getHoldOvers();
       })
-      .then(res => expect(res).toEqual({
+      .then((res) => expect(res).toEqual({
         test: 'test'
       }));
   });

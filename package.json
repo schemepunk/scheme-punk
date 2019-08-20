@@ -2,7 +2,6 @@
   "name": "@schemepunk/scheme-punk",
   "description": "Transformation tool with pluggable sources, transformations, and destinations.",
   "scripts": {
-    "commitmsg": "commitlint -e $GIT_PARAMS",
     "lint": "eslint .",
     "coveralls": "cat ./__coverage__/lcov.info | coveralls",
     "travis-deploy-once": "travis-deploy-once",
@@ -39,13 +38,12 @@
     "@semantic-release/release-notes-generator": "^7.1.4",
     "commitlint": "^8.0.0",
     "coveralls": "^3.0.0",
-    "eslint": "5.16.0",
-    "eslint-config-airbnb-base": "13.1.0",
-    "eslint-config-prettier": "^5.0.0",
-    "eslint-config-problems": "^3.0.1",
-    "eslint-find-rules": "3.4.0",
+    "eslint": "6.2.1",
+    "eslint-config-airbnb-base": "14.0.0",
+    "eslint-config-prettier": "^6.1.0",
+    "eslint-find-rules": "^3.4.0",
     "eslint-plugin-better": "^0.1.5",
-    "eslint-plugin-import": "^2.17.3",
+    "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jest": "^22.6.4",
     "eslint-plugin-prettier": "^3.1.0",
     "husky": "3.0.4",
@@ -53,7 +51,7 @@
     "jest-environment-node-debug": "^2.0.0",
     "npm-run-all": "^4.0.1",
     "prettier": "^1.18.0",
-    "semantic-release": "15.13.16"
+    "semantic-release": "15.13.21"
   },
   "config": {
     "ghooks": {
@@ -67,16 +65,11 @@
     "lodash": "^4.17.13",
     "loglevel": "^1.6.2",
     "molotov": "^2.1.11",
+    "moment": "^2.24.0",
     "mustache": "^3.0.0"
   },
   "engines": {
     "node": ">=8"
   },
-  "readme": "ERROR: No README data found!",
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint",
-      "pre-push": "npm test"
-    }
-  }
+  "readme": "ERROR: No README data found!"
 }

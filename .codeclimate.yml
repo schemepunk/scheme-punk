@@ -1,7 +1,7 @@
 engines:
   eslint:
     enabled: true
-    channel: "eslint-3"
+    channel: "eslint-5"
     checks:
       import/no-unresolved:
         enabled: false
@@ -11,6 +11,10 @@ checks:
       threshold: 100
   similar-code:
     enabled: false
+  method-complexity:
+    enabled: true
+    exclude_patterns:
+
 exclude_patterns:
   - "__tests__"
   - "lib/plugins/source/contingentSource.js"

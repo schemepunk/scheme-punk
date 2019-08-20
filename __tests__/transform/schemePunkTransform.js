@@ -6,7 +6,7 @@ const options = require('./../__helpers__/schemePunkTestOptions');
 let tmpMocks = [];
 
 beforeEach(() => {
-  tmpMocks.forEach(mock => mock.mockRestore());
+  tmpMocks.forEach((mock) => mock.mockRestore());
   tmpMocks = [];
   jest.resetAllMocks();
   jest.spyOn(Date, 'now').mockReturnValue(2000);
@@ -26,7 +26,7 @@ describe('Scheme Punk Transform', () => {
         const schemeTransform = new SchemeTransform();
         return schemeTransform.init(options.transform, Promise.resolve({}));
       })
-      .then(schemeTransform => expect(schemeTransform)
+      .then((schemeTransform) => expect(schemeTransform)
         .toBeInstanceOf(testClass));
   });
 
@@ -39,7 +39,7 @@ describe('Scheme Punk Transform', () => {
         const schemeTransform = new SchemeTransform();
         return schemeTransform.init(options.transform, Promise.resolve({}));
       })
-      .then(schemeTransform => expect(schemeTransform)
+      .then((schemeTransform) => expect(schemeTransform)
         .toBeInstanceOf(testClass));
   });
 
@@ -49,11 +49,11 @@ describe('Scheme Punk Transform', () => {
       .then((TransformSource) => {
         const transformSource = new TransformSource();
         return transformSource.init(options.transform, Promise.resolve({}))
-          .then(transform => Promise.all([transform, transform.transform({
+          .then((transform) => Promise.all([transform, transform.transform({
             dumber: 'dumb'
           })]));
       })
       .then(([transformer]) => transformer.getTransformedValue())
-      .then(transformedValue => expect(transformedValue).toEqual(['dumber']));
+      .then((transformedValue) => expect(transformedValue).toEqual(['dumber']));
   });
 });

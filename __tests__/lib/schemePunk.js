@@ -8,7 +8,7 @@ let tmpMocks = [];
 let data;
 
 beforeEach(() => {
-  tmpMocks.forEach(mock => mock.mockRestore());
+  tmpMocks.forEach((mock) => mock.mockRestore());
   tmpMocks = [];
   jest.resetAllMocks();
   jest.spyOn(Date, 'now').mockReturnValue(2000);
@@ -82,7 +82,7 @@ describe('Scheme Runner throws', () => {
     expect.assertions(2);
     const dataObject = {originalScheme: data, activeScheme: {differentAttribute: null}, newScheme: {differentAttribute: null}};
 
-    const tmpScheme = Object.assign({}, scheme);
+    const tmpScheme = {...scheme};
     delete tmpScheme.transform;
     const schemePunk = new SchemePunk(tmpScheme);
     const dataImp = schemePunk.constructor.createScheme(dataObject);
@@ -99,7 +99,7 @@ describe('Scheme Runner throws', () => {
     expect.assertions(2);
     const dataObject = {originalScheme: data, activeScheme: {differentAttribute: null}, newScheme: {differentAttribute: null}};
 
-    const tmpScheme = Object.assign({}, scheme);
+    const tmpScheme = {...scheme};
     delete tmpScheme.destination;
     const schemePunk = new SchemePunk(tmpScheme);
     const dataImp = schemePunk.constructor.createScheme(dataObject);

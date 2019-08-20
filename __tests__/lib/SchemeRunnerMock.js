@@ -11,7 +11,7 @@ let molotovOptions;
 
 describe('Scheme Runner Throw', () => {
   beforeEach(() => {
-    tmpMocks.forEach(mock => mock.mockRestore());
+    tmpMocks.forEach((mock) => mock.mockRestore());
     tmpMocks = [];
     jest.resetAllMocks();
 
