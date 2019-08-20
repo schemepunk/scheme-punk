@@ -14,8 +14,7 @@ checks:
   method-complexity:
     enabled: true
     exclude_patterns:
-      - "lib/plugins/transform/dateParser.js"
-      - "lib/plugins/transform/dateManipulate.js"
+
 exclude_patterns:
   - "__tests__"
   - "lib/plugins/source/contingentSource.js"
