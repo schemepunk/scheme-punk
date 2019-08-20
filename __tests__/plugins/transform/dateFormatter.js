@@ -34,7 +34,7 @@ describe('Date format', async () => {
   test('a passed date can be formatted.', async () => {
     const moment = require('moment');
     // Test case value.
-    value = moment('2013-02-08T00:00:00-06:00');
+    value = moment('2013-02-08T00:00:00-06:00').utc();
     dateFormatter.options = {
       outputFormat: 'YYYY-MM-DD'
     };
@@ -52,7 +52,7 @@ describe('Date format', async () => {
   test('A bad format throws', async () => {
     const moment = require('moment');
     // Test case value.
-    value = moment('2013-02-08T00:00:00-06:00');
+    value = moment('2013-02-08T00:00:00-06:00').utc();
     // Set Options
     dateFormatter.options = {
       outputFormat: 14
@@ -71,8 +71,8 @@ describe('Date format', async () => {
     // Test case value.
     _.unset(dateFormatter, ['options', 'outputFormat']);
 
-    value = moment('2013-02-08T00:00:00-06:00');
-    expect(await dateFormatter.transform(value.utc())).toEqual('2013-02-09T00:00:00Z');
+    value = moment('2013-02-08T00:00:00-06:00').utc();
+    expect(await dateFormatter.transform(value)).toEqual('2013-02-09T00:00:00Z');
   });
 
   test('Can use moment presets.', async () => {
@@ -81,7 +81,7 @@ describe('Date format', async () => {
     dateFormatter.options = {
       outputFormat: 'LT'
     };
-    value = moment('2013-02-08T00:00:00-06:00');
-    expect(await dateFormatter.transform(value)).toEqual('12:00 AM');
+    value = moment('2013-02-08T00:00:00-06:00').utc();
+    expect(await dateFormatter.transform(value)).toEqual('6:00 AM');
   });
 });
