@@ -10,7 +10,7 @@ let holdOvers;
 
 describe('Scheme Punk Destination Super', () => {
   beforeEach(async () => {
-    tmpMocks.forEach(mock => mock.mockRestore());
+    tmpMocks.forEach((mock) => mock.mockRestore());
     tmpMocks = [];
     jest.resetAllMocks();
     jest.spyOn(Date, 'now').mockReturnValue(2000);
@@ -82,7 +82,7 @@ describe('Scheme Punk Destination Super', () => {
     expect.assertions(1);
     schemePunkDestination.setHoldOvers(Promise.resolve('test'));
     return schemePunkDestination.getHoldOvers()
-      .then(value => expect(value).toEqual('test'));
+      .then((value) => expect(value).toEqual('test'));
   });
 
   // validateDestinationTarget
@@ -130,7 +130,7 @@ describe('Scheme Punk Destination Super', () => {
     expect.assertions(1);
     schemePunkDestination.setHoldOvers(Promise.resolve(holdOvers));
     return schemePunkDestination.getHoldOvers()
-      .then(value => expect(value).toEqual({
+      .then((value) => expect(value).toEqual({
         otherProp: 'otherValue',
         src: {
           testive: 'test'

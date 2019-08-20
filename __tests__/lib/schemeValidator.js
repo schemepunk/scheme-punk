@@ -9,7 +9,7 @@ let testScheme;
 
 describe('Scheme Runner Validation', async () => {
   beforeEach(() => {
-    tmpMocks.forEach(mock => mock.mockRestore());
+    tmpMocks.forEach((mock) => mock.mockRestore());
     schemeRunnerScheme = {
       arbitraryNameForThisScheme: [
         [
@@ -154,7 +154,7 @@ describe('Scheme Runner Validation', async () => {
 
 describe('OriginalSchemeSource Validation', async () => {
   beforeEach(() => {
-    tmpMocks.forEach(mock => mock.mockRestore());
+    tmpMocks.forEach((mock) => mock.mockRestore());
   });
   afterAll(() => {
     jest.restoreAllMocks();
@@ -204,7 +204,7 @@ describe('OriginalSchemeSource Validation', async () => {
 
 describe('ActiveSchemeSource Validation', async () => {
   beforeEach(() => {
-    tmpMocks.forEach(mock => mock.mockRestore());
+    tmpMocks.forEach((mock) => mock.mockRestore());
   });
   afterAll(() => {
     jest.restoreAllMocks();
@@ -254,7 +254,7 @@ describe('ActiveSchemeSource Validation', async () => {
 
 describe('Source From constant Validation', async () => {
   beforeEach(() => {
-    tmpMocks.forEach(mock => mock.mockRestore());
+    tmpMocks.forEach((mock) => mock.mockRestore());
   });
   afterAll(() => {
     jest.restoreAllMocks();
@@ -305,7 +305,7 @@ describe('Source From constant Validation', async () => {
 
 describe('ContingentSource Validation', async () => {
   beforeEach(() => {
-    tmpMocks.forEach(mock => mock.mockRestore());
+    tmpMocks.forEach((mock) => mock.mockRestore());
   });
   afterAll(() => {
     jest.restoreAllMocks();
@@ -576,7 +576,7 @@ describe('ContingentSource Validation', async () => {
 
 describe('appendValues Validation', async () => {
   beforeEach(() => {
-    tmpMocks.forEach(mock => mock.mockRestore());
+    tmpMocks.forEach((mock) => mock.mockRestore());
   });
   afterAll(() => {
     jest.restoreAllMocks();
@@ -626,7 +626,7 @@ describe('appendValues Validation', async () => {
 
 describe('dateParse validation', async () => {
   beforeEach(() => {
-    tmpMocks.forEach(mock => mock.mockRestore());
+    tmpMocks.forEach((mock) => mock.mockRestore());
   });
   afterAll(() => {
     jest.restoreAllMocks();
@@ -721,7 +721,7 @@ describe('dateParse validation', async () => {
 
 describe('dateFormatter validation', async () => {
   beforeEach(() => {
-    tmpMocks.forEach(mock => mock.mockRestore());
+    tmpMocks.forEach((mock) => mock.mockRestore());
   });
   afterAll(() => {
     jest.restoreAllMocks();
@@ -791,7 +791,7 @@ describe('dateFormatter validation', async () => {
 
 describe('dateManipulate validation', async () => {
   beforeEach(() => {
-    tmpMocks.forEach(mock => mock.mockRestore());
+    tmpMocks.forEach((mock) => mock.mockRestore());
   });
   afterAll(() => {
     jest.restoreAllMocks();
@@ -868,7 +868,7 @@ describe('dateManipulate validation', async () => {
 
 describe('delimit Validation', async () => {
   beforeEach(() => {
-    tmpMocks.forEach(mock => mock.mockRestore());
+    tmpMocks.forEach((mock) => mock.mockRestore());
   });
   afterAll(() => {
     jest.restoreAllMocks();
@@ -918,7 +918,7 @@ describe('delimit Validation', async () => {
 
 describe('filterAttributes', async () => {
   beforeEach(() => {
-    tmpMocks.forEach(mock => mock.mockRestore());
+    tmpMocks.forEach((mock) => mock.mockRestore());
   });
   afterAll(() => {
     jest.restoreAllMocks();
@@ -994,7 +994,7 @@ describe('filterAttributes', async () => {
   });
   describe('filterAttributeMulti', async () => {
     beforeEach(() => {
-      tmpMocks.forEach(mock => mock.mockRestore());
+      tmpMocks.forEach((mock) => mock.mockRestore());
     });
     afterAll(() => {
       jest.restoreAllMocks();
@@ -1073,7 +1073,7 @@ describe('filterAttributes', async () => {
 
 describe('filterObject Validation', async () => {
   beforeEach(() => {
-    tmpMocks.forEach(mock => mock.mockRestore());
+    tmpMocks.forEach((mock) => mock.mockRestore());
   });
   afterAll(() => {
     jest.restoreAllMocks();
@@ -1126,7 +1126,7 @@ describe('filterObject Validation', async () => {
 
 describe('filterObjectMulti Validation', async () => {
   beforeEach(() => {
-    tmpMocks.forEach(mock => mock.mockRestore());
+    tmpMocks.forEach((mock) => mock.mockRestore());
   });
   afterAll(() => {
     jest.restoreAllMocks();
@@ -1179,7 +1179,7 @@ describe('filterObjectMulti Validation', async () => {
 
 describe('prependValues Validation', async () => {
   beforeEach(() => {
-    tmpMocks.forEach(mock => mock.mockRestore());
+    tmpMocks.forEach((mock) => mock.mockRestore());
   });
   afterAll(() => {
     jest.restoreAllMocks();
@@ -1229,7 +1229,7 @@ describe('prependValues Validation', async () => {
 
 describe('tokenTemplates Validation', async () => {
   beforeEach(() => {
-    tmpMocks.forEach(mock => mock.mockRestore());
+    tmpMocks.forEach((mock) => mock.mockRestore());
   });
   afterAll(() => {
     jest.restoreAllMocks();
@@ -1324,7 +1324,7 @@ describe('tokenTemplates Validation', async () => {
 
 describe('ConcatIntoDestination', async () => {
   beforeEach(() => {
-    tmpMocks.forEach(mock => mock.mockRestore());
+    tmpMocks.forEach((mock) => mock.mockRestore());
   });
   afterAll(() => {
     jest.restoreAllMocks();
@@ -1374,7 +1374,7 @@ describe('ConcatIntoDestination', async () => {
 
 describe('Destroy Destination', async () => {
   beforeEach(() => {
-    tmpMocks.forEach(mock => mock.mockRestore());
+    tmpMocks.forEach((mock) => mock.mockRestore());
   });
   afterAll(() => {
     jest.restoreAllMocks();
@@ -1424,7 +1424,7 @@ describe('Destroy Destination', async () => {
 
 describe('Merge into Destination', async () => {
   beforeEach(() => {
-    tmpMocks.forEach(mock => mock.mockRestore());
+    tmpMocks.forEach((mock) => mock.mockRestore());
   });
   afterAll(() => {
     jest.restoreAllMocks();
@@ -1474,7 +1474,7 @@ describe('Merge into Destination', async () => {
 
 describe('Push Destination', async () => {
   beforeEach(() => {
-    tmpMocks.forEach(mock => mock.mockRestore());
+    tmpMocks.forEach((mock) => mock.mockRestore());
   });
   afterAll(() => {
     jest.restoreAllMocks();

@@ -74,7 +74,7 @@ const holdOvers = {};
 
 describe('jsonTemplateFileSource', () => {
   afterEach(() => {
-    mocks.forEach(mock => mock.mockRestore());
+    mocks.forEach((mock) => mock.mockRestore());
     mocks = [];
   });
 
@@ -88,7 +88,7 @@ describe('jsonTemplateFileSource', () => {
     };
     return source.init(options, scheme, holdOvers)
       .then(() => source.getOrigin())
-      .then(schemer => expect(schemer).toMatchSnapshot());
+      .then((schemer) => expect(schemer).toMatchSnapshot());
   });
 
   test('Get Source.', () => {
@@ -101,7 +101,7 @@ describe('jsonTemplateFileSource', () => {
 
     return source.init(options, scheme, holdOvers)
       .then(() => source.getSource())
-      .then(sourceStuff => expect(sourceStuff).toEqual({
+      .then((sourceStuff) => expect(sourceStuff).toEqual({
         title: {
           type: 'string',
           description: 'A title.'
@@ -128,7 +128,7 @@ describe('jsonTemplateFileSource', () => {
     const source = new (JsonTemplateFileSource(sourceBase2)); // eslint-disable-line new-parens
     return source.init(options, scheme, holdOvers)
       .then(() => source.getSource())
-      .then(sourceStuff => expect(sourceStuff).toEqual({
+      .then((sourceStuff) => expect(sourceStuff).toEqual({
         description: 'A number property on this entity.',
         type: 'integer',
         minimum: 0,

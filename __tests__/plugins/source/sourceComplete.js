@@ -66,7 +66,7 @@ const options = {
 
 describe('sourceComplete', () => {
   afterEach(() => {
-    mocks.forEach(mock => mock.mockRestore());
+    mocks.forEach((mock) => mock.mockRestore());
     mocks = [];
   });
 
@@ -75,8 +75,8 @@ describe('sourceComplete', () => {
     mocks.push(jest.spyOn(sourceBase, 'constructor'));
     const source = new (sourceComplete(sourceBase))();
     return source.init(options, scheme)
-      .then(sourcey => Promise.all([sourcey, sourcey.setOrigin()]))
+      .then((sourcey) => Promise.all([sourcey, sourcey.setOrigin()]))
       .then(([sources]) => sources.getSource())
-      .then(sourcef => expect(sourcef).toBe());
+      .then((sourcef) => expect(sourcef).toBe());
   });
 });

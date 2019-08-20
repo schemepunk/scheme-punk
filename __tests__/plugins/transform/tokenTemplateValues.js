@@ -30,7 +30,7 @@ let mocks = [];
 
 describe('Token Template Values Tests', () => {
   beforeEach(() => {
-    mocks.forEach(mock => mock.mockRestore());
+    mocks.forEach((mock) => mock.mockRestore());
     mocks = [];
   });
   test('Template only values', async () => {
@@ -55,7 +55,7 @@ describe('Token Template Values Tests', () => {
 
 describe('Use a template and replace with passed values using named replacement', () => {
   beforeEach(() => {
-    mocks.forEach(mock => mock.mockRestore());
+    mocks.forEach((mock) => mock.mockRestore());
     mocks = [];
   });
   test('Use a template and replace with passed values using named replacement.', async () => {
@@ -85,7 +85,7 @@ describe('Use a template and replace with passed values using named replacement'
 
 describe('Use a template with passed values, named variables, and holdOvers.', () => {
   beforeEach(() => {
-    mocks.forEach(mock => mock.mockRestore());
+    mocks.forEach((mock) => mock.mockRestore());
     mocks = [];
   });
   test('Use a template with passed values, named variables, and holdOvers.', async () => {
@@ -115,7 +115,7 @@ describe('Use a template with passed values, named variables, and holdOvers.', (
 
 describe('Use a template in JSON format with holdovers', () => {
   beforeEach(() => {
-    mocks.forEach(mock => mock.mockRestore());
+    mocks.forEach((mock) => mock.mockRestore());
     mocks = [];
   });
   test('Use a template in JSON format with holdovers', async () => {
@@ -152,7 +152,7 @@ describe('Use a template in JSON format with holdovers', () => {
 
 describe('Use a template but pass in an empty object for values and indicate that it should not render empty tokens.', () => {
   beforeEach(() => {
-    mocks.forEach(mock => mock.mockRestore());
+    mocks.forEach((mock) => mock.mockRestore());
     mocks = [];
   });
   test('Use a template but pass in an empty object for values and indicate that it should not render empty tokens.', async () => {
@@ -174,7 +174,7 @@ describe('Use a template but pass in an empty object for values and indicate tha
 
 describe('Use a template with text escapes but enforce unescaping.', () => {
   beforeEach(() => {
-    mocks.forEach(mock => mock.mockRestore());
+    mocks.forEach((mock) => mock.mockRestore());
     mocks = [];
   });
   test('Use a template with text escapes but enforce unescaping.', async () => {
@@ -204,7 +204,7 @@ describe('Use a template with text escapes but enforce unescaping.', () => {
 
 describe('Use a template with a simple string value instead of an object.', () => {
   beforeEach(() => {
-    mocks.forEach(mock => mock.mockRestore());
+    mocks.forEach((mock) => mock.mockRestore());
     mocks = [];
   });
   test('Use a template with a simple string value instead of an object.', async () => {
@@ -227,7 +227,7 @@ describe('Use a template with a simple string value instead of an object.', () =
 
 describe('No File.', () => {
   beforeEach(() => {
-    mocks.forEach(mock => mock.mockRestore());
+    mocks.forEach((mock) => mock.mockRestore());
     mocks = [];
   });
   test('Use a template with a simple string value instead of an object.', async () => {
@@ -253,7 +253,7 @@ describe('No File.', () => {
 
 describe('Token Template Object', () => {
   beforeEach(() => {
-    mocks.forEach(mock => mock.mockRestore());
+    mocks.forEach((mock) => mock.mockRestore());
     mocks = [];
   });
   test('Use a template object with an object', async () => {

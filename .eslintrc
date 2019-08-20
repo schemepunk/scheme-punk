@@ -1,6 +1,6 @@
 {
   "parserOptions": {
-    "ecmaVersion": 8,
+    "ecmaVersion": 2018,
     "sourceType": "script"
   },
   "extends": "airbnb-base",
@@ -20,6 +20,7 @@
     "no-underscore-dangle": "off",
     "no-warning-comments": "warn",
     "no-restricted-syntax": 0,
+    "no-useless-catch": "off",
     "object-curly-spacing": ["error", "never"],
     "quotes": ["error", "single", {"avoidEscape": true, "allowTemplateLiterals": true}],
     "strict": ["error", "global"]
