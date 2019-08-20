@@ -5,6 +5,7 @@
   },
   "extends": "airbnb-base",
   "rules": {
+    "arrow-parens": ["error", "as-needed"],
     "brace-style": [2, "stroustrup"],
     "comma-dangle": [2, "only-multiline"],
     "global-require": 0,
