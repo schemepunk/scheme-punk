@@ -51,7 +51,7 @@
     "jest-environment-node-debug": "^2.0.0",
     "npm-run-all": "^4.0.1",
     "prettier": "^1.18.0",
-    "semantic-release": "15.13.21"
+    "semantic-release": "15.13.24"
   },
   "config": {
     "ghooks": {
