@@ -6,7 +6,7 @@ cache:
 notifications:
   email: false
 node_js:
-  - '8'
+  - '10'
 
 branches:
   except:
@@ -24,7 +24,7 @@ jobs:
   include:
     -
       stage: test
-      node_js: 'lts/carbon'
+      node_js: 'lts/dubnium'
       script:
         - yarn run lint
         - yarn test
@@ -33,7 +33,7 @@ jobs:
       stage: deploy
       if: branch = master
       # Semantic release will fail if it's not using node 8.
-      node_js: 'lts/carbon'
+      node_js: 'lts/dubnium'
       before_install:
         - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
       provider: script
