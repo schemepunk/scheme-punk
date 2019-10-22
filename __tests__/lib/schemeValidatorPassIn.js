@@ -7,7 +7,7 @@ const {
   schemePunkSchema,
 } = require('../../lib/schemeValidator');
 
-describe('Scheme Runner Validation', async () => {
+describe('Scheme Runner Validation', () => {
   test('Can pass in AJV Validator', async () => {
     expect.assertions(1);
     const testScheme = {

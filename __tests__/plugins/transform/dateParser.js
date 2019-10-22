@@ -20,7 +20,7 @@ const dateParse = new (DateParser(BaseXform))();
 
 let value;
 
-describe('Date parse', async () => {
+describe('Date parse', () => {
   const constantDate = new Date('2013-02-08T00:00:00-06:00');
 
   beforeAll(() => {

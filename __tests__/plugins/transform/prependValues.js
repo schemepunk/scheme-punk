@@ -19,7 +19,7 @@ const prependValues = new (PrependValues(BaseXform))();
 
 let value;
 
-describe('Object keys', async () => {
+describe('Object keys', () => {
   test('objectKeysTransformNoSuper.', async () => {
     // Set options source prepend.
     prependValues.options = {

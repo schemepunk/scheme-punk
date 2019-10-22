@@ -7,7 +7,7 @@ const tmpMocks = [];
 let schemeRunnerScheme;
 let testScheme;
 
-describe('Scheme Runner Validation', async () => {
+describe('Scheme Runner Validation', () => {
   beforeEach(() => {
     tmpMocks.forEach((mock) => mock.mockRestore());
     schemeRunnerScheme = {
@@ -152,7 +152,7 @@ describe('Scheme Runner Validation', async () => {
 });
 
 
-describe('OriginalSchemeSource Validation', async () => {
+describe('OriginalSchemeSource Validation', () => {
   beforeEach(() => {
     tmpMocks.forEach((mock) => mock.mockRestore());
   });
@@ -202,7 +202,7 @@ describe('OriginalSchemeSource Validation', async () => {
   });
 });
 
-describe('ActiveSchemeSource Validation', async () => {
+describe('ActiveSchemeSource Validation', () => {
   beforeEach(() => {
     tmpMocks.forEach((mock) => mock.mockRestore());
   });
@@ -252,7 +252,7 @@ describe('ActiveSchemeSource Validation', async () => {
   });
 });
 
-describe('Source From constant Validation', async () => {
+describe('Source From constant Validation', () => {
   beforeEach(() => {
     tmpMocks.forEach((mock) => mock.mockRestore());
   });
@@ -303,7 +303,7 @@ describe('Source From constant Validation', async () => {
 });
 
 
-describe('ContingentSource Validation', async () => {
+describe('ContingentSource Validation', () => {
   beforeEach(() => {
     tmpMocks.forEach((mock) => mock.mockRestore());
   });
@@ -574,7 +574,7 @@ describe('ContingentSource Validation', async () => {
   });
 });
 
-describe('appendValues Validation', async () => {
+describe('appendValues Validation', () => {
   beforeEach(() => {
     tmpMocks.forEach((mock) => mock.mockRestore());
   });
@@ -624,7 +624,7 @@ describe('appendValues Validation', async () => {
   });
 });
 
-describe('dateParse validation', async () => {
+describe('dateParse validation', () => {
   beforeEach(() => {
     tmpMocks.forEach((mock) => mock.mockRestore());
   });
@@ -719,7 +719,7 @@ describe('dateParse validation', async () => {
   });
 });
 
-describe('dateFormatter validation', async () => {
+describe('dateFormatter validation', () => {
   beforeEach(() => {
     tmpMocks.forEach((mock) => mock.mockRestore());
   });
@@ -789,7 +789,7 @@ describe('dateFormatter validation', async () => {
   });
 });
 
-describe('dateManipulate validation', async () => {
+describe('dateManipulate validation', () => {
   beforeEach(() => {
     tmpMocks.forEach((mock) => mock.mockRestore());
   });
@@ -866,7 +866,7 @@ describe('dateManipulate validation', async () => {
 });
 
 
-describe('delimit Validation', async () => {
+describe('delimit Validation', () => {
   beforeEach(() => {
     tmpMocks.forEach((mock) => mock.mockRestore());
   });
@@ -916,7 +916,7 @@ describe('delimit Validation', async () => {
   });
 });
 
-describe('filterAttributes', async () => {
+describe('filterAttributes', () => {
   beforeEach(() => {
     tmpMocks.forEach((mock) => mock.mockRestore());
   });
@@ -992,7 +992,7 @@ describe('filterAttributes', async () => {
       expect(error.message).toBe('data.transform.filterBias should be string, data.transform should match "then" schema');
     }
   });
-  describe('filterAttributeMulti', async () => {
+  describe('filterAttributeMulti', () => {
     beforeEach(() => {
       tmpMocks.forEach((mock) => mock.mockRestore());
     });
@@ -1071,7 +1071,7 @@ describe('filterAttributes', async () => {
   });
 });
 
-describe('filterObject Validation', async () => {
+describe('filterObject Validation', () => {
   beforeEach(() => {
     tmpMocks.forEach((mock) => mock.mockRestore());
   });
@@ -1124,7 +1124,7 @@ describe('filterObject Validation', async () => {
   });
 });
 
-describe('filterObjectMulti Validation', async () => {
+describe('filterObjectMulti Validation', () => {
   beforeEach(() => {
     tmpMocks.forEach((mock) => mock.mockRestore());
   });
@@ -1177,7 +1177,7 @@ describe('filterObjectMulti Validation', async () => {
   });
 });
 
-describe('prependValues Validation', async () => {
+describe('prependValues Validation', () => {
   beforeEach(() => {
     tmpMocks.forEach((mock) => mock.mockRestore());
   });
@@ -1227,7 +1227,7 @@ describe('prependValues Validation', async () => {
   });
 });
 
-describe('tokenTemplates Validation', async () => {
+describe('tokenTemplates Validation', () => {
   beforeEach(() => {
     tmpMocks.forEach((mock) => mock.mockRestore());
   });
@@ -1322,7 +1322,7 @@ describe('tokenTemplates Validation', async () => {
   });
 });
 
-describe('ConcatIntoDestination', async () => {
+describe('ConcatIntoDestination', () => {
   beforeEach(() => {
     tmpMocks.forEach((mock) => mock.mockRestore());
   });
@@ -1372,7 +1372,7 @@ describe('ConcatIntoDestination', async () => {
   });
 });
 
-describe('Destroy Destination', async () => {
+describe('Destroy Destination', () => {
   beforeEach(() => {
     tmpMocks.forEach((mock) => mock.mockRestore());
   });
@@ -1422,7 +1422,7 @@ describe('Destroy Destination', async () => {
   });
 });
 
-describe('Merge into Destination', async () => {
+describe('Merge into Destination', () => {
   beforeEach(() => {
     tmpMocks.forEach((mock) => mock.mockRestore());
   });
@@ -1472,7 +1472,7 @@ describe('Merge into Destination', async () => {
   });
 });
 
-describe('Push Destination', async () => {
+describe('Push Destination', () => {
   beforeEach(() => {
     tmpMocks.forEach((mock) => mock.mockRestore());
   });

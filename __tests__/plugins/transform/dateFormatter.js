@@ -20,7 +20,7 @@ const dateFormatter = new (DateFormatter(BaseXform))();
 
 let value;
 
-describe('Date format', async () => {
+describe('Date format', () => {
   const constantDate = new Date('2013-02-08T00:00:00-06:00');
 
   beforeAll(() => {
