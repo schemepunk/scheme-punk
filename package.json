@@ -38,7 +38,7 @@
     "@semantic-release/release-notes-generator": "^7.3.0",
     "commitlint": "^8.2.0",
     "coveralls": "^3.0.7",
-    "eslint": "6.5.1",
+    "eslint": "6.7.1",
     "eslint-config-airbnb-base": "14.0.0",
     "eslint-config-prettier": "6.4.0",
     "eslint-find-rules": "^3.4.0",
