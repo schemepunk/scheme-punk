@@ -1,4 +1,4 @@
-# Scheme Punk - Changing the world one schema at a time.
+# Scheme Punk - Configuration based transaformation library
 
 [![Build Status](https://travis-ci.org/schemepunk/scheme-punk.svg?branch=master)](https://travis-ci.org/schemepunk/scheme-punk)
 [![Coverage Status](https://coveralls.io/repos/github/schemepunk/scheme-punk/badge.svg?branch=master)](https://coveralls.io/github/thebruce/scheme-punk?branch=master)
