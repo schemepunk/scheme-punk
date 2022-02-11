@@ -60,7 +60,7 @@
     }
   },
   "dependencies": {
-    "ajv": "^6.10.0",
+    "ajv": "^6.12.3",
     "fs-extra": "^8.1.0",
     "lodash": "^4.17.15",
     "loglevel": "^1.6.2",
